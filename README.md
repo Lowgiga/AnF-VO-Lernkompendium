@@ -1,50 +1,54 @@
 # AnF-VO-Lernkompendium
 
-Offline-capable digital learning compendium for the basic qualification under § 8 AnFöVO NRW.
+A local-first digital learning compendium for § 8 AnFöVO NRW.
 
-## Applications
+## Product direction
+A hybrid learning experience: a premium 3D book with a readable, accessible learning interface. The mascot is a white-silver metallic decorative robot with a graphite visor and restrained ice-blue eye lighting. Existing learning content is preserved.
 
-- **Standalone web app:** `index.html`
-- **Robot navigation source:** `algorithm/robot-navigation.js`
-- **Native Android app:** `android/`
-- **Android application ID:** `de.omega.lernkompendium`
-- **Version:** `2.8.0` (`versionCode 280`)
+## Start
+Open `index.html` in a modern browser. The core application is designed to work locally without external runtime dependencies.
 
-The web application remains a standalone HTML app. RobotNav is a deterministic JavaScript layout and event-scheduling helper for the decorative mascot. It is not an AI agent. The HTML app does not require runtime network calls for its local application logic.
+## Project structure
+See [Architecture](docs/ARCHITECTURE.md), [Design System](docs/DESIGN_SYSTEM.md), and [Content Preservation](docs/CONTENT_PRESERVATION.md).
 
-## Android build
+## Validation
+```powershell
+python tests/verify-build.py
+```
+Run the browser checks from `tests/` with `npm ci` followed by `npm run test:all`. Set `CHROMIUM_PATH` when using a system Chrome/Chromium binary. The smoke test checks all 70 HTML pages and JavaScript page errors; the RobotNav harness checks nested scrolling, cache cleanup, observer stability, and teardown.
 
-The Android project uses a native WebView with bundled local assets and `WebViewAssetLoader`.
+## Mascot and navigation
+RobotNav is a deterministic browser-side layout helper. The white-silver metallic robot is decorative and does not make network requests or act as an AI agent.
 
-| Setting | Value |
-|---|---|
-| Android Gradle Plugin | 8.13.2 |
-| Gradle | 8.13 |
-| JDK | 17+ (locally verified with JDK 21) |
-| compileSdk / targetSdk | 36 |
-| minSdk | 29 |
-| AndroidX WebKit | 1.18.0 |
+## License
+No license is declared yet. Public visibility does not grant reuse rights. Select a license explicitly before publishing a reuse grant.
 
-Build a Debug APK on Windows:
+## Android application
+
+The Android WebView wrapper is located in `android/` and packages the same standalone `index.html` used by the desktop version. The HTML source and Android asset copy are byte-identical.
+
+- Application ID: `de.omega.lernkompendium`
+- App version: `2.9.1` (`versionCode` 291)
+- Minimum Android: API 29
+- Compile/target SDK: 36
+- Android Gradle Plugin: 8.13.2
+- Gradle wrapper: 8.13
+- Java compatibility: 17 (build host currently uses JDK 21)
+
+Build a debug APK on Windows:
 
 ```powershell
 cd android
 .\gradlew.bat --no-daemon clean :app:assembleDebug
 ```
 
-Debug APKs are created under `android/app/build/outputs/apk/debug/`. The ARM64 APK is the expected install target for current Samsung Galaxy phones.
+Build on Linux or macOS:
 
-## Security and release signing
+```bash
+cd android
+./gradlew --no-daemon clean :app:assembleDebug
+```
 
-Debug APKs use the standard Android debug signing key and are for development/testing only. A Play Store or long-term release requires a persistent private keystore. Do not commit keystore files or passwords. The same release keystore must be retained for future updates of the same application ID.
+The committed Gradle 8.13 wrapper includes its launcher JAR, POSIX and Windows launchers, and the distribution SHA-256 pin. CI validates the wrapper before building with JDK 17, Android SDK Platform 36, and Android Build Tools 36.0.0. Do not generate or replace the wrapper with an unpinned Gradle installation.
 
-## Verification status
-
-- Standalone static checks: **20 passed, 0 failed**.
-- Android Debug build: **successful** from the release export.
-- APK v2 signature verification: **passed** for ARM64, universal and x86_64 debug APKs.
-- Package metadata: **verified** as `de.omega.lernkompendium`, version `2.8.0`, code `280`.
-- Real-device install and UI testing: **pending**; ADB disconnected during the installation attempt.
-- Release signing: **not configured**.
-
-See `BUILD-REPORT-v2.8.0.md` for the current local build evidence.
+The debug APK is signed with the standard Android debug key and is for testing only. A production release requires a private, backed-up release keystore. The Galaxy S25 installation test remains pending until ADB detects the device.

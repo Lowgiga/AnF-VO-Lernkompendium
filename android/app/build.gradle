@@ -1,0 +1,56 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'de.omega.lernkompendium'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'de.omega.lernkompendium'
+        minSdk 29
+        targetSdk 36
+        versionCode 291
+        versionName '2.9.1'
+    }
+
+    signingConfigs {
+        release {
+            def ks = System.getenv('KOMPENDIUM_KEYSTORE')
+            def storePwd = System.getenv('KOMPENDIUM_STORE_PASSWORD')
+            def keyPwd = System.getenv('KOMPENDIUM_KEY_PASSWORD')
+            def alias = System.getenv('KOMPENDIUM_KEY_ALIAS')
+            if (ks && storePwd && keyPwd && alias) {
+                storeFile file(ks)
+                storePassword storePwd
+                keyPassword keyPwd
+                keyAlias alias
+            }
+        }
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'arm64-v8a', 'x86_64'
+            universalApk true
+        }
+    }
+
+    buildTypes {
+        debug { }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.18.0'
+}
+
