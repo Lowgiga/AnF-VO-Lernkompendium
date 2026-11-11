@@ -31,5 +31,3 @@ report={'version':'2.8.0','static_checks':len(checks),'passed':len(checks)-len(f
 (root/'TESTBERICHT_v2.8.0.txt').write_text('\n'.join(('PASS' if c['ok'] else 'FAIL')+' '+c['name']+((' — '+c['detail']) if c['detail'] else '') for c in checks)+f"\n\nStatische Prüfungen: {len(checks)-len(failed)} bestanden · {len(failed)} fehlgeschlagen.\nBrowser-Tests: nicht ausgeführt (Chromium-Navigation durch Administrator-Richtlinie blockiert).\n",encoding='utf-8')
 print(json.dumps({'passed':len(checks)-len(failed),'failed':len(failed),'failed_checks':failed},ensure_ascii=False,indent=2))
 sys.exit(1 if failed else 0)
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
