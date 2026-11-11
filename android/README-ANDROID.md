@@ -1,37 +1,47 @@
-# Lern-Kompendium Android v2.9.1
+# Android build guide — AnF-VO-Lernkompendium 2.9.1
 
-## Architektur
-Native Android-Activity mit Android WebView; Inhalte werden lokal aus `app/src/main/assets/` geladen. Der Einstieg ist die PWA-kompatible `index.html`; die Lerninhalte bleiben offline verfÃ¼gbar. Es wird keine externe Website als Laufzeitquelle benÃ¶tigt.
+## Architecture
 
-## Buildvoraussetzungen
-- JDK 17 oder neuer (lokal geprÃ¼ft mit JDK 21)
-- Android SDK Platform 36
-- Android Build Tools 35.0.0 oder neuer
-- Gradle 8.13 passend zum Android Gradle Plugin 8.13.2
+The native Android application hosts the standalone learning compendium in a WebView. Runtime assets are bundled locally under `app/src/main/assets/`; no external website is required to load the application content.
 
-Auf dem Windows-Buildhost wird `ANDROID_HOME` auf das installierte SDK gesetzt.
+## Requirements
 
-## Debug-APK
-Install Gradle 8.13, then generate the wrapper once if `gradle-wrapper.jar` is not present: `gradle wrapper --gradle-version 8.13`. Under Windows PowerShell:
+- JDK 17 or 21 for running Gradle 8.13. JDK 25 is not a supported runtime for this wrapper.
+- Android SDK Platform 36.
+- Android Build Tools 36.0.0.
+- Gradle 8.13, provided by the committed Gradle Wrapper.
+- Android Gradle Plugin 8.13.2.
+
+The wrapper consists of `gradlew`, `gradlew.bat`, `gradle/wrapper/gradle-wrapper.jar`, and `gradle/wrapper/gradle-wrapper.properties`. The distribution URL and SHA-256 are pinned in the properties file. Do not generate the wrapper during CI or use a runner-installed global Gradle version.
+
+## Debug APK
+
+Windows PowerShell:
+
 ```powershell
-.\gradlew.bat :app:assembleDebug
+.\gradlew.bat --no-daemon clean :app:assembleDebug
 ```
-Ausgabe: `app\build\outputs\apk\debug\app-debug.apk`
 
-## Release-Varianten
-Mit einem Release-Keystore und den Umgebungsvariablen `KOMPENDIUM_KEYSTORE`, `KOMPENDIUM_STORE_PASSWORD`, `KOMPENDIUM_KEY_PASSWORD` und `KOMPENDIUM_KEY_ALIAS`:
+Linux/macOS:
+
+```bash
+./gradlew --no-daemon clean :app:assembleDebug
+```
+
+Output: `app/build/outputs/apk/debug/`. ABI split builds include ARM64, x86_64, and a universal debug APK.
+
+## Continuous integration
+
+The `.github/workflows/android-build.yml` workflow runs for relevant pushes to `main` and `release/**`, pull requests targeting `main`, and manual dispatch. It installs Node.js 22 and runs the static and Playwright browser checks, validates the committed Gradle wrapper, installs JDK 17 and Android SDK Platform 36 / Build Tools 36.0.0, builds through the wrapper, verifies APK signatures, and uploads debug APK artifacts for 14 days. Changes under `tests/` also trigger validation.
+
+## Release signing
+
+Debug APKs use the standard Android debug certificate and are for testing only. A production release requires a persistent private keystore. Configure `KOMPENDIUM_KEYSTORE`, `KOMPENDIUM_STORE_PASSWORD`, `KOMPENDIUM_KEY_PASSWORD`, and `KOMPENDIUM_KEY_ALIAS` in the build environment. Never commit keystore files or passwords. Retain the same keystore for future updates of this application ID.
+
+## Device installation
+
 ```powershell
-.\gradlew.bat :app:assembleRelease
+adb install -r .\app\build\outputs\apk\debug\app-arm64-v8a-debug.apk
 ```
-Erzeugt die universelle APK und die ABI-Varianten `arm64-v8a` und `x86_64` (Pfad unter `app\build\outputs\apk\release\`).
 
-## Installation
-```powershell
-adb install -r .\app\build\outputs\apk\debug\app-debug.apk
-```
-FÃ¼r die Installation direkt auf dem Telefon kann die APK auch Ã¼bertragen und geÃ¶ffnet werden. Android verlangt ggf. die Freigabe â€žUnbekannte Apps installierenâ€œ.
-
-## Signatur
-Debug-APK: SDK-Debugsignatur, fÃ¼r Tests.
-Release-APK: eigener, dauerhaft aufzubewahrender Keystore. Nicht im Repository speichern. Ein Wechsel des SchlÃ¼ssels verhindert regulÃ¤re Updates derselben installierten App.
-
+Confirm the generated APK filename in the output directory before installing. Device installation and runtime checks must be recorded separately from successful compilation and APK signature verification.

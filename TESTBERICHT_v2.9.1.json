@@ -1,0 +1,108 @@
+{
+  "version": "2.9.1",
+  "static_checks": 20,
+  "passed": 20,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Embedded RobotNav block matches standalone source",
+      "ok": true,
+      "detail": "embedded=21879 chars; source=21879 chars"
+    },
+    {
+      "name": "Standalone JavaScript syntax",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Embedded JavaScript syntax",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "HTML document has one html root",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "RobotNav v2.8.0 embedded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Standalone engine has no fetch/XHR/WebSocket",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "No polling interval used",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "No self-scheduling animation loop used",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: DOM Inventory",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Obstacle Cache",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Position Planner",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Motion Controller",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Event Scheduler",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: dirtyFlags |= flags",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: processing = true",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: requestAnimationFrame(flush)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: mutationObserver.disconnect()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: resizeObserver.disconnect()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: position === 'sticky'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: RobotNav.destroy",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

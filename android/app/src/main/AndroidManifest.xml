@@ -4,7 +4,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="Lern-Kompendium v2.9.1"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.Light.NoActionBar"
         android:usesCleartextTraffic="false">
@@ -20,4 +20,3 @@
         </activity>
     </application>
 </manifest>
-
