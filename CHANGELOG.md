@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.9.1
+## 2.9.1`r`n- Added a matching Android WebView wrapper and built a debug APK with Gradle 8.13 / AGP 8.13.2.`r`n- Verified APK signature (debug key); device installation and release signing remain pending.
 - Updated the mascot to a silver metallic appearance with graphite visor and ice-blue eye lighting.
 - Confirmed hybrid book-and-reading-interface design direction in project documentation.
 - Added local asset directory structure for book and robot visuals.
