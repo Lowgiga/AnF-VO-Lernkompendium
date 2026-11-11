@@ -21,5 +21,3 @@ This project is a learning compendium for § 8 AnFöVO NRW. Existing curriculum 
 - Existing learning articles: 70 (verified in v2.9.0 static inspection).
 - Static build checks: 20 passed / 0 failed after restoring the expected RobotNav marker.
 - Real browser interaction tests: not yet verified; Playwright is not installed successfully in the current Windows environment.
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
