@@ -23,7 +23,23 @@
     "robot_appearance":  "silver",
     "content_preservation":  "Preserve all 70 existing learning pages and all current learning functionality; no unreviewed content edits.",
     "github_repository":  "https://github.com/Lowgiga/AnF-VO-Lernkompendium",
-    "github_visibility":  "public"
+    "github_visibility":  "public",
+    "android":  {
+                    "application_id":  "de.omega.lernkompendium",
+                    "version":  "2.9.1",
+                    "version_code":  291,
+                    "min_sdk":  29,
+                    "compile_sdk":  36,
+                    "target_sdk":  36,
+                    "gradle":  "8.13",
+                    "android_gradle_plugin":  "8.13.2",
+                    "debug_apk_built":  true,
+                    "debug_apk_signature_verified":  true,
+                    "release_signing_configured":  false,
+                    "device_install_tested":  false,
+                    "debug_apk_sha256":  "7E4BC7D76DDDA5DFCD260A50DC7705F6C7CDFD6E2C166BABB6174C1B178E57B0",
+                    "debug_apk_file":  "release/AnFoeVO_Lernkompendium_v2.9.1-debug-arm64.apk"
+                }
 }
 
 [executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
