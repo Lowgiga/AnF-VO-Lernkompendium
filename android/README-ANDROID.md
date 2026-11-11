@@ -35,5 +35,3 @@ FÃ¼r die Installation direkt auf dem Telefon kann die APK auch Ã¼bertragen u
 Debug-APK: SDK-Debugsignatur, fÃ¼r Tests.
 Release-APK: eigener, dauerhaft aufzubewahrender Keystore. Nicht im Repository speichern. Ein Wechsel des SchlÃ¼ssels verhindert regulÃ¤re Updates derselben installierten App.
 
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
