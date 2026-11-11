@@ -1,0 +1,10 @@
+.gradle/
+**/build/
+local.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.log
+.DS_Store
+Thumbs.db
