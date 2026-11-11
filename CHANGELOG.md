@@ -8,6 +8,8 @@
 - Added local asset directory structure for book and robot visuals.
 - Updated project manifest and README.
 - Preserved existing learning content and standalone offline runtime.
+- Verified the full 70-page HTML app in local Chrome with zero page errors.
+- Passed the Playwright RobotNav harness: nested scroll roots, cache cleanup, stable observers, and teardown.
 # Changelog
 
 ## v2.9.0
