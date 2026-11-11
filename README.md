@@ -43,5 +43,3 @@ cd android
 ```
 
 The debug APK is signed with the standard Android debug key and is for testing only. A production release requires a private, backed-up release keystore. The Galaxy S25 installation test remains pending until ADB detects the device.
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
