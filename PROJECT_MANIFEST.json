@@ -13,8 +13,8 @@
                                 "Motion Controller",
                                 "Event Scheduler"
                             ],
-    "browser_runtime_verified":  false,
-    "browser_test_limitation":  "Browser navigation blocked by administrator policy in build environment.",
+    "browser_runtime_verified":  true,
+    "browser_test_limitation":  "Local Windows Chrome and Playwright browser tests passed; Galaxy S25 installation test remains pending.",
     "robotnav_embedded_block_chars":  21881,
     "robotnav_source_chars":  21880,
     "embedded_source_match":  true,
@@ -40,5 +40,19 @@
                     "debug_apk_file":  "release/AnFoeVO_Lernkompendium_v2.9.1-debug-arm64.apk",
                     "debug_apk_sha256":  "C3CA44CAE253D15E73A2AB98F9D6DB645518B35740465F9B0587282147686B13",
                     "html_sha256":  "E79D274C7BBCB4173C2F335EAF8413833A2724C49C20BC174639CC9D3F3AB1DF"
-                }
+                },
+    "browser_validation":  {
+                               "engine":  "Google Chrome",
+                               "html_smoke_test":  "passed",
+                               "html_pages":  70,
+                               "page_errors":  0,
+                               "robotnav_harness":  "passed",
+                               "scroll_roots":  3,
+                               "cache_entries_before_cleanup":  7,
+                               "cache_entries_after_cleanup":  5,
+                               "observer_self_trigger_flushes":  0,
+                               "max_flush_ms":  5.5,
+                               "test_command":  "npm run test:all",
+                               "visual_regression":  "not_run"
+                           }
 }
