@@ -38,5 +38,3 @@ with sync_playwright() as p:
     print(json.dumps(result,indent=2))
     browser.close()
 server.shutdown()
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
