@@ -6,9 +6,9 @@
 - Android wrapper built successfully with Gradle 8.13, Android Gradle Plugin 8.13.2 and JDK 21.
 - Android app metadata: `de.omega.lernkompendium`, version `2.9.1`, version code `291`, min SDK 29, target SDK 36.
 - Android `assets/index.html` is byte-identical to the project root `index.html`.
-- HTML SHA-256: `'+$htmlHash+'`.
+- HTML SHA-256: `E79D274C7BBCB4173C2F335EAF8413833A2724C49C20BC174639CC9D3F3AB1DF`.
 - ARM64 debug APK signature verified with Android APK Signature Scheme v2.
-- APK SHA-256: `'+$apkHash+'`.
+- APK SHA-256: `C3CA44CAE253D15E73A2AB98F9D6DB645518B35740465F9B0587282147686B13`.
 
 ## Artifacts
 
