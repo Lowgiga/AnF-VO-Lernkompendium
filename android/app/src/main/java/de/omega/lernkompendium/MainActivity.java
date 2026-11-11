@@ -141,5 +141,3 @@ public class MainActivity extends Activity {
         super.onDestroy();
     }
 }
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
