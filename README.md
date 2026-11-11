@@ -15,7 +15,7 @@ See [Architecture](docs/ARCHITECTURE.md), [Design System](docs/DESIGN_SYSTEM.md)
 ```powershell
 python tests/verify-build.py
 ```
-Browser interaction tests are separate and must be run with the optional Playwright dependency installed. Static checks do not establish browser-runtime correctness.
+Run the browser checks from `tests/` with `npm ci` followed by `npm run test:all`. Set `CHROMIUM_PATH` when using a system Chrome/Chromium binary. The smoke test checks all 70 HTML pages and JavaScript page errors; the RobotNav harness checks nested scrolling, cache cleanup, observer stability, and teardown.
 
 ## Mascot and navigation
 RobotNav is a deterministic browser-side layout helper. The white-silver metallic robot is decorative and does not make network requests or act as an AI agent.
