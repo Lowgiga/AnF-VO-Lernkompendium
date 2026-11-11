@@ -522,9 +522,17 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
 /* Dark-Mode-Transition */
 body{transition:background-color .4s ease,color .4s ease}article.page,.card,.info section{transition:background-color .4s ease,border-color .4s ease}header{transition:background .4s ease}
 /* Haptic: JS-triggered via navigator.vibrate (Android) */
+/* Parallax-Stage */
+@media(hover:hover) and (pointer:fine){#object-stage{transition:transform .15s ease-out,opacity .3s;will-change:transform}}
+/* Flip-Karten */
+.flipcard{perspective:800px;cursor:pointer}.flipcard-inner{position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}.flipcard.flipped .flipcard-inner{transform:rotateY(180deg)}.flipcard-front,.flipcard-back{backface-visibility:hidden}.flipcard-back{position:absolute;inset:0;transform:rotateY(180deg)}
+/* Loading-Skeleton */
+.skeleton{background:linear-gradient(90deg,var(--soft) 25%,var(--card) 50%,var(--soft) 75%);background-size:200% 100%;animation:shimmer 1.4s ease-in-out infinite;border-radius:var(--r-sm)}.skeleton-line{height:1rem;margin:var(--s1) 0}.skeleton-block{height:80px;margin:var(--s2) 0}@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}@media(prefers-reduced-motion:reduce){.skeleton{animation:none;background:var(--soft)}}
+/* Entscheidungsbaum */
+.dtree{display:grid;gap:var(--s2);margin:var(--s3) 0}.dtree-node{padding:var(--s2) var(--s3);border:1px solid var(--line);border-radius:var(--r);background:var(--card);position:relative;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s}.dtree-node:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}.dtree-node.yes{border-left:4px solid var(--ok)}.dtree-node.no{border-left:4px solid var(--red)}.dtree-node.abs{border-left:4px solid var(--brand2)}.dtree-arrow{display:flex;justify-content:center;color:var(--mut);font-size:1.2rem;margin:var(--s1) 0}
 .confirm-dlg{border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);background:var(--card);color:var(--ink);box-shadow:0 12px 40px rgba(0,0,0,.25);max-width:90vw}.confirm-dlg::backdrop{background:rgba(0,0,0,.45)}.confirm-dlg .dlg-msg{margin:0 0 var(--s3);font-size:1rem;line-height:1.5}.confirm-dlg .dlg-actions{display:flex;gap:var(--s2);justify-content:flex-end}.confirm-dlg .btn{min-height:var(--tap)}</style>
 </head>
-<body class="mode-blaettern"><a class="skiplink" href="#maincontent">Zum Inhalt springen</a><div class="praes-nav" id="praesNav" hidden><button type="button" id="praesPrev">‹ Zurück</button><span class="praes-info" id="praesInfo"></span><button type="button" id="praesNext">Weiter ›</button></div><button type="button" class="praes-exit" id="praesExit" hidden>✕ Beenden</button>
+<body class="mode-blaettern"><a class="skiplink" href="#maincontent">Zum Inhalt springen</a><div class="praes-nav" id="praesNav" hidden><button type="button" id="praesPrev">‹ Zurück</button><span class="praes-info" id="praesInfo"></span><button type="button" id="praesAuto">▶ Auto</button><button type="button" id="praesNext">Weiter ›</button></div><button type="button" class="praes-exit" id="praesExit" hidden>✕ Beenden</button>
 <canvas id="bgc" aria-hidden="true"></canvas><div id="bgveil" aria-hidden="true"></div>
 <div id="object-stage" aria-hidden="true">
  <div class="book3d"><div class="book-shadow"></div><div class="book-pages"></div><div class="book-leaf"></div><div class="book-cover"></div><div class="book-spine"></div></div>
@@ -2132,6 +2140,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 <dialog id="confirmDlg" class="confirm-dlg"><p class="dlg-msg"></p><div class="dlg-actions"><button type="button" class="dlg-cancel btn">Abbrechen</button><button type="button" class="dlg-ok btn primary">OK</button></div></dialog>
 <script>function setMood(ok){var rb=document.querySelector('.robot3d');if(!rb)return;rb.classList.remove('mood-ok','mood-bad');rb.classList.add(ok?'mood-ok':'mood-bad');clearTimeout(rb._m);rb._m=setTimeout(function(){rb.classList.remove('mood-ok','mood-bad');},1600);}function confettiBurst(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999';document.body.appendChild(c);var ctx=c.getContext('2d');var W=c.width=window.innerWidth,H=c.height=window.innerHeight;var parts=[];for(var i=0;i<120;i++)parts.push({x:W/2,y:H/3,vx:(Math.random()-.5)*12,vy:Math.random()*-12-4,g:.35,r:Math.random()*4+2,a:1,col:'hsl('+(Math.random()*360|0)+',80%,60%)'});var t=0;(function loop(){t++;ctx.clearRect(0,0,W,H);var alive=false;parts.forEach(function(p){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.a-=.012;if(p.a>0&&p.y<H+20){alive=true;ctx.globalAlpha=Math.max(0,p.a);ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}});ctx.globalAlpha=1;if(alive&&t<120)requestAnimationFrame(loop);else c.remove();})();}var m=document.querySelector('meta[name="theme-color"]');if(m){var d=matchMedia('(prefers-color-scheme:dark)');function up(){m.setAttribute('content',d.matches?'#14181d':'#294b3d');}up();d.addEventListener?d.addEventListener('change',up):d.addListener(up);}window.confettiBurst=confettiBurst;window.setMood=setMood;var nativeConfirm=window.confirm;function uiConfirm(msg,done){if(window.confirm!==nativeConfirm){done(window.confirm(msg));return;}var dlg=document.getElementById('confirmDlg');if(!dlg||typeof dlg.showModal!=='function'){done(window.confirm(msg));return;}dlg.querySelector('.dlg-msg').textContent=msg;var ok=dlg.querySelector('.dlg-ok'),cancel=dlg.querySelector('.dlg-cancel');function cleanup(){ok.removeEventListener('click',onOk);cancel.removeEventListener('click',onCancel);dlg.removeEventListener('cancel',onCancelDlg);try{dlg.close();}catch(e){}}function onOk(){cleanup();done(true);}function onCancel(){cleanup();done(false);}function onCancelDlg(){cleanup();done(false);}ok.addEventListener('click',onOk);cancel.addEventListener('click',onCancel);dlg.addEventListener('cancel',onCancelDlg);dlg.showModal();}window.uiConfirm=uiConfirm;document.addEventListener('kompendium:pagechange',function(){setMood(true);});
+// ---------- Parallax-Stage (nur Desktop) ----------
+(function(){if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;var st=document.getElementById('object-stage');if(!st)return;var cx=innerWidth/2,cy=innerHeight/2;document.addEventListener('mousemove',function(e){var dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;st.style.transform='rotateY('+(dx*4)+'deg) rotateX('+(-dy*3)+'deg)';},{passive:true});})();
 // ---------- Haptic Feedback (Android) ----------
 function haptic(ms){if(navigator.vibrate)try{navigator.vibrate(ms||12);}catch(e){}}
 window.haptic=haptic;
@@ -2148,13 +2158,21 @@ function startPraesentation(){togglePraesentation(true);if(typeof setMode==='fun
   if(prevBtn)prevBtn.onclick=function(){if(idx>0){flipDir=-1;if(typeof bgTurn==='function')bgTurn(-1);goTo(idx-1);updatePraesInfo();}};
   if(nextBtn)nextBtn.onclick=function(){if(idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}};
   if(exitBtn)exitBtn.onclick=function(){stopPraesentation();};
+  // Auto-Play
+  var autoBtn=document.getElementById('praesAuto');var autoTimer=null;var autoOn=false;
+  function stopAuto(){autoOn=false;if(autoTimer){clearInterval(autoTimer);autoTimer=null;}if(autoBtn)autoBtn.textContent='▶ Auto';}
+  function startAuto(){autoOn=true;if(autoBtn)autoBtn.textContent='⏸ Stopp';autoTimer=setInterval(function(){if(idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}else{stopAuto();}},4000);}
+  if(autoBtn)autoBtn.onclick=function(){if(autoOn)stopAuto();else startAuto();};
+  // stop auto on manual nav
+  var _origNext=nextBtn.onclick;nextBtn.onclick=function(){stopAuto();if(_origNext)_origNext();};
+  var _origPrev=prevBtn.onclick;prevBtn.onclick=function(){stopAuto();if(_origPrev)_origPrev();};
   _praesKeyHandler=function(e){if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();if(idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}}else if(e.key==='ArrowLeft'){e.preventDefault();if(idx>0){flipDir=-1;if(typeof bgTurn==='function')bgTurn(-1);goTo(idx-1);updatePraesInfo();}}else if(e.key==='Escape'){stopPraesentation();}};
   document.addEventListener('keydown',_praesKeyHandler);
   // swipe
   var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
   document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){if(dx<0&&idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}else if(dx>0&&idx>0){flipDir=-1;if(typeof bgTurn==='function')bgTurn(-1);goTo(idx-1);updatePraesInfo();}}}, {passive:true});
 }
-function stopPraesentation(){togglePraesentation(false);if(_praesKeyHandler){document.removeEventListener('keydown',_praesKeyHandler);_praesKeyHandler=null;}}
+function stopPraesentation(){togglePraesentation(false);if(_praesKeyHandler){document.removeEventListener('keydown',_praesKeyHandler);_praesKeyHandler=null;}if(typeof stopAuto==='function')stopAuto();}
 var praesBtn=document.getElementById('praesBtn');if(praesBtn)praesBtn.addEventListener('click',function(){var mm=document.getElementById('mehrmenu');if(mm)mm.hidden=true;var mb=document.getElementById('mehr');if(mb)mb.setAttribute('aria-expanded','false');startPraesentation();});
 // hook pagechange to update info
 document.addEventListener('kompendium:pagechange',function(){if(document.body.classList.contains('praesentation'))updatePraesInfo();});
