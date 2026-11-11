@@ -37,8 +37,9 @@
                     "debug_apk_signature_verified":  true,
                     "release_signing_configured":  false,
                     "device_install_tested":  false,
-                    "debug_apk_sha256":  "7E4BC7D76DDDA5DFCD260A50DC7705F6C7CDFD6E2C166BABB6174C1B178E57B0",
-                    "debug_apk_file":  "release/AnFoeVO_Lernkompendium_v2.9.1-debug-arm64.apk"
+                    "debug_apk_file":  "release/AnFoeVO_Lernkompendium_v2.9.1-debug-arm64.apk",
+                    "debug_apk_sha256":  "C3CA44CAE253D15E73A2AB98F9D6DB645518B35740465F9B0587282147686B13",
+                    "html_sha256":  "E79D274C7BBCB4173C2F335EAF8413833A2724C49C20BC174639CC9D3F3AB1DF"
                 }
 }
 
