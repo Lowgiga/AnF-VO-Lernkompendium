@@ -804,5 +804,3 @@ Gesamtsystem. Der nächste professionelle Schritt ist kein Neustart und
 kein weiteres kosmetisches Versionsupdate, sondern die kontrollierte
 Vervollständigung anhand dieser Spezifikation und mit belastbaren
 Laufzeit- und Inhaltsnachweisen.
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
