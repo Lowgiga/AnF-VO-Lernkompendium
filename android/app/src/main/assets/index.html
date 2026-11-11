@@ -38,7 +38,7 @@ header h1{flex:1 1 auto;min-width:0;margin:0;font-size:clamp(1.125rem,1rem + .8v
 .hbtn:disabled{opacity:.45;cursor:default}
 #mehr{font-size:.9375rem}
 #printbtn{padding:0 var(--s2);font-size:.875rem;white-space:nowrap}
-#savedflash{position:absolute;right:max(var(--s3),env(safe-area-inset-right));bottom:-28px;width:auto;margin:0;font-size:.8125rem;line-height:20px;color:#fff;background:var(--hdr);padding:2px var(--s2);border-radius:0 0 var(--r) var(--r);white-space:nowrap;pointer-events:none}
+#savedflash{position:absolute;right:max(var(--s3),env(safe-area-inset-right));bottom:-28px;width:auto;margin:0;font-size:.8125rem;line-height:20px;color:#fff;background:var(--hdr);padding:2px var(--s2);border-radius:0 0 var(--r) var(--r);white-space:nowrap;pointer-events:none;transition:opacity .2s,transform .2s}#savedflash:empty{opacity:0;transform:translateY(4px)}#savedflash:not(:empty){opacity:1;transform:translateY(0)}
 #savedflash:empty{display:none}
 .sbox{position:relative;flex:1 1 auto;min-width:0;display:flex}
 #search{flex:1 1 auto;width:100%;min-width:0;min-height:var(--tap);padding:var(--s2) 44px var(--s2) var(--s3);border-radius:var(--r);border:1px solid var(--field);font-size:1rem;background:var(--card);color:var(--ink)}
