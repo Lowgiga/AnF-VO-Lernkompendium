@@ -15,9 +15,14 @@
 - `release/AnFoeVO_Lernkompendium_v2.9.1-debug-arm64.apk`
 - `release/AnFoeVO_AndroidWrapper_v2.9.1-source.zip`
 
+## Browser validation
+
+- Playwright RobotNav harness: passed; 3 nested scroll roots, cache reduced from 7 to 5 entries after subtree removal, zero observer self-trigger flushes, zero page errors.
+- Full HTML smoke test in Google Chrome: passed; 70 pages detected, book and robot stages present, RobotNav available, zero page errors.
+
 ## Not yet verified
 
-- Real browser interaction and visual regression tests.
+- Visual pixel-diff regression comparison was not performed.
 - Installation and runtime behavior on the Galaxy S25; ADB did not detect a connected device during this build session.
 - Production release signing. The APK uses the Android debug certificate and must not be treated as a Play Store release.
 
