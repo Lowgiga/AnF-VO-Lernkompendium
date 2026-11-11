@@ -20,5 +20,3 @@ algorithm/robot-navigation.js is the maintained source module for the determinis
 See the root directory tree in README. assets/book and assets/robot are reserved for local visual assets. Keep the HTML self-contained until asset extraction is validated.
 ## Change boundaries
 Visual and navigation changes must not rewrite learning text. Content changes require a separate review and a content-diff report. Preserve sources and prior release archives.
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
