@@ -1,4 +1,4 @@
-﻿# Lern-Kompendium Android v2.9.1
+# Lern-Kompendium Android v2.9.1
 
 ## Architektur
 Native Android-Activity mit Android WebView; Inhalte werden lokal aus `app/src/main/assets/` geladen. Der Einstieg ist die PWA-kompatible `index.html`; die Lerninhalte bleiben offline verfÃ¼gbar. Es wird keine externe Website als Laufzeitquelle benÃ¶tigt.
@@ -7,12 +7,12 @@ Native Android-Activity mit Android WebView; Inhalte werden lokal aus `app/src/m
 - JDK 17 oder neuer (lokal geprÃ¼ft mit JDK 21)
 - Android SDK Platform 36
 - Android Build Tools 35.0.0 oder neuer
-- Gradle 8.x passend zum Android Gradle Plugin 8.13.0
+- Gradle 8.13 passend zum Android Gradle Plugin 8.13.2
 
 Auf dem Windows-Buildhost wird `ANDROID_HOME` auf das installierte SDK gesetzt.
 
 ## Debug-APK
-Unter Windows PowerShell:
+Install Gradle 8.13, then generate the wrapper once if `gradle-wrapper.jar` is not present: `gradle wrapper --gradle-version 8.13`. Under Windows PowerShell:
 ```powershell
 .\gradlew.bat :app:assembleDebug
 ```
