@@ -1,0 +1,22 @@
+PASS Embedded RobotNav block matches standalone source — embedded=21879 chars; source=21879 chars
+PASS Standalone JavaScript syntax
+PASS Embedded JavaScript syntax
+PASS HTML document has one html root
+PASS RobotNav v2.8.0 embedded
+PASS Standalone engine has no fetch/XHR/WebSocket
+PASS No polling interval used
+PASS No self-scheduling animation loop used
+PASS Architecture component: DOM Inventory
+PASS Architecture component: Obstacle Cache
+PASS Architecture component: Position Planner
+PASS Architecture component: Motion Controller
+PASS Architecture component: Event Scheduler
+PASS Engine feature: dirtyFlags |= flags
+PASS Engine feature: processing = true
+PASS Engine feature: requestAnimationFrame(flush)
+PASS Engine feature: mutationObserver.disconnect()
+PASS Engine feature: resizeObserver.disconnect()
+PASS Engine feature: position === 'sticky'
+PASS Engine feature: RobotNav.destroy
+
+Statische Prüfungen: 20 bestanden, 0 fehlgeschlagen.

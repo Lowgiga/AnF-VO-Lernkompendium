@@ -6,7 +6,7 @@ The native Android application hosts the standalone learning compendium in a Web
 
 ## Requirements
 
-- JDK 17 or newer.
+- JDK 17 or 21 for running Gradle 8.13. JDK 25 is not a supported runtime for this wrapper.
 - Android SDK Platform 36.
 - Android Build Tools 36.0.0.
 - Gradle 8.13, provided by the committed Gradle Wrapper.
@@ -32,7 +32,7 @@ Output: `app/build/outputs/apk/debug/`. ABI split builds include ARM64, x86_64, 
 
 ## Continuous integration
 
-The `.github/workflows/android-build.yml` workflow runs for relevant pushes to `main`, pull requests targeting `main`, and manual dispatch. It validates the committed wrapper, installs JDK 17 and Android SDK Platform 36 / Build Tools 36.0.0, builds through the wrapper, verifies APK signatures, and uploads debug APK artifacts for 14 days.
+The `.github/workflows/android-build.yml` workflow runs for relevant pushes to `main` and `release/**`, pull requests targeting `main`, and manual dispatch. It installs Node.js 22 and runs the static and Playwright browser checks, validates the committed Gradle wrapper, installs JDK 17 and Android SDK Platform 36 / Build Tools 36.0.0, builds through the wrapper, verifies APK signatures, and uploads debug APK artifacts for 14 days. Changes under `tests/` also trigger validation.
 
 ## Release signing
 

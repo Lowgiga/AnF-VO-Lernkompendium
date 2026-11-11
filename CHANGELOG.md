@@ -3,6 +3,8 @@
 ## 2.9.1
 - Added a matching Android WebView wrapper and built a debug APK with Gradle 8.13 / AGP 8.13.2.
 - Fixed the Android round-icon resource reference so the APK resource-linking step succeeds.
+- Restored static and Playwright browser validation to the Android CI workflow, including test-path triggers.
+- Restricted the documented Gradle runtime to supported JDK 17 or 21.
 - Verified ARM64, universal and x86_64 debug APK signatures with APK Signature Scheme v2.
 - Verified the Android build with JDK 21, Android SDK Platform 36 and Build Tools 36.0.0.
 - Updated the mascot to a silver metallic appearance with graphite visor and ice-blue eye lighting.
