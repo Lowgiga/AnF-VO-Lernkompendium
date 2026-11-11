@@ -30,7 +30,10 @@
 
 ## CI status
 
-The workflow repair is being validated by the pull-request run. A new GitHub Actions result must pass before this report can claim CI success.
+- The pull-request workflow was created, but GitHub did not allocate a runner.
+- GitHub's check annotation states: "The job was not started because your account is locked due to a billing issue."
+- No Android build steps ran in that attempt. This is an account-level GitHub Actions billing restriction, not a Gradle compilation failure.
+- CI remains unverified until the account billing restriction is resolved and the workflow is rerun successfully.
 
 ## Rebuild
 
