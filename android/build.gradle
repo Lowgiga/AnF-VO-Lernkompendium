@@ -1,3 +1,1 @@
 plugins { id 'com.android.application' version '8.13.2' apply false }
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
