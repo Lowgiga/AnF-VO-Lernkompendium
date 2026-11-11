@@ -28,5 +28,3 @@ cd android
 gradle --version  # Use Gradle 8.13
 .\gradlew.bat clean :app:assembleDebug
 ```
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
