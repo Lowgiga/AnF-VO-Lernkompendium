@@ -1,7 +1,9 @@
 const { chromium } = require('playwright');
 const path = require('path');
 (async()=>{
- const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});
+ const launchOptions={headless:true,args:['--no-sandbox']};
+ if(process.env.CHROMIUM_PATH)launchOptions.executablePath=process.env.CHROMIUM_PATH;
+ const browser=await chromium.launch(launchOptions);
  const page=await browser.newPage({viewport:{width:1440,height:900}});
  const errors=[];page.on('pageerror',e=>errors.push(String(e)));
  await page.goto('file://'+path.resolve(__dirname,'robotnav-harness.html'));
