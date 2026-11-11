@@ -92,5 +92,3 @@ exit /b %EXIT_CODE%
 if "%OS%"=="Windows_NT" endlocal
 
 :omega
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
