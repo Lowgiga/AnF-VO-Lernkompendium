@@ -15,5 +15,3 @@
 - Existing 70 learning pages retained.
 - Static checks: 20 passed, 0 failed.
 - Browser interaction tests remain unverified.
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
