@@ -1,0 +1,29 @@
+﻿{
+    "project":  "AnFÃ¶VO NRW Digital Learning Compendium",
+    "version":  "2.9.1",
+    "entry":  "index.html",
+    "standalone":  true,
+    "runtime_network_requests_added":  false,
+    "external_runtime_dependencies_added":  false,
+    "html_pages":  70,
+    "robotnav_components":  [
+                                "DOM Inventory",
+                                "Obstacle Cache",
+                                "Position Planner",
+                                "Motion Controller",
+                                "Event Scheduler"
+                            ],
+    "browser_runtime_verified":  false,
+    "browser_test_limitation":  "Browser navigation blocked by administrator policy in build environment.",
+    "robotnav_embedded_block_chars":  21881,
+    "robotnav_source_chars":  21880,
+    "embedded_source_match":  true,
+    "visual_upgrade":  "Refined 3D book cover, page block, and green robot CSS",
+    "design_direction":  "hybrid",
+    "robot_appearance":  "silver",
+    "content_preservation":  "Preserve all 70 existing learning pages and all current learning functionality; no unreviewed content edits.",
+    "github_repository":  "https://github.com/Lowgiga/AnF-VO-Lernkompendium",
+    "github_visibility":  "public"
+}
+
+[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
