@@ -23,4 +23,25 @@ RobotNav is a deterministic browser-side layout helper. The white-silver metalli
 ## License
 No license is declared yet. Public visibility does not grant reuse rights. Select a license explicitly before publishing a reuse grant.
 
+## Android application
+
+The Android WebView wrapper is located in `android/` and packages the same standalone `index.html` used by the desktop version. The HTML source and Android asset copy are byte-identical.
+
+- Application ID: `de.omega.lernkompendium`
+- App version: `2.9.1` (`versionCode` 291)
+- Minimum Android: API 29
+- Compile/target SDK: 36
+- Android Gradle Plugin: 8.13.2
+- Gradle wrapper: 8.13
+- Java compatibility: 17 (build host currently uses JDK 21)
+
+Build a debug APK on Windows:
+
+```powershell
+cd android
+.\gradlew.bat clean :app:assembleDebug
+```
+
+The debug APK is signed with the standard Android debug key and is for testing only. A production release requires a private, backed-up release keystore. The Galaxy S25 installation test remains pending until ADB detects the device.
+
 [executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
