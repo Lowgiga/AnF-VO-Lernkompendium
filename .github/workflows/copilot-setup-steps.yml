@@ -73,11 +73,13 @@ jobs:
           echo "npm: $(npm --version)"
           echo "Python: $(python --version)"
           java -version
-          echo "Android SDK: ${ANDROID_HOME:-${ANDROID_SDK_ROOT:-not-set}}"
-          test -x "$ANDROID_HOME/platform-tools/adb"
-          test -d "$ANDROID_HOME/platforms/android-36"
-          test -x "$ANDROID_HOME/build-tools/36.0.0/aapt"
-          test -x "$ANDROID_HOME/build-tools/36.0.0/apksigner"
+          android_sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          test -n "$android_sdk"
+          echo "Android SDK: $android_sdk"
+          test -x "$android_sdk/platform-tools/adb"
+          test -d "$android_sdk/platforms/android-36"
+          test -x "$android_sdk/build-tools/36.0.0/aapt"
+          test -x "$android_sdk/build-tools/36.0.0/apksigner"
           test -f tests/package-lock.json
           test -f android/gradlew
           test -f android/gradle/wrapper/gradle-wrapper.properties
