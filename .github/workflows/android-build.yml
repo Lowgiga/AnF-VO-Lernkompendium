@@ -8,7 +8,12 @@ on:
       - "index.html"
       - "algorithm/**"
       - "tests/**"
-      - ".github/workflows/android-build.yml"
+      - "docs/**"
+      - "README.md"
+      - "PROJECT_MANIFEST.json"
+      - ".github/copilot-instructions.md"
+      - ".github/skills/**"
+      - ".github/workflows/**"
   pull_request:
     branches: [main]
     paths:
@@ -16,7 +21,12 @@ on:
       - "index.html"
       - "algorithm/**"
       - "tests/**"
-      - ".github/workflows/android-build.yml"
+      - "docs/**"
+      - "README.md"
+      - "PROJECT_MANIFEST.json"
+      - ".github/copilot-instructions.md"
+      - ".github/skills/**"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 permissions:
@@ -47,6 +57,20 @@ jobs:
         working-directory: tests
         run: npx playwright install --with-deps chromium
 
+      - name: Verify Android WebView asset parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_html="index.html"
+          android_html="android/app/src/main/assets/index.html"
+          test -f "$source_html"
+          test -f "$android_html"
+          if ! cmp -s "$source_html" "$android_html"; then
+            echo "Root index.html and Android WebView asset differ." >&2
+            diff -u "$source_html" "$android_html" | head -n 120 || true
+            exit 1
+          fi
+          echo "Root HTML and Android WebView asset are byte-identical."
       - name: Run static build verification
         run: python tests/verify-build.py
 
