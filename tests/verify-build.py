@@ -6,6 +6,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML = (ROOT / "index.html").read_text(encoding="utf-8")
+HTML_BYTES = (ROOT / "index.html").read_bytes()
+ANDROID_HTML = ROOT / "android" / "app" / "src" / "main" / "assets" / "index.html"
 JS = (ROOT / "algorithm" / "robot-navigation.js").read_text(encoding="utf-8").strip()
 ARCHITECTURE = (ROOT / "docs" / "ARCHITECTURE.md").read_text(encoding="utf-8")
 
@@ -49,12 +51,16 @@ check(
 
 check("HTML document has one html root", len(re.findall(r"<html\b", HTML, re.I)) == 1)
 check(
+    "Android HTML asset matches index.html byte for byte",
+    ANDROID_HTML.is_file() and ANDROID_HTML.read_bytes() == HTML_BYTES,
+)
+check(
     "RobotNav v2.8.0 embedded",
     HTML.count("RobotNav v2.8.0") >= 1 and "RobotNav v2.7.0" not in HTML,
 )
 check(
     "Standalone engine has no fetch/XHR/WebSocket",
-    not re.search(r"\b(fetch\s*\(|XMLHttpRequest|WebSocket)\b", JS),
+    not re.search(r"\b(?:fetch\s*\(|XMLHttpRequest\b|WebSocket\b)", JS),
 )
 check("No polling interval used", not re.search(r"\bsetInterval\s*\(", JS))
 check(
