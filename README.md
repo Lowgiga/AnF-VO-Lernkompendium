@@ -38,7 +38,7 @@ RobotNav is a deterministic browser-side layout helper. The white-silver metalli
 
 ## License
 
-No license is declared yet. Public visibility does not grant reuse rights. Select a license explicitly before publishing a reuse grant.
+This project is released under the **Apache License 2.0** (see [LICENSE](./LICENSE)). Public visibility alone does not imply reuse rights beyond the license terms.
 
 ## Android application
 

@@ -9,6 +9,7 @@
 <meta name="description" content="Inoffizielle Lernhilfe zur Basisqualifizierung nach § 8 AnFöVO NRW, geprüft gegen Primärquellen.">
 <title>Lern-Kompendium § 8 AnFöVO NRW – v2.9.1</title>
 <link rel="icon" href="data:,">
+<link rel="manifest" href="./manifest.json">
 <style>:root{--bg:#f4eee3;--card:#fffdf8;--ink:#171b21;--mut:#50565d;--line:#e2d9c8;--brand:#1d3a5f;--brand2:#2b5a86;--soft:#f5efe3;--red:#a3302a;--redbg:#fbeae6;--ok:#2d6a39;--okbg:#e8f2e6;--badbg:#fbeae6;--field:#7a7468;--focus:#1d5fbf;--hdr:#1d3a5f;--mark:#ffe08a;
  --acc:#9e4626;--accfg:#fff;--btnbg:#1d3a5f;--btnfg:#fff;--veil:rgba(244,238,227,.86);
  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",P052,Georgia,"DejaVu Serif",serif;
@@ -426,7 +427,7 @@ body.page-turning .book3d{animation:bookNudge .72s cubic-bezier(.2,.7,.2,1) both
 .robot-arm.left{left:8%;transform:rotate(17deg)}.robot-arm.right{right:2%;transform:rotate(-19deg)}
 .robot-hand{position:absolute;bottom:-10%;left:-23%;width:145%;height:24%;border-radius:45%;background:linear-gradient(90deg,#ffffff,#d6dde1);border:1px solid #89969e}
 .robot-leg{position:absolute;top:77%;width:18%;height:19%;border-radius:8px;background:linear-gradient(90deg,#aeb9c0,#ffffff,#d1d8dc);transform:translateZ(2px)}.robot-leg.l{left:34%}.robot-leg.r{left:59%}
-.robot-status{position:absolute;left:43%;top:10%;width:5px;height:5px;border-radius:50%;background:#e47b69;box-shadow:0 0 8px #e47b69}
+.robot-status{position:absolute;left:43%;top:10%;width:5px;height:5px;border-radius:50%;background:#e47b69;box-shadow:0 0 8px #e47b69;transition:background .3s,box-shadow .3s}.robot3d.mood-ok .robot-status{background:#2ecc71;box-shadow:0 0 10px #2ecc71}.robot3d.mood-bad .robot-status{background:#e74c3c;box-shadow:0 0 10px #e74c3c}
 body.page-turning .robot-arm.right{animation:robotGesture .72s ease-in-out both}
 body.page-turning .robot3d{animation:robotNod .72s ease-in-out both}
 @keyframes robotGesture{0%,100%{transform:rotate(-19deg)}45%{transform:rotate(-72deg)}70%{transform:rotate(-52deg)}}
@@ -516,8 +517,9 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
 .robot-arm,.robot-leg{background:linear-gradient(90deg,#87949d 0%,#f7f9fa 24%,#c3ccd2 55%,#f4f6f7 76%,#87949d 100%)!important;border:1px solid #74818a!important;box-shadow:inset 2px 1px 4px rgba(255,255,255,.9),inset -2px -2px 5px rgba(39,51,60,.3),0 2px 2px rgba(0,0,0,.16)!important}
 .robot-hand{background:linear-gradient(90deg,#9ba7af,#f8fafb 48%,#aeb9c1)!important;border:1px solid #74818a!important}
 </style>
+<style>.skiplink{position:absolute;left:-9999px;top:0;z-index:1000;background:var(--card);color:var(--ink);padding:var(--s2) var(--s3);border-radius:var(--r-sm)}.skiplink:focus{left:var(--s2);top:var(--s2);outline:3px solid var(--focus)}.view.active{animation:viewIn .22s ease-out}@keyframes viewIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.gap.ok,.ropt.ok{animation:okPulse .45s ease-out}.gap.bad,.ropt.bad{animation:badShake .4s ease-in-out}@keyframes okPulse{0%{transform:scale(1)}45%{transform:scale(1.06)}100%{transform:scale(1)}}@keyframes badShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-3px)}40%,80%{transform:translateX(3px)}}@media(max-width:760px) and (screen){#object-stage{opacity:.9!important;width:88px!important;height:112px!important;right:8px!important;bottom:12px!important;transform:scale(.58)!important;pointer-events:none}.robot3d{display:block!important}.book3d,.stage-label{display:none!important}}@media(prefers-reduced-motion:reduce){.gap.ok,.gap.bad,.ropt.ok,.ropt.bad,.view.active{animation:none!important}}</style>
 </head>
-<body class="mode-blaettern">
+<body class="mode-blaettern"><a class="skiplink" href="#maincontent">Zum Inhalt springen</a>
 <canvas id="bgc" aria-hidden="true"></canvas><div id="bgveil" aria-hidden="true"></div>
 <div id="object-stage" aria-hidden="true">
  <div class="book3d"><div class="book-shadow"></div><div class="book-pages"></div><div class="book-leaf"></div><div class="book-cover"></div><div class="book-spine"></div></div>
@@ -533,7 +535,7 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
  </div>
  <div class="hrow2">
   <div class="sbox"><input id="search" type="search" placeholder="Suchen" aria-label="Suche im Kompendium" aria-keyshortcuts="Control+K /" aria-controls="pages" autocomplete="off"><button type="button" id="sclear" aria-label="Suche leeren" hidden>✕</button></div>
-  <div id="pager" class="only-blaettern"><button type="button" class="hbtn" id="prev" aria-label="Vorherige Seite">‹</button><button type="button" class="hbtn" id="tocbtn" aria-controls="view-inhalt"><span class="tocw">Inhalt</span><span id="pagerinfo" aria-live="polite" aria-label="Lernseitenposition" aria-label="Lernseitenposition"></span></button><button type="button" class="hbtn" id="next" aria-label="Nächste Seite">›</button></div>
+  <div id="pager" class="only-blaettern"><button type="button" class="hbtn" id="prev" aria-label="Vorherige Seite">‹</button><button type="button" class="hbtn" id="tocbtn" aria-controls="view-inhalt"><span class="tocw">Inhalt</span><span id="pagerinfo" aria-live="polite" aria-label="Lernseitenposition"></span></button><button type="button" class="hbtn" id="next" aria-label="Nächste Seite">›</button></div>
   <span id="hits" class="only-suche" role="status" aria-live="polite" aria-atomic="true"></span>
   <button type="button" id="backheft" class="hbtn only-other">← Heft</button>
   <button type="button" id="printbtn" class="hbtn"><span aria-hidden="true">🖨</span><span class="ptxt"> Drucken</span></button>
@@ -551,7 +553,7 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
   <label class="mi"><input type="checkbox" id="allpages"> Alle Seiten zeigen</label>
  </div>
 </header>
-<main>
+<main id="maincontent">
 <div id="storenote" hidden>Dein Browser erlaubt hier keinen dauerhaften Speicher (z. B. bei file:// oder in einer WebView ohne DOM Storage). Deine Eingaben gelten nur bis zum Schließen. Speichere eine Sicherung unter „☰ Mehr“ → „Fortschritt und Sicherung“.</div>
 
 <section id="view-inhalt" class="view">
@@ -1404,17 +1406,17 @@ function normAns(s){return String(s||'').toLowerCase().replace(/ä/g,'ae').repla
 function gapAlts(g){try{return JSON.parse(g.dataset.alts);}catch(e){return [];}}
 function checkGap(g,val){var alts=gapAlts(g),v=normAns(val),fb=$('.gap-fb',g);g.classList.remove('ok','bad');
  if(!v){fb.textContent='○ leer';return false;}
- var ok=alts.some(function(a){return normAns(a)===v;});g.classList.add(ok?'ok':'bad');
+ var ok=alts.some(function(a){return normAns(a)===v;});g.classList.add(ok?'ok':'bad');setMood(ok);
  fb.textContent=ok?'✓ passt':'✗ vergleiche mit Lösung ('+(g.dataset.key.split('-').pop())+')';return ok;}
 function setGap(g,val){var i=$('.gap-in',g);i.value=val;i.classList.toggle('filled',!!val.trim());S.gaps[g.dataset.key]=val;if(!val)delete S.gaps[g.dataset.key];save('gaps');}
 // ---------- Ankreuzen (Checkpoint, Darf ich das?) ----------
-function answer(mod,qi,oi){var fs=$('fieldset[data-mod="'+mod+'"][data-q="'+qi+'"]');var r=$$('input[type=radio]',fs)[oi];r.checked=true;S.quiz[mod]=S.quiz[mod]||{};S.quiz[mod][qi]=oi;save('quiz');evalTaskIfOpen(fs);updateProgress();return oi===DATA.quiz[mod][qi][2];}
-function darfAnswer(i,v){var fs=$('fieldset.darf[data-i="'+i+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=r.value===v;});S.darf[i]=v;save('darf');evalTaskIfOpen(fs);updateProgress();return v===fs.dataset.a;}
+function answer(mod,qi,oi){var fs=$('fieldset[data-mod="'+mod+'"][data-q="'+qi+'"]');var r=$$('input[type=radio]',fs)[oi];r.checked=true;S.quiz[mod]=S.quiz[mod]||{};S.quiz[mod][qi]=oi;save('quiz');evalTaskIfOpen(fs);updateProgress();var _ok=oi===DATA.quiz[mod][qi][2];setMood(_ok);return _ok;}
+function darfAnswer(i,v){var fs=$('fieldset.darf[data-i="'+i+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=r.value===v;});S.darf[i]=v;save('darf');evalTaskIfOpen(fs);updateProgress();var _ok=v===fs.dataset.a;setMood(_ok);return _ok;}
 function showEt(fs){var v=S.endtest[fs.dataset.k],fb=$('.etfb',fs),right=+fs.dataset.right;$$('label.ropt',fs).forEach(function(l){l.classList.remove('ok','bad');});if(v===undefined){fb.textContent='';fb.className='etfb';return null;}
  var ok=+v===right,labs=$$('label.ropt',fs);labs[right].classList.add('ok');if(!ok&&labs[+v])labs[+v].classList.add('bad');
  fb.className='etfb '+(ok?'ok':'bad');fb.textContent=(ok?'✓ Richtig. ':'✗ Leider falsch. Richtig ist: „'+labs[right].textContent.trim()+'“. ')+fs.dataset.expl;return ok;}
 function etScore(){var a=$('#p-ende');if(!a)return;var fs=$$('fieldset.et',a),n=0,c=0;fs.forEach(function(f){var v=S.endtest[f.dataset.k];if(v!==undefined){n++;if(+v===+f.dataset.right)c++;}});$('.etscore',a).textContent=n?(c+' von '+fs.length+' richtig'+(n<fs.length?' ('+(fs.length-n)+' offen)':'')):'';}
-function endAnswer(k,v){var fs=$('fieldset.et[data-k="'+k+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=+r.value===+v;});S.endtest[k]=+v;save('endtest');var ok=showEt(fs);etScore();updateProgress();return ok;}
+function endAnswer(k,v){var fs=$('fieldset.et[data-k="'+k+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=+r.value===+v;});S.endtest[k]=+v;save('endtest');var ok=showEt(fs);etScore();updateProgress();setMood(ok);if(ok){var _fs=$$('fieldset.et',$('#p-ende'));var _n=0,_c=0;_fs.forEach(function(f){var v=S.endtest[f.dataset.k];if(v!==undefined){_n++;if(+v===+f.dataset.right)_c++;}});if(_n===_fs.length&&_c===_n&&_fs.length>0)confettiBurst();}return ok;}
 function markRadios(fs,right){$$('label.ropt',fs).forEach(function(l){var r=$('input',l);l.classList.remove('ok','bad');if(r.value===String(right))l.classList.add('ok');else if(r.checked)l.classList.add('bad');});}
 function evalTask(task){var c=0,n=0;
  $$('.gap',task).forEach(function(g){n++;if(checkGap(g,$('.gap-in',g).value))c++;});
@@ -1506,7 +1508,7 @@ function init(){
  $('#toc').addEventListener('click',function(e){var l=e.target.closest('a.tocl');if(!l)return;e.preventDefault();goToId(l.dataset.goto);try{window.scrollTo(0,0);}catch(x){}var h=$('#p-'+l.dataset.goto+' h3');if(h){h.setAttribute('tabindex','-1');try{h.focus({preventScroll:true});}catch(x){}}});
  $('#mehr').addEventListener('click',function(e){e.stopPropagation();toggleMenu();});
  $$('#mehrmenu .mi[data-go]').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.go);try{window.scrollTo(0,0);}catch(e){}});});
- $('#markdone').addEventListener('click',function(){var a=list[idx];if(!a)return;if(mode!=='blaettern')setMode('blaettern');var id=a.dataset.id;if(S.done[id])delete S.done[id];else S.done[id]=true;save('done');updateProgress();});
+ $('#markdone').addEventListener('click',function(){var a=list[idx];if(!a)return;if(mode!=='blaettern')setMode('blaettern');var id=a.dataset.id;if(S.done[id])delete S.done[id];else{S.done[id]=true;setMood(true);confettiBurst();}save('done');updateProgress();});
  document.addEventListener('click',function(e){var mm=$('#mehrmenu');if(!mm.hidden&&!e.target.closest('#mehrmenu,#mehr'))closeMenu();});
  $('#pages').addEventListener('input',function(e){var t=e.target;
   if(t.classList.contains('gap-in')){setGap(t.closest('.gap'),t.value);evalTaskIfOpen(t);updateProgress();flashSaved();}
@@ -2109,5 +2111,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 };
 </script>
 
+<script>function setMood(ok){var rb=document.querySelector('.robot3d');if(!rb)return;rb.classList.remove('mood-ok','mood-bad');rb.classList.add(ok?'mood-ok':'mood-bad');clearTimeout(rb._m);rb._m=setTimeout(function(){rb.classList.remove('mood-ok','mood-bad');},1600);}function confettiBurst(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999';document.body.appendChild(c);var ctx=c.getContext('2d');var W=c.width=window.innerWidth,H=c.height=window.innerHeight;var parts=[];for(var i=0;i<120;i++)parts.push({x:W/2,y:H/3,vx:(Math.random()-.5)*12,vy:Math.random()*-12-4,g:.35,r:Math.random()*4+2,a:1,col:'hsl('+(Math.random()*360|0)+',80%,60%)'});var t=0;(function loop(){t++;ctx.clearRect(0,0,W,H);var alive=false;parts.forEach(function(p){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.a-=.012;if(p.a>0&&p.y<H+20){alive=true;ctx.globalAlpha=Math.max(0,p.a);ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}});ctx.globalAlpha=1;if(alive&&t<120)requestAnimationFrame(loop);else c.remove();})();}var m=document.querySelector('meta[name="theme-color"]');if(m){var d=matchMedia('(prefers-color-scheme:dark)');function up(){m.setAttribute('content',d.matches?'#14181d':'#294b3d');}up();d.addEventListener?d.addEventListener('change',up):d.addListener(up);}</script>
 </body>
 </html>
