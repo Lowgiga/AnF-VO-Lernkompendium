@@ -29,5 +29,3 @@ const path = require('path');
  console.log(JSON.stringify({pass:true,initialScans,scrollScans:scrolled.diagnostics.scans,scrollRoots:scrolled.scrollRoots,cacheBefore:scrolled.cacheSize,cacheAfter:afterRemove.cacheSize,selfTriggerFlushes:loop,maxFlushMs:afterLayout.diagnostics.maxFlushMs,errors},null,2));
  await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
