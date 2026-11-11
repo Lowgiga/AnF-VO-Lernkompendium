@@ -1,20 +1,27 @@
-# GitHub Copilot Coding Agent environment setup.
-# Keep this setup aligned with .github/workflows/android-build.yml.
+# GitHub Copilot Coding Agent environment.
+# Keep toolchain versions aligned with .github/workflows/android-build.yml.
+#
+# This workflow prepares tools and dependencies only. Product validation and
+# release builds remain in the dedicated CI workflows.
 
 name: Copilot Setup Steps
 
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   copilot-setup-steps:
+    name: Prepare web, browser-test, and Android toolchains
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
     permissions:
       contents: read
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v7
         with:
           persist-credentials: false
@@ -26,30 +33,52 @@ jobs:
           cache: npm
           cache-dependency-path: tests/package-lock.json
 
-      - name: Set up Python 3
+      - name: Set up Python 3.12
         uses: actions/setup-python@v6
         with:
-          python-version: "3.x"
+          python-version: "3.12"
 
       - name: Set up JDK 17
         uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: "17"
+          cache: gradle
 
-      - name: Set up Android SDK
+      - name: Set up Android SDK command-line tools
         uses: android-actions/setup-android@v4
 
-      - name: Install Android SDK packages
-        run: sdkmanager --install "platforms;android-36" "build-tools;36.0.0"
+      - name: Install Android SDK components
+        shell: bash
+        run: |
+          set -euo pipefail
+          sdkmanager --install \
+            "platform-tools" \
+            "platforms;android-36" \
+            "build-tools;36.0.0"
 
-      - name: Install browser test dependencies
+      - name: Install locked browser-test dependencies
         working-directory: tests
         run: npm ci
 
-      - name: Install Chromium for Playwright
+      - name: Install Chromium and operating-system dependencies
         working-directory: tests
         run: npx playwright install --with-deps chromium
 
-      - name: Verify repository baseline
-        run: python tests/verify-build.py
+      - name: Verify development toolchains
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Node.js: $(node --version)"
+          echo "npm: $(npm --version)"
+          echo "Python: $(python --version)"
+          java -version
+          echo "Android SDK: ${ANDROID_HOME:-${ANDROID_SDK_ROOT:-not-set}}"
+          test -x "$ANDROID_HOME/platform-tools/adb"
+          test -d "$ANDROID_HOME/platforms/android-36"
+          test -x "$ANDROID_HOME/build-tools/36.0.0/aapt"
+          test -x "$ANDROID_HOME/build-tools/36.0.0/apksigner"
+          test -f tests/package-lock.json
+          test -f android/gradlew
+          test -f android/gradle/wrapper/gradle-wrapper.properties
+          test -f tests/verify-build.py
