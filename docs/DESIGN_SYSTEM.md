@@ -17,5 +17,3 @@ The mascot is decorative and deterministic. It is not an AI agent and does not m
 - Maintain readable contrast and visible keyboard focus.
 ## Runtime constraints
 No external CDN, remote font, runtime network request or mandatory server dependency. The primary deliverable remains a self-contained HTML file until browser and offline tests validate any modular runtime split.
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
