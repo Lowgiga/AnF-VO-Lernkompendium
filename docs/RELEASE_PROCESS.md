@@ -9,5 +9,3 @@
 7. Publish a tagged GitHub release only after runtime tests and the license decision are complete.
 
 Never label static checks as browser tests. Keep browser-runtime status explicit in the manifest and release notes.
-
-[executed on device: lowpc (ecc80e91-2d19-4992-afcf-09a4342182c2)]
