@@ -8,8 +8,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Inoffizielle Lernhilfe zur Basisqualifizierung nach § 8 AnFöVO NRW, geprüft gegen Primärquellen.">
 <title>Lern-Kompendium § 8 AnFöVO NRW – v2.9.1</title>
-<link rel="icon" href="data:,">
 <link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="./icon-192.png">
 <style>:root{--bg:#f4eee3;--card:#fffdf8;--ink:#171b21;--mut:#50565d;--line:#e2d9c8;--brand:#1d3a5f;--brand2:#2b5a86;--soft:#f5efe3;--red:#a3302a;--redbg:#fbeae6;--ok:#2d6a39;--okbg:#e8f2e6;--badbg:#fbeae6;--field:#7a7468;--focus:#1d5fbf;--hdr:#1d3a5f;--mark:#ffe08a;
  --acc:#9e4626;--accfg:#fff;--btnbg:#1d3a5f;--btnfg:#fff;--veil:rgba(244,238,227,.86);
  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",P052,Georgia,"DejaVu Serif",serif;
@@ -809,7 +810,7 @@ Hör nach ANNAHMEN UND UNSICHERHEITEN auf. Wenn kein Bild angehängt ist oder du
  <p class="savehint"><span id="savestate">💾 Gespeichert auf diesem Gerät</span></p>
  <section class="fsec" aria-labelledby="imp-h">
   <h2 id="imp-h">Impressum und Hinweis</h2>
-  <p><b>Inoffizielle Lernhilfe, kein Ersatz für die Kursunterlagen.</b> Lern-Kompendium § 8 AnFöVO NRW · v2.7.0 · Stand: November 2026.</p>
+  <p><b>Inoffizielle Lernhilfe, kein Ersatz für die Kursunterlagen.</b> Lern-Kompendium § 8 AnFöVO NRW · v2.9.1 · Stand: November 2026.</p>
   <p>Privates Lernprojekt ohne Verbindung zum Gemeindenahen Verbund ATEMPAUSE, zu den Regionalbüros Alter, Pflege und Demenz NRW oder zum MAGS NRW. Es enthält keine Fotos und keinen Wortlaut aus dem Kursheft; übernommen wurden nur Struktur, Symbolsystem und kurze eigene Zusammenfassungen (mit „Kursheft“ gekennzeichnet), sonst eigene Formulierungen auf Grundlage amtlicher Quellen. Keine Rechtsberatung; Rechtsstand November 2026. Anbieterangaben nach § 5 DDG: <i>[vor Veröffentlichung ergänzen: Name, Anschrift, Kontakt]</i>.</p>
  </section>
  <section class="fsec" aria-labelledby="src-h">
@@ -2138,6 +2139,21 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(out){out.innerHTML='<p><b>'+pass+' / '+run+' Tests bestanden</b>'+(skip?' · '+skip+' übersprungen (hier nicht messbar)':'')+'</p><ol>'+R.map(function(r){return '<li class="'+(r.skip?'skip':(r.ok?'pass':'fail'))+'">'+(r.skip?'○ ':(r.ok?'✓ ':'✗ '))+r.name+(r.info?' – '+String(r.info).replace(/</g,'&lt;'):'')+'</li>';}).join('')+'</ol>';}
  window.SELFTEST_RESULT={passed:pass,total:run,skipped:skip,results:R};return window.SELFTEST_RESULT;
 };
+</script>
+<script>
+/* PWA: register only on http(s). file:// and android_asset stay usable without a worker. */
+(function () {
+  if (!('serviceWorker' in navigator)) return;
+  var proto = location.protocol;
+  if (proto !== 'http:' && proto !== 'https:') return;
+  if (/android_asset/i.test(location.href)) return;
+  window.__pwaRegisterAttempted = true;
+  function register() {
+    navigator.serviceWorker.register('./sw.js').catch(function () {});
+  }
+  if (document.readyState === 'complete') register();
+  else window.addEventListener('load', register);
+})();
 </script>
 
 <dialog id="confirmDlg" class="confirm-dlg" aria-labelledby="confirmDlgTitle" aria-describedby="confirmDlgMessage"><h2 id="confirmDlgTitle" class="vhid">Aktion bestätigen</h2><p id="confirmDlgMessage" class="dlg-msg"></p><div class="dlg-actions"><button type="button" class="dlg-cancel btn">Abbrechen</button><button type="button" class="dlg-ok btn primary">OK</button></div></dialog>
