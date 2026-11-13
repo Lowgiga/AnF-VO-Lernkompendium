@@ -1,8 +1,8 @@
 {
   "version": "2.9.1",
   "static_checks": 32,
-  "passed": 32,
-  "failed": 0,
+  "passed": 29,
+  "failed": 3,
   "checks": [
     {
       "name": "Embedded RobotNav block matches standalone source",
@@ -131,7 +131,7 @@
     },
     {
       "name": "Service worker cache version is current",
-      "ok": true,
+      "ok": false,
       "detail": ""
     },
     {
@@ -151,7 +151,7 @@
     },
     {
       "name": "Impressum shows v2.9.1 and keeps the required DDG placeholder",
-      "ok": true,
+      "ok": false,
       "detail": ""
     },
     {
@@ -161,7 +161,7 @@
     },
     {
       "name": "Pages subpath serves manifest, worker, icon, and background frames",
-      "ok": true,
+      "ok": false,
       "detail": "page=200/text/html manifest=200 worker=200 icon=200/image/png frame=200/image/webp mobile=200 nojekyll=200 outside=404"
     }
   ]

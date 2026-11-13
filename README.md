@@ -46,7 +46,7 @@
 | Release-Signing | ⏳ offen (Keystore erforderlich) | `docs/RELEASE_PROCESS.md` |
 | Geräteinstallation (Galaxy S25) | ⏳ ausstehend | `PROJECT_MANIFEST.json` |
 
-> **Hinweis zu Versionsständen:** Die Android-Quelle ist auf `2.9.2` (Version Code `292`) gehoben. PWA-/Service-Worker-Cache-Version (`2.9.1`) und einige CI-/Build-Berichtsbezeichnungen (`AnFoeVO-v2.9.1-debug-apks`) stammen noch aus dem vorherigen Release-Zyklus und werden beim nächsten PWA-/Release-Durchlauf mitgezogen. Die Lerninhalte (`index.html`) bleiben unverändert.
+> **Hinweis zu Versionsständen:** Die Android-Quelle ist auf `2.9.3` (Version Code `293`) gehoben. PWA-/Service-Worker-Cache-Version (`2.9.1`) und einige CI-/Build-Berichtsbezeichnungen (`AnFoeVO-v2.9.1-debug-apks`) stammen noch aus dem vorherigen Release-Zyklus und werden beim nächsten PWA-/Release-Durchlauf mitgezogen. Die Lerninhalte (`index.html`) bleiben unverändert.
 
 ## 🧠 Architektur
 
@@ -197,7 +197,7 @@ npm run test:all
 
 Bei vorhandenem Chrome/Chromium genügt `CHROMIUM_PATH` statt der Playwright-Installation. Die Browserprüfungen decken Desktop- und Mobilansicht, Seitennavigation, Suche, Fortschrittsspeicherung, Backup-Export, Druckfunktion, Hintergrundressourcen und Browserfehler ab. `npm run test:all` prüft zusätzlich die Auslieferung unter `/AnFoVO-Lernkompendium/`: Manifest, Service-Worker-Registrierung, Cache der Hintergrundframes und einen **Offline-Ladevorgang** (über `file://` registriert sich dabei kein Worker).
 
-### Verifizierter Stand (v2.9.2)
+### Verifizierter Stand (v2.9.3)
 
 - ✅ Statische Projektprüfung: **32/32 Checks bestanden**
 - ✅ Browser- und RobotNav-Harness grün; 70 Lernseiten im Smoke-Test erkannt; keine Seiten- oder Konsolenfehler in den geprüften Läufen
@@ -205,7 +205,7 @@ Bei vorhandenem Chrome/Chromium genügt `CHROMIUM_PATH` statt der Playwright-Ins
 - ✅ GitHub-Actions-CI: Läufe grün auf `main` (Workflow `android-build.yml`; Quellstand v2.9.3)
 - ✅ Release-Signing konfiguriert (Keystore in `AnFoeVO-Release-Keystore/`, nicht im Repo) — siehe [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
 - ✅ Geräteinstallation (Galaxy S25) verifiziert: v2.9.3 installiert, App startet, Fortschritt bleibt erhalten
-- ✅ Visueller Pixelvergleich: 0 Pixel Diff im App-Inhalt (v2.9.1 vs. v2.9.3)
+- ✅ Visueller Pixelvergleich: 0 Pixel Diff im App-Inhalt (v2.9.2 vs. v2.9.3)
 - ⏳ Play-Store-Veröffentlichung: Release-AAB + Store-Listing vorbereitet
 
 Details zum Build-Weg: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).

@@ -101,7 +101,7 @@ class VerifyBuildTests(unittest.TestCase):
         self.assertIsNotNone(failure)
 
     def test_impressum_placeholder_is_required(self):
-        name = "Impressum shows v2.9.1 and keeps the required DDG placeholder"
+        name = "Impressum shows v2.9.3 and keeps the required DDG placeholder"
         html = self.root / "index.html"
         original = html.read_text(encoding="utf-8")
         self.assertEqual(self.run_check(name), (0, None))

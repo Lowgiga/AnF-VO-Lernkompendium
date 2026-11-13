@@ -185,8 +185,8 @@ except json.JSONDecodeError:
     sw_frames = []
 check(
     "Service worker cache version is current",
-    "var VERSION = '2.9.1';" in sw_text
-    and "var BUILD = 'web-pwa-2.9.1';" in sw_text
+    "var VERSION = '2.9.3';" in sw_text
+    and "var BUILD = 'web-pwa-2.9.3';" in sw_text
     and "anfoevo_v2_cache_" in sw_text
     and "robotnav-v2.8.0" not in sw_text,
 )
@@ -226,8 +226,8 @@ check(
 impressum = re.search(r'id="imp-h"[\s\S]*?</section>', HTML)
 impressum_text = impressum.group(0) if impressum else ""
 check(
-    "Impressum shows v2.9.1 and keeps the required DDG placeholder",
-    "v2.9.1" in impressum_text
+    "Impressum shows v2.9.3 and keeps the required DDG placeholder",
+    "v2.9.3" in impressum_text
     and "v2.7.0" not in impressum_text
     and "§ 5 DDG" in impressum_text
     and PLACEHOLDER in impressum_text,
@@ -319,7 +319,7 @@ def pages_subpath_detail():
             and served_manifest.get("start_url") == "./"
             and served_manifest.get("scope") == "./"
             and worker_status == 200
-            and b"web-pwa-2.9.1" in worker_body
+            and b"web-pwa-2.9.3" in worker_body
             and icon_status == 200
             and icon_type == "image/png"
             and icon_body.startswith(b"\x89PNG")
@@ -348,18 +348,18 @@ check(
 failed = [item for item in checks if not item["ok"]]
 passed = len(checks) - len(failed)
 report = {
-    "version": "2.9.1",
+    "version": "2.9.3",
     "static_checks": len(checks),
     "passed": passed,
     "failed": len(failed),
     "checks": checks,
 }
 
-(ROOT / "TESTBERICHT_v2.9.1.json").write_text(
+(ROOT / "TESTBERICHT_v2.9.3.json").write_text(
     json.dumps(report, ensure_ascii=False, indent=2) + "\n",
     encoding="utf-8",
 )
-(ROOT / "TESTBERICHT_v2.9.1.txt").write_text(
+(ROOT / "TESTBERICHT_v2.9.3.txt").write_text(
     "\n".join(
         ("PASS" if item["ok"] else "FAIL")
         + " "

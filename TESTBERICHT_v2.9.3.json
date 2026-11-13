@@ -1,0 +1,168 @@
+{
+  "version": "2.9.3",
+  "static_checks": 32,
+  "passed": 32,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Embedded RobotNav block matches standalone source",
+      "ok": true,
+      "detail": "embedded=21879 chars; source=21879 chars"
+    },
+    {
+      "name": "Standalone JavaScript syntax",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Embedded JavaScript syntax",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "HTML document has one html root",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Android HTML asset matches index.html byte for byte",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "RobotNav v2.8.0 embedded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Standalone engine has no fetch/XHR/WebSocket",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "No polling interval used",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "No self-scheduling animation loop used",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: DOM Inventory",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Obstacle Cache",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Position Planner",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Motion Controller",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Architecture component: Event Scheduler",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: dirtyFlags |= flags",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: processing = true",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: requestAnimationFrame(flush)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: mutationObserver.disconnect()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: resizeObserver.disconnect()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: position === 'sticky'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Engine feature: RobotNav.destroy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Root and Android PWA assets match byte for byte",
+      "ok": true,
+      "detail": "frames=29"
+    },
+    {
+      "name": "Root PWA shell files and .nojekyll exist",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "PWA manifest uses relative scope and start_url",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "PWA manifest icons are relative and present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Service worker cache version is current",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Service worker precaches relative core assets and both frame sets",
+      "ok": true,
+      "detail": "frames=29"
+    },
+    {
+      "name": "Service worker registration is limited to http(s) and skips android_asset",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "index.html links manifest and icons with relative URLs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Impressum shows v2.9.3 and keeps the required DDG placeholder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Pages prepare script copies a web-only surface and does not publish",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Pages subpath serves manifest, worker, icon, and background frames",
+      "ok": true,
+      "detail": "page=200/text/html manifest=200 worker=200 icon=200/image/png frame=200/image/webp mobile=200 nojekyll=200 outside=404"
+    }
+  ]
+}
