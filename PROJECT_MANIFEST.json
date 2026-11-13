@@ -44,7 +44,7 @@
     },
     "pwa_shell": {
         "prepared": true,
-        "pages_enabled": false,
+        "pages_enabled": true,
         "project_subpath": "/AnFoVO-Lernkompendium/",
         "service_worker_cache": "anfoevo_v2_cache_2.9.3-web-pwa-2.9.3",
         "impressum_placeholder_required": true,
