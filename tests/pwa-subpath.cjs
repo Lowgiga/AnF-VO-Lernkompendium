@@ -6,6 +6,21 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const PREFIX = '/AnFoVO-Lernkompendium';
 const CACHE = 'anfoevo_v2_cache_2.9.1-web-pwa-2.9.1';
+const FRAME_NAMES = ['d', 'm'].flatMap((size) =>
+  fs.readdirSync(path.join(ROOT, 'bg', size))
+    .filter((name) => name.endsWith('.webp'))
+    .sort()
+    .map((name) => `${PREFIX}/bg/${size}/${name}`)
+);
+const EXPECTED_CACHE = [
+  `${PREFIX}/`,
+  `${PREFIX}/index.html`,
+  `${PREFIX}/manifest.json`,
+  `${PREFIX}/icon-192.png`,
+  `${PREFIX}/icon-512.png`,
+  `${PREFIX}/icon-512-maskable.png`,
+  ...FRAME_NAMES
+];
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -67,49 +82,66 @@ function startServer() {
     const context = await browser.newContext();
     const page = await context.newPage({ viewport: { width: 1440, height: 900 } });
     page.on('pageerror', (error) => errors.push(String(error)));
+    if (FRAME_NAMES.length !== 58) throw new Error('Expected 58 background frames, found ' + FRAME_NAMES.length);
     await page.goto(base, { waitUntil: 'load' });
-    const installed = await page.evaluate(async (expectedCache) => {
-      if (!window.__pwaRegisterAttempted) return { ok: false, reason: 'registration was not attempted' };
-      const link = document.querySelector('link[rel="manifest"]');
-      const icon = document.querySelector('link[rel="icon"]');
-      if (!link || !icon) return { ok: false, reason: 'missing manifest or icon link' };
-      const manifestUrl = new URL(link.getAttribute('href'), location.href);
-      const iconUrl = new URL(icon.getAttribute('href'), location.href);
-      if (!manifestUrl.pathname.endsWith('/AnFoVO-Lernkompendium/manifest.json')) {
-        return { ok: false, reason: 'manifest URL ' + manifestUrl.pathname };
-      }
-      if (!iconUrl.pathname.endsWith('/AnFoVO-Lernkompendium/icon-192.png')) {
-        return { ok: false, reason: 'icon URL ' + iconUrl.pathname };
-      }
-      const manifest = await (await fetch(manifestUrl)).json();
-      const registration = await navigator.serviceWorker.ready;
-      const names = await caches.keys();
-      const cache = await caches.open(expectedCache);
-      const keys = await cache.keys();
-      const urls = keys.map((request) => new URL(request.url).pathname);
-      const frame = await fetch(new URL('bg/d/r00.webp', location.href));
-      return {
-        ok: true,
-        scope: registration.scope,
-        script: registration.active && registration.active.scriptURL,
-        manifestStart: manifest.start_url,
-        manifestScope: manifest.scope,
-        cacheNames: names,
-        cached: urls.filter((item) => /\/(index\.html|manifest\.json|icon-192\.png|bg\/[dm]\/.+\.webp)$/.test(item)).length,
-        hasDesktopFrame: urls.some((item) => item.endsWith('/bg/d/r00.webp')),
-        hasMobileFrame: urls.some((item) => item.endsWith('/bg/m/z13.webp')),
-        frameStatus: frame.status,
-        frameType: frame.headers.get('content-type')
-      };
-    }, CACHE);
+    const installed = await Promise.race([
+      page.evaluate(async ({ expectedCache, expectedPaths }) => {
+        if (!window.__pwaRegisterAttempted) return { ok: false, reason: 'registration was not attempted' };
+        const link = document.querySelector('link[rel="manifest"]');
+        const icon = document.querySelector('link[rel="icon"]');
+        if (!link || !icon) return { ok: false, reason: 'missing manifest or icon link' };
+        const manifestUrl = new URL(link.getAttribute('href'), location.href);
+        const iconUrl = new URL(icon.getAttribute('href'), location.href);
+        if (!manifestUrl.pathname.endsWith('/AnFoVO-Lernkompendium/manifest.json')) {
+          return { ok: false, reason: 'manifest URL ' + manifestUrl.pathname };
+        }
+        if (!iconUrl.pathname.endsWith('/AnFoVO-Lernkompendium/icon-192.png')) {
+          return { ok: false, reason: 'icon URL ' + iconUrl.pathname };
+        }
+        const manifest = await (await fetch(manifestUrl)).json();
+        const registration = await Promise.race([
+          navigator.serviceWorker.ready,
+          new Promise((_, reject) => {
+            setTimeout(() => reject(new Error('service worker did not become active within 15 seconds')), 15000);
+          })
+        ]);
+        const names = await caches.keys();
+        const cache = await caches.open(expectedCache);
+        const keys = await cache.keys();
+        const urls = keys.map((request) => new URL(request.url).pathname);
+        const missing = expectedPaths.filter((item) => !urls.includes(item));
+        const frame = await fetch(new URL('bg/d/r00.webp', location.href));
+        return {
+          ok: true,
+          scope: registration.scope,
+          script: registration.active && registration.active.scriptURL,
+          manifestStart: manifest.start_url,
+          manifestScope: manifest.scope,
+          cacheNames: names,
+          cached: urls.length,
+          expected: expectedPaths.length,
+          missing,
+          frameStatus: frame.status,
+          frameType: frame.headers.get('content-type')
+        };
+      }, { expectedCache: CACHE, expectedPaths: EXPECTED_CACHE }),
+      new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('PWA install check timed out after 20 seconds')), 20000);
+      })
+    ]);
     if (!installed.ok) throw new Error(installed.reason || 'install check failed');
     if (!installed.scope.endsWith('/AnFoVO-Lernkompendium/')) throw new Error('Unexpected scope ' + installed.scope);
     if (!installed.script.endsWith('/AnFoVO-Lernkompendium/sw.js')) throw new Error('Unexpected worker ' + installed.script);
     if (installed.manifestStart !== './' || installed.manifestScope !== './') {
       throw new Error('Manifest scope escaped the project subpath: ' + JSON.stringify(installed));
     }
-    if (!installed.cacheNames.includes(CACHE) || !installed.hasDesktopFrame || !installed.hasMobileFrame || installed.cached < 4) {
-      throw new Error('Cache incomplete: ' + JSON.stringify(installed));
+    if (!installed.cacheNames.includes(CACHE) || installed.missing.length) {
+      throw new Error('Cache incomplete: ' + JSON.stringify({
+        cacheNames: installed.cacheNames,
+        cached: installed.cached,
+        expected: installed.expected,
+        missing: installed.missing
+      }));
     }
     if (installed.frameStatus !== 200 || installed.frameType !== 'image/webp') {
       throw new Error('Background frame was not served: ' + JSON.stringify(installed));
@@ -146,7 +178,9 @@ function startServer() {
       pass: true,
       scope: installed.scope,
       cache: CACHE,
-      cachedMatches: installed.cached,
+      cachedEntries: installed.cached,
+      expectedEntries: installed.expected,
+      missing: installed.missing,
       offlinePages: offline.pages,
       fileProtocolSkipped: true,
       errors

@@ -240,7 +240,9 @@ check(
     and "android" in prepare_text
     and "tests" in prepare_text
     and "Gradle" in prepare_text
-    and "does not enable GitHub Pages" in prepare_text,
+    and "does not enable GitHub Pages" in prepare_text
+    and prepare_text.find("Refusing to delete") != -1
+    and prepare_text.find("Refusing to delete") < prepare_text.find("rm -rf"),
 )
 
 
