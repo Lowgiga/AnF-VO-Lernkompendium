@@ -15,6 +15,7 @@
 ![Android](https://img.shields.io/badge/Android-WebView%20App-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![PWA](https://img.shields.io/badge/PWA-Offline%20f%C3%A4hig-F97316?style=for-the-badge&logoColor=white)
 ![Lernseiten](https://img.shields.io/badge/Lernseiten-70-7B2FBE?style=for-the-badge&logo=bookstack&logoColor=white)
+![Offline](https://img.shields.io/badge/Offline-100%25-2ea44f?style=for-the-badge&logoColor=white)
 
 </div>
 
@@ -31,7 +32,21 @@
 | 🌐 **Web-App** | 70 Lernseiten · Fortschritt · Suche · Druck | `index.html` (eigenständig) | ✅ Verifiziert |
 | 🤖 **RobotNav** | Deterministische Buch- und Navigationsassistenz | browserseitig, dekorativ | ✅ Aktiv |
 | 📴 **PWA** | Installierbar unter `/AnFoVO-Lernkompendium/` | `manifest.json` + `sw.js` | ✅ Offline getestet |
-| 📱 **Android-App** | WebView-Kapsel derselben Web-Dateien | `de.omega.lernkompendium` | ✅ Release v2.9.2 |
+| 📱 **Android-App** | WebView-Kapsel derselben Web-Dateien | `de.omega.lernkompendium` | ✅ Quellstand v2.9.2 (Release-Signing offen) |
+
+## ✅ Status & Verifikation
+
+| Bereich | Status | Nachweis |
+| --- | --- | --- |
+| Statische Projektprüfung | ✅ 32/32 Checks grün | `python tests/verify-build.py` |
+| Browser- & RobotNav-Harness | ✅ grün (lokal, Chromium/Playwright) | `npm run test:all` |
+| PWA/Offline (Subpath) | ✅ lokal getestet (Manifest, Worker, Cache, Offline-Ladevorgang) | `tests/verify-build.py` |
+| Android-Build (Quellstand) | ✅ Version `2.9.2`, Version Code `292` | `android/app/build.gradle` |
+| GitHub-Actions-CI | ⚠️ Workflow definiert; Läufe hängen von Kontobilling ab | `.github/workflows/android-build.yml`, `BUILD-REPORT-v2.9.1.md` |
+| Release-Signing | ⏳ offen (Keystore erforderlich) | `docs/RELEASE_PROCESS.md` |
+| Geräteinstallation (Galaxy S25) | ⏳ ausstehend | `PROJECT_MANIFEST.json` |
+
+> **Hinweis zu Versionsständen:** Die Android-Quelle ist auf `2.9.2` (Version Code `292`) gehoben. PWA-/Service-Worker-Cache-Version (`2.9.1`) und einige CI-/Build-Berichtsbezeichnungen (`AnFoeVO-v2.9.1-debug-apks`) stammen noch aus dem vorherigen Release-Zyklus und werden beim nächsten PWA-/Release-Durchlauf mitgezogen. Die Lerninhalte (`index.html`) bleiben unverändert.
 
 ## 🧠 Architektur
 
@@ -39,17 +54,23 @@
 flowchart LR
     subgraph WEB["🌐 Web-Oberfläche · Repository-Root"]
         IDX["index.html<br/>70 Lernseiten · Aufgaben · Lösungen"]
-        PWA["manifest.json · sw.js<br/>Icons · bg/"]
+        PWA["manifest.json · sw.js<br/>Icons · bg/ (29 Frames)"]
         IDX --- PWA
     end
     subgraph APP["📱 Android · de.omega.lernkompendium"]
-        WV["MainActivity<br/>WebView"]
+        WV["MainActivity<br/>WebView + AssetLoader"]
         AST["assets/<br/>bytegleiche Web-Dateien"]
     end
-    QA["🧪 tests/<br/>verify-build.py · Playwright"]
+    subgraph QA["🧪 Qualitätssicherung"]
+        ST["verify-build.py · 32 Checks"]
+        PW["Playwright · Chromium"]
+    end
+    CI["⚙️ GitHub Actions<br/>Validate + Debug-Build"]
     IDX -- "installierbare PWA" --> WV
     AST --> WV
     QA --> IDX
+    CI --> QA
+    CI --> APP
 ```
 
 ## 📁 Projektstruktur
@@ -179,10 +200,10 @@ Bei vorhandenem Chrome/Chromium genügt `CHROMIUM_PATH` statt der Playwright-Ins
 
 - ✅ Statische Projektprüfung: **32/32 Checks bestanden**
 - ✅ Browser- und RobotNav-Harness grün; 70 Lernseiten im Smoke-Test erkannt; keine Seiten- oder Konsolenfehler in den geprüften Läufen
-- ✅ CI „Project validation and Android debug build“ **grün auf `main`**
-- ✅ Release **v2.9.2** mit signierten APKs; Release-APK (Version Code 292) auf einem Galaxy S25 installiert, App-Start ohne Crash/ANR
-- ✅ HTML im Android-Asset-Verzeichnis **byteidentisch** mit der Projektdatei; APK-Signaturen per APK Signature Scheme v2 geprüft
-- ⏳ Offen: visueller Pixelvergleich; Play-Store-Veröffentlichung (Release-Signing: [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md))
+- ✅ PWA-Subpath (Manifest, Worker, Icons, Hintergrundframes, Offline-Ladevorgang) lokal grün
+- ⚠️ CI „Project validation and Android debug build“: Workflow vorhanden; Ausführung abhängig von GitHub-Actions-Billing (siehe [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md))
+- ⏳ Release-Signing und Geräteinstallation (Galaxy S25) offen — siehe [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
+- ⏳ Offen: visueller Pixelvergleich; Play-Store-Veröffentlichung
 
 Details zum Build-Weg: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
 
@@ -200,6 +221,8 @@ Details zum Build-Weg: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
 | JDK-Laufzeit | 17 oder 21 |
 | WebView | androidx.webkit 1.18.0 |
 | ABIs | arm64-v8a · x86_64 · universal |
+
+> **Hinweis:** In CI-/Build-Berichten sind noch v2.9.1-Artefaktbezeichnungen (z. B. `AnFoeVO-v2.9.1-debug-apks`) sichtbar. Der Quellstand ist `2.9.2` (Version Code `292`); das Artefakt-Label wird beim nächsten Build-Durchlauf aktualisiert.
 
 ### Debug-APK erstellen
 
@@ -220,6 +243,17 @@ cd android
 Der eingecheckte Gradle-Wrapper enthält Launcher-JAR, Windows- und POSIX-Startskripte sowie eine SHA-256-Prüfsumme; CI validiert den Wrapper und baut mit JDK 17, Android SDK Platform 36 und Build Tools 36.0.0. Den Wrapper nicht durch eine ungeprüfte globale Gradle-Installation ersetzen.
 
 Die Debug-APK ist mit dem Standard-Debug-Schlüssel signiert und nur für Tests gedacht. Für eine produktive Veröffentlichung ist ein eigener, sicher verwahrter Release-Keystore erforderlich.
+
+## 📸 Screenshots (geplant)
+
+Aktuell liegen keine Screenshots im Repository. Für die GitHub-Showcase-Ansicht können folgende Aufnahmen ergänzt werden (Pfade als Vorschlag):
+
+- `docs/screenshots/book-view.png` — 3D-Buchansicht mit Lernbegleiter
+- `docs/screenshots/reading-view.png` — lesbare Lernansicht
+- `docs/screenshots/dashboard.png` — Fortschritts-Dashboard mit SVG-Ringen
+- `docs/screenshots/android.png` — Android-App (WebView)
+
+Hinweis: Screenshots dürfen keine personenbezogenen Lernfortschritte, Workbook-Fotos oder verbatim Workbook-Text enthalten (siehe [docs/CONTENT_PRESERVATION.md](docs/CONTENT_PRESERVATION.md)).
 
 ## 📊 Statistiken & Aktivität
 
@@ -252,6 +286,23 @@ Die Debug-APK ist mit dem Standard-Debug-Schlüssel signiert und nur für Tests 
 
 *Wird per GitHub Action im Profil-Repository [`Lowgiga/Lowgiga`](https://github.com/Lowgiga/Lowgiga) generiert (täglich + manuell auslösbar).*
 
+## 🤝 Contributing
+
+Beiträge sind willkommen — bitte die folgenden Grundsätze beachten:
+
+- **Inhalte bewahren:** Alle 70 Lernseiten und ihre Funktionalität bleiben erhalten; inhaltliche Änderungen erfolgen nie stillschweigend und erfordern einen separaten Review (siehe [docs/CONTENT_PRESERVATION.md](docs/CONTENT_PRESERVATION.md)).
+- **Keine stillen Content-Edits:** Änderungen an Lerninhalten nur mit Content-Diff-Report.
+- **Offline zuerst:** keine externen Laufzeitabhängigkeiten oder Netzwerkaufrufe für die Kernanwendung; `index.html` bleibt eigenständig.
+- **Vor einem Pull Request:** `python tests/verify-build.py` (0 Fehler) und, wenn möglich, `npm run test:all` in `tests/`.
+- **Android:** Gradle-Wrapper nicht ersetzen; JDK 17/21 verwenden.
+- **Issues/PRs:** Fehler und Vorschläge über GitHub Issues; PRs mit klarer Beschreibung und Testnachweis.
+
+## 🆘 Support
+
+- **Fehler melden:** [GitHub Issues](https://github.com/Lowgiga/AnFoVO-Lernkompendium/issues)
+- **Fragen zur Nutzung:** über Issues oder die Projektdokumentation unter `docs/`
+- **Sicherheitsrelevante Hinweise:** bitte nicht öffentlich posten; stattdessen ein Issue mit Label `security` (oder direkter Kontakt über das Profil) — Keystore/Secrets niemals committen.
+
 ## ⚖️ Lizenz & Grundsätze
 
 - **Apache License 2.0** — siehe [LICENSE](LICENSE). Öffentliche Sichtbarkeit allein begründet keine Weiternutzungsrechte über die Lizenz hinaus.
@@ -260,11 +311,13 @@ Die Debug-APK ist mit dem Standard-Debug-Schlüssel signiert und nur für Tests 
 
 ## 📮 Projektinformationen
 
-- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium) · Stand: `main` · **v2.9.2**
+- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium) · Stand: `main` · Quellstand **v2.9.2**
 - Änderungsübersicht: [CHANGELOG.md](CHANGELOG.md)
 - Produktspezifikation: [PRODUKT_SPEZIFIKATION.md](PRODUKT_SPEZIFIKATION.md)
 - Build-Nachweis: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md)
+- Technischer Audit: [docs/TECHNICAL_AUDIT.md](docs/TECHNICAL_AUDIT.md)
 - Architektur: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · Design: [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) · Inhaltserhaltung: [docs/CONTENT_PRESERVATION.md](docs/CONTENT_PRESERVATION.md)
+- GitHub Pages: [docs/GITHUB_PAGES.md](docs/GITHUB_PAGES.md) · Release-Prozess: [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
 - Android-Doku: [android/README-ANDROID.md](android/README-ANDROID.md)
 
 ---
