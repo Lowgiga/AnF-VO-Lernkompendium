@@ -1,7 +1,7 @@
 {
   "version": "2.9.1",
-  "static_checks": 20,
-  "passed": 20,
+  "static_checks": 21,
+  "passed": 21,
   "failed": 0,
   "checks": [
     {
@@ -21,6 +21,11 @@
     },
     {
       "name": "HTML document has one html root",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Android HTML asset matches index.html byte for byte",
       "ok": true,
       "detail": ""
     },

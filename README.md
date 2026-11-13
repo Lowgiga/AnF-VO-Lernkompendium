@@ -1,5 +1,26 @@
 # AnFöVO Lernkompendium
 
+- Build-Nachweis: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md)
+
+## Visuelle Weiterentwicklung (v2.9.2)
+
+Die Anwendung enthält folgende visuelle Verbesserungen:
+
+- **Silikon-Animationen:** Rubber-Bounce (cubic-bezier) für Buttons, Karten, Toasts und Ringe
+- **Dark-Mode-Transition:** Sanfter 0.4s-Farbübergang zwischen Hell/Dunkel
+- **Haptic Feedback:** Vibration bei Antworten, markdone und Konfetti (Android)
+- **Parallax-Stage:** Mausposition steuert subtile 3D-Rotation der Lernbegleiter-Stage
+- **Präsentationsmodus:** Fullscreen-Slides mit Tastatur/Swipe-Navigation und Auto-Play
+- **Lern-Dashboard:** SVG-Fortschrittsringe pro Modul + Gesamtfortschritt
+- **Progressive Loading:** BG-Preload-Fortschrittsleiste, Smooth-Transitions
+- **Loading-Skeletons:** Shimmer-Platzhalter für Ladezustände
+- **Dialog-System:** Gestyltes <dialog> statt nativem confirm()
+- **Mobile-Maskottchen:** Mini-Roboter auf Smartphones (≤760px) mit LED-Zuständen
+
+
+
+# AnFöVO Lernkompendium
+
 Ein digitales, offlinefähiges Lern-Kompendium zur Basisqualifizierung nach § 8 AnFöVO NRW. Das Projekt verbindet interaktive Lernseiten, Aufgaben und Lösungen mit lokal gespeicherter Lernaktivität, einer hybriden Buch-/Navigationsoberfläche und einer Android-WebView-App.
 
 > **Projektstand:** Version 2.9.1 · 70 Lernseiten · lokale Web-App und Android-Projekt
@@ -82,7 +103,11 @@ Bei Verwendung eines bereits installierten Chrome-/Chromium-Browsers kann `CHROM
 
 Nicht als abgeschlossen ausgewiesen sind ein visueller Pixelvergleich, die Installation und Laufzeitprüfung auf einem realen Galaxy-S25-Gerät sowie das Produktions-Release-Signing. Die erzeugte APK ist eine Debug-APK und keine Play-Store-fertige Veröffentlichung. Details stehen in [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
 
+This project is released under the **Apache License 2.0** (see [LICENSE](./LICENSE)). Public visibility alone does not imply reuse rights beyond the license terms.
+
 ## Android-App
+## Android-App
+>>>>>>> origin/main
 
 | Merkmal | Wert |
 | --- | --- |

@@ -2,6 +2,7 @@ PASS Embedded RobotNav block matches standalone source — embedded=21879 chars;
 PASS Standalone JavaScript syntax
 PASS Embedded JavaScript syntax
 PASS HTML document has one html root
+PASS Android HTML asset matches index.html byte for byte
 PASS RobotNav v2.8.0 embedded
 PASS Standalone engine has no fetch/XHR/WebSocket
 PASS No polling interval used
@@ -19,4 +20,4 @@ PASS Engine feature: resizeObserver.disconnect()
 PASS Engine feature: position === 'sticky'
 PASS Engine feature: RobotNav.destroy
 
-Statische Prüfungen: 20 bestanden, 0 fehlgeschlagen.
+Statische Prüfungen: 21 bestanden, 0 fehlgeschlagen.

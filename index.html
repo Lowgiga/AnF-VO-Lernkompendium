@@ -9,6 +9,7 @@
 <meta name="description" content="Inoffizielle Lernhilfe zur Basisqualifizierung nach § 8 AnFöVO NRW, geprüft gegen Primärquellen.">
 <title>Lern-Kompendium § 8 AnFöVO NRW – v2.9.1</title>
 <link rel="icon" href="data:,">
+<link rel="manifest" href="./manifest.json">
 <style>:root{--bg:#f4eee3;--card:#fffdf8;--ink:#171b21;--mut:#50565d;--line:#e2d9c8;--brand:#1d3a5f;--brand2:#2b5a86;--soft:#f5efe3;--red:#a3302a;--redbg:#fbeae6;--ok:#2d6a39;--okbg:#e8f2e6;--badbg:#fbeae6;--field:#7a7468;--focus:#1d5fbf;--hdr:#1d3a5f;--mark:#ffe08a;
  --acc:#9e4626;--accfg:#fff;--btnbg:#1d3a5f;--btnfg:#fff;--veil:rgba(244,238,227,.86);
  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",P052,Georgia,"DejaVu Serif",serif;
@@ -27,7 +28,7 @@ header :focus-visible{outline-color:#ffbf47}
 input[type=checkbox],input[type=radio]{width:22px;height:22px;margin:0;flex:0 0 auto;accent-color:var(--brand2)}
 .vhid{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #readprog{position:fixed;top:0;left:0;right:0;height:4px;background:transparent;z-index:50}
-#readprog>div{height:100%;width:0;background:var(--brand2);transition:width .15s}
+#readprog>div{height:100%;width:0;background:var(--brand2);transition:width .3s ease}
 /* Kopfzeile: Titel einzeilig, darunter nur Suche, ‹ x/y › und Drucken */
 header{position:sticky;top:0;z-index:20;background:var(--hdr);color:#fff;padding:max(var(--s2),env(safe-area-inset-top)) max(var(--s3),env(safe-area-inset-right)) var(--s2) max(var(--s3),env(safe-area-inset-left));display:flex;flex-direction:column;gap:var(--s1)}
 header>*{width:100%;max-width:90ch;margin-left:auto;margin-right:auto}
@@ -37,7 +38,7 @@ header h1{flex:1 1 auto;min-width:0;margin:0;font-size:clamp(1.125rem,1rem + .8v
 .hbtn:disabled{opacity:.45;cursor:default}
 #mehr{font-size:.9375rem}
 #printbtn{padding:0 var(--s2);font-size:.875rem;white-space:nowrap}
-#savedflash{position:absolute;right:max(var(--s3),env(safe-area-inset-right));bottom:-28px;width:auto;margin:0;font-size:.8125rem;line-height:20px;color:#fff;background:var(--hdr);padding:2px var(--s2);border-radius:0 0 var(--r) var(--r);white-space:nowrap;pointer-events:none}
+#savedflash{position:absolute;right:max(var(--s3),env(safe-area-inset-right));bottom:-28px;width:auto;margin:0;font-size:.8125rem;line-height:20px;color:#fff;background:var(--hdr);padding:2px var(--s2);border-radius:0 0 var(--r) var(--r);white-space:nowrap;pointer-events:none;transition:opacity .2s,transform .2s}#savedflash:empty{opacity:0;transform:translateY(4px)}#savedflash:not(:empty){opacity:1;transform:translateY(0)}
 #savedflash:empty{display:none}
 .sbox{position:relative;flex:1 1 auto;min-width:0;display:flex}
 #search{flex:1 1 auto;width:100%;min-width:0;min-height:var(--tap);padding:var(--s2) 44px var(--s2) var(--s3);border-radius:var(--r);border:1px solid var(--field);font-size:1rem;background:var(--card);color:var(--ink)}
@@ -71,7 +72,7 @@ main{padding:var(--s3) var(--s3) var(--s5)}
 .prog{margin:var(--s3) 0;font-size:.875rem;color:var(--mut)}
 .prog .plabel{font-weight:600;color:var(--ink)}
 .prog .bar{height:6px;background:var(--line);border-radius:var(--r-pill);overflow:hidden;margin:var(--s1) 0}
-.prog .bar>i{display:block;height:100%;width:0;background:var(--ok)}
+.prog .bar>i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s ease}
 article.page{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--lec);border-radius:var(--r);padding:var(--s4) var(--s5) var(--s4);margin:var(--s3) auto;max-width:65ch;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 article.page h3{margin:var(--s1) 0 var(--s2);font-size:clamp(1.1875rem,1.05rem + .4vw,1.3125rem);line-height:1.3;color:var(--ink)}
 article.page:target{outline:3px solid var(--brand2);outline-offset:2px}
@@ -253,7 +254,7 @@ body.mode-inhalt #tocbtn{background:#fff;color:#1d3a5f;font-weight:600}
 .tocle h3{margin:var(--s1) 0 0;font-size:1.0625rem;line-height:1.35;display:flex;gap:var(--s2);align-items:baseline;flex-wrap:wrap}
 .tocmeta{margin:2px 0 var(--s1);font-size:.875rem;color:var(--mut)}
 .tocle .bar{height:6px;background:var(--line);border-radius:var(--r-pill);overflow:hidden;margin:0 0 var(--s1)}
-.tocle .bar>i{display:block;height:100%;width:0;background:var(--ok)}
+.tocle .bar>i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s ease}
 .toclist{list-style:none;margin:0;padding:0}
 .toclist li{margin:0;border-top:1px solid var(--line)}
 a.tocl{display:flex;align-items:baseline;gap:var(--s2);min-height:var(--tap);padding:10px var(--s1);color:var(--ink);text-decoration:none;line-height:1.4}
@@ -426,7 +427,7 @@ body.page-turning .book3d{animation:bookNudge .72s cubic-bezier(.2,.7,.2,1) both
 .robot-arm.left{left:8%;transform:rotate(17deg)}.robot-arm.right{right:2%;transform:rotate(-19deg)}
 .robot-hand{position:absolute;bottom:-10%;left:-23%;width:145%;height:24%;border-radius:45%;background:linear-gradient(90deg,#ffffff,#d6dde1);border:1px solid #89969e}
 .robot-leg{position:absolute;top:77%;width:18%;height:19%;border-radius:8px;background:linear-gradient(90deg,#aeb9c0,#ffffff,#d1d8dc);transform:translateZ(2px)}.robot-leg.l{left:34%}.robot-leg.r{left:59%}
-.robot-status{position:absolute;left:43%;top:10%;width:5px;height:5px;border-radius:50%;background:#e47b69;box-shadow:0 0 8px #e47b69}
+.robot-status{position:absolute;left:43%;top:10%;width:5px;height:5px;border-radius:50%;background:#e47b69;box-shadow:0 0 8px #e47b69;transition:background .3s,box-shadow .3s}.robot3d.mood-ok .robot-status{background:#2ecc71;box-shadow:0 0 10px #2ecc71}.robot3d.mood-bad .robot-status{background:#e74c3c;box-shadow:0 0 10px #e74c3c}
 body.page-turning .robot-arm.right{animation:robotGesture .72s ease-in-out both}
 body.page-turning .robot3d{animation:robotNod .72s ease-in-out both}
 @keyframes robotGesture{0%,100%{transform:rotate(-19deg)}45%{transform:rotate(-72deg)}70%{transform:rotate(-52deg)}}
@@ -516,15 +517,29 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
 .robot-arm,.robot-leg{background:linear-gradient(90deg,#87949d 0%,#f7f9fa 24%,#c3ccd2 55%,#f4f6f7 76%,#87949d 100%)!important;border:1px solid #74818a!important;box-shadow:inset 2px 1px 4px rgba(255,255,255,.9),inset -2px -2px 5px rgba(39,51,60,.3),0 2px 2px rgba(0,0,0,.16)!important}
 .robot-hand{background:linear-gradient(90deg,#9ba7af,#f8fafb 48%,#aeb9c1)!important;border:1px solid #74818a!important}
 </style>
+<style>.skiplink{position:absolute;left:-9999px;top:0;z-index:1000;background:var(--card);color:var(--ink);padding:var(--s2) var(--s3);border-radius:var(--r-sm)}.skiplink:focus{left:var(--s2);top:var(--s2);outline:3px solid var(--focus)}.view.active{animation:viewIn .22s ease-out}@keyframes viewIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.gap.ok,.ropt.ok{animation:okPulse .45s ease-out}.gap.bad,.ropt.bad{animation:badShake .4s ease-in-out}@keyframes okPulse{0%{transform:scale(1)}45%{transform:scale(1.06)}100%{transform:scale(1)}}@keyframes badShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-3px)}40%,80%{transform:translateX(3px)}}@media screen and (max-width:760px){#object-stage{opacity:.9!important;width:88px!important;height:112px!important;right:8px!important;bottom:12px!important;transform:scale(.58)!important;pointer-events:none}.robot3d{display:block!important}.book3d,.stage-label{display:none!important}}#bgprog{position:fixed;bottom:0;left:0;right:0;height:3px;z-index:49;pointer-events:none;opacity:0;transition:opacity .3s}#bgprog.show{opacity:1}#bgprog>div{height:100%;width:0;background:var(--brand2);transition:width .2s ease}#bgprog .bgprog-label{position:absolute;right:8px;bottom:6px;font-size:.7rem;color:var(--mut);background:var(--card);padding:2px 6px;border-radius:var(--r-sm);opacity:.85}.ring{width:44px;height:44px;flex-shrink:0}.ring-bg{fill:none;stroke:var(--line);stroke-width:4}.ring-fg{fill:none;stroke:var(--ok);stroke-width:4;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .4s ease}.prog{display:flex;align-items:center;gap:var(--s2)}.prog .ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px}.prog .bar{flex:1 1 4rem;min-width:2.5rem}.prog .prog-count{flex:0 1 12rem;min-width:0;text-align:right;font-size:.75rem}.prog .ring-pct{position:absolute;font-size:.625rem;font-weight:700;color:var(--ok)}.proglist{display:grid;gap:var(--s2)}.prog .plabel{flex:1;min-width:0}#prog-overall{display:flex;align-items:center;gap:var(--s3);margin:0 0 var(--s3);padding:var(--s2);background:var(--soft);border-radius:var(--r)}.prog-overall-ring{width:56px;height:56px}.prog-overall-ring .ring-fg{stroke:var(--brand)}.prog-overall-info{flex:1}.prog-overall-info strong{display:block;font-size:1.1rem}.prog-overall-info span{font-size:.8125rem;color:var(--mut)}body.praesentation{background:var(--ink);color:#f5f0e8}body.praesentation .view,body.praesentation article.page{display:block!important}body.praesentation header,body.praesentation #pager,body.praesentation footer,body.praesentation #readprog,body.praesentation #bgc,body.praesentation #bgveil,body.praesentation #object-stage{display:none!important}body.praesentation article.page{max-width:900px;margin:0 auto;padding:var(--s5) var(--s4);font-size:1.25rem;line-height:1.7}body.praesentation article.page h3{font-size:1.75rem;margin-bottom:var(--s3)}body.praesentation .praes-nav{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:var(--s2) var(--s3);background:rgba(0,0,0,.6);backdrop-filter:blur(8px);z-index:100}body.praesentation .praes-nav button{min-height:44px;padding:var(--s1) var(--s3);background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:var(--r-sm);cursor:pointer;font-size:1rem}body.praesentation .praes-nav button:hover{background:rgba(255,255,255,.25)}body.praesentation .praes-nav .praes-info{color:#fff;font-size:.875rem;opacity:.8}body.praesentation .praes-exit{position:fixed;top:var(--s2);right:var(--s2);background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:var(--r-sm);padding:var(--s1) var(--s2);cursor:pointer;z-index:101;font-size:1rem}/* Silikon-/Gummi-Animationen (Rubber-Bounce) */
+.btn{transition:transform .18s cubic-bezier(.34,1.56,.64,1),background .18s,box-shadow .18s}.btn:active{transform:scale(.96)}.hbtn{transition:transform .18s cubic-bezier(.34,1.56,.64,1),background .18s}.hbtn:active{transform:scale(.9)}.mi{transition:transform .18s cubic-bezier(.34,1.56,.64,1),background .18s}.mi:active{transform:scale(.97)}.ropt{transition:transform .2s cubic-bezier(.34,1.56,.64,1),background .15s}.ropt:active{transform:scale(.98)}.card,.page{transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s}.card:hover,.page:hover{transform:translateY(-2px)}.toast-in{animation:toastBounce .35s cubic-bezier(.34,1.56,.64,1)}@keyframes toastBounce{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}#savedflash{transition:opacity .2s,transform .2s cubic-bezier(.34,1.56,.64,1)}.ring-fg{transition:stroke-dashoffset .5s cubic-bezier(.34,1.56,.64,1)}.prog .bar>i{transition:width .4s cubic-bezier(.34,1.56,.64,1)}.tocle .bar>i{transition:width .4s cubic-bezier(.34,1.56,.64,1)}
+/* Dark-Mode-Transition */
+body{transition:background-color .4s ease,color .4s ease}article.page,.card,.info section{transition:background-color .4s ease,border-color .4s ease}header{transition:background .4s ease}
+/* Haptic: JS-triggered via navigator.vibrate (Android) */
+/* Parallax-Stage */
+@media(hover:hover) and (pointer:fine){#object-stage{transition:transform .15s ease-out,opacity .3s;will-change:transform}}
+/* Flip-Karten */
+.flipcard{perspective:800px;cursor:pointer}.flipcard-inner{position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}.flipcard.flipped .flipcard-inner{transform:rotateY(180deg)}.flipcard-front,.flipcard-back{backface-visibility:hidden}.flipcard-back{position:absolute;inset:0;transform:rotateY(180deg)}
+/* Loading-Skeleton */
+.skeleton{background:linear-gradient(90deg,var(--soft) 25%,var(--card) 50%,var(--soft) 75%);background-size:200% 100%;animation:shimmer 1.4s ease-in-out infinite;border-radius:var(--r-sm)}.skeleton-line{height:1rem;margin:var(--s1) 0}.skeleton-block{height:80px;margin:var(--s2) 0}@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}@media(prefers-reduced-motion:reduce){.skeleton{animation:none;background:var(--soft)}}
+/* Entscheidungsbaum */
+.dtree{display:grid;gap:var(--s2);margin:var(--s3) 0}.dtree-node{padding:var(--s2) var(--s3);border:1px solid var(--line);border-radius:var(--r);background:var(--card);position:relative;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s}.dtree-node:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}.dtree-node.yes{border-left:4px solid var(--ok)}.dtree-node.no{border-left:4px solid var(--red)}.dtree-node.abs{border-left:4px solid var(--brand2)}.dtree-arrow{display:flex;justify-content:center;color:var(--mut);font-size:1.2rem;margin:var(--s1) 0}
+.confirm-dlg{border:1px solid var(--line);border-radius:var(--r);padding:var(--s4);background:var(--card);color:var(--ink);box-shadow:0 12px 40px rgba(0,0,0,.25);max-width:90vw}.confirm-dlg::backdrop{background:rgba(0,0,0,.45)}.confirm-dlg .dlg-msg{margin:0 0 var(--s3);font-size:1rem;line-height:1.5}.confirm-dlg .dlg-actions{display:flex;gap:var(--s2);justify-content:flex-end}.confirm-dlg .btn{min-height:var(--tap)}</style>
 </head>
-<body class="mode-blaettern">
+<body class="mode-blaettern"><a class="skiplink" href="#maincontent">Zum Inhalt springen</a><div class="praes-nav" id="praesNav" hidden><button type="button" id="praesPrev">‹ Zurück</button><span class="praes-info" id="praesInfo"></span><button type="button" id="praesAuto">▶ Auto</button><button type="button" id="praesNext">Weiter ›</button></div><button type="button" class="praes-exit" id="praesExit" hidden>✕ Beenden</button>
 <canvas id="bgc" aria-hidden="true"></canvas><div id="bgveil" aria-hidden="true"></div>
 <div id="object-stage" aria-hidden="true">
  <div class="book3d"><div class="book-shadow"></div><div class="book-pages"></div><div class="book-leaf"></div><div class="book-cover"></div><div class="book-spine"></div></div>
  <div class="robot3d"><div class="robot-head"><i class="robot-status"></i></div><div class="robot-body"></div><div class="robot-arm left"><i class="robot-hand"></i></div><div class="robot-arm right"><i class="robot-hand"></i></div><div class="robot-leg l"></div><div class="robot-leg r"></div></div>
  <span class="stage-label">Lernbegleiter</span>
 </div>
-<div id="readprog" aria-hidden="true"><div></div></div>
+<div id="readprog" aria-hidden="true"><div></div></div><div id="bgprog" aria-hidden="true" hidden><div></div><span class="bgprog-label"></span></div>
 <header id="top">
  <div class="hrow">
   <h1><span class="hlong">Lern-</span>Kompendium § 8 AnFöVO<span class="hlong"> NRW</span></h1>
@@ -533,7 +548,7 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
  </div>
  <div class="hrow2">
   <div class="sbox"><input id="search" type="search" placeholder="Suchen" aria-label="Suche im Kompendium" aria-keyshortcuts="Control+K /" aria-controls="pages" autocomplete="off"><button type="button" id="sclear" aria-label="Suche leeren" hidden>✕</button></div>
-  <div id="pager" class="only-blaettern"><button type="button" class="hbtn" id="prev" aria-label="Vorherige Seite">‹</button><button type="button" class="hbtn" id="tocbtn" aria-controls="view-inhalt"><span class="tocw">Inhalt</span><span id="pagerinfo" aria-live="polite" aria-label="Lernseitenposition" aria-label="Lernseitenposition"></span></button><button type="button" class="hbtn" id="next" aria-label="Nächste Seite">›</button></div>
+  <div id="pager" class="only-blaettern"><button type="button" class="hbtn" id="prev" aria-label="Vorherige Seite">‹</button><button type="button" class="hbtn" id="tocbtn" aria-controls="view-inhalt"><span class="tocw">Inhalt</span><span id="pagerinfo" aria-live="polite" aria-label="Lernseitenposition"></span></button><button type="button" class="hbtn" id="next" aria-label="Nächste Seite">›</button></div>
   <span id="hits" class="only-suche" role="status" aria-live="polite" aria-atomic="true"></span>
   <button type="button" id="backheft" class="hbtn only-other">← Heft</button>
   <button type="button" id="printbtn" class="hbtn"><span aria-hidden="true">🖨</span><span class="ptxt"> Drucken</span></button>
@@ -545,13 +560,14 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
   <button type="button" class="mi" data-go="foto">📷 Aufgabe per Foto</button>
   <button type="button" class="mi" id="markdone" aria-pressed="false">✓ Diese Seite erledigt</button>
   <button type="button" class="mi" data-go="fortschritt">📊 Fortschritt und Sicherung</button>
+   <button type="button" class="mi" id="praesBtn">📽 Präsentieren</button>
   <button type="button" class="mi" data-go="quellen">📚 Quellen nach Lerneinheit</button>
   <button type="button" class="mi" id="printsol">🖨 Mit Lösungen drucken <span class="mut">(ohne eigene Eingaben)</span></button>
   <button type="button" class="mi" data-go="info">ℹ️ Anleitung, Begriffe, Selbsttest</button>
   <label class="mi"><input type="checkbox" id="allpages"> Alle Seiten zeigen</label>
  </div>
 </header>
-<main>
+<main id="maincontent">
 <div id="storenote" hidden>Dein Browser erlaubt hier keinen dauerhaften Speicher (z. B. bei file:// oder in einer WebView ohne DOM Storage). Deine Eingaben gelten nur bis zum Schließen. Speichere eine Sicherung unter „☰ Mehr“ → „Fortschritt und Sicherung“.</div>
 
 <section id="view-inhalt" class="view">
@@ -745,7 +761,8 @@ Hör nach ANNAHMEN UND UNSICHERHEITEN auf. Wenn kein Bild angehängt ist oder du
 
 <section id="view-fortschritt" class="view">
  <div class="info"><section><h2>📊 Fortschritt</h2><p class="core">Erledigt zählt eine Aufgabe, wenn alle Felder ausgefüllt sind oder du sie unter „Mehr“ als erledigt markierst.</p>
- <div id="proglist"><div class="prog" data-mod="E"><div class="plabel">Einführung: Alltagsbegleitung – was ist das?</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="M1"><div class="plabel">Modul 1 · Krankheit, Behinderung, Ressourcen</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="M2"><div class="plabel">Modul 2 · Unfälle vermeiden, Notfälle, Krisen</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="M3"><div class="plabel">Modul 3 · Unterstützungsbedarf, soziales Umfeld</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="M4"><div class="plabel">Modul 4 · Kommunikation und Konflikte</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="M5"><div class="plabel">Modul 5 · Recht und Versorgungssystem</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="M6"><div class="plabel">Modul 6 · Beschäftigung und Aktivierung</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="M7"><div class="plabel">Modul 7 · Rolle, Haltung, Grenzen</div><div class="bar"><i></i></div><span></span></div><div class="prog" data-mod="A"><div class="plabel">Anhang · Vertiefungsthemen</div><div class="bar"><i></i></div><span></span></div></div>
+ <div id="prog-overall"><svg class="prog-overall-ring" viewBox="0 0 56 56" aria-hidden="true"><circle class="ring-bg" cx="28" cy="28" r="24"/><circle class="ring-fg" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="150.8"/></svg><div class="prog-overall-info"><strong id="prog-overall-pct">0 %</strong><span id="prog-overall-txt">Fortschritt gesamt</span></div></div>
+<div id="proglist"><div class="prog" data-mod="E"><div class="plabel">Einführung: Alltagsbegleitung – was ist das?</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="M1"><div class="plabel">Modul 1 · Krankheit, Behinderung, Ressourcen</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="M2"><div class="plabel">Modul 2 · Unfälle vermeiden, Notfälle, Krisen</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="M3"><div class="plabel">Modul 3 · Unterstützungsbedarf, soziales Umfeld</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="M4"><div class="plabel">Modul 4 · Kommunikation und Konflikte</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="M5"><div class="plabel">Modul 5 · Recht und Versorgungssystem</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="M6"><div class="plabel">Modul 6 · Beschäftigung und Aktivierung</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="M7"><div class="plabel">Modul 7 · Rolle, Haltung, Grenzen</div><div class="bar"><i></i></div><span class="prog-count"></span></div><div class="prog" data-mod="A"><div class="plabel">Anhang · Vertiefungsthemen</div><div class="bar"><i></i></div><span class="prog-count"></span></div></div>
  </section>
  <section aria-labelledby="sich-h"><h2 id="sich-h">💾 Sichern und neu anfangen</h2>
  <p class="core">Deine Eingaben sind nur auf diesem Gerät gespeichert.</p>
@@ -1282,12 +1299,21 @@ function isDone(a){var t=a.dataset.type;
  if(a.dataset.id==='m5-darf'){return $$('fieldset.darf').every(function(fs){return S.darf[fs.dataset.i]!==undefined;});}
  return !!S.done[a.dataset.id]||allFilled(a);}
 function exercisesOf(mod){return $$('article.page[data-mod="'+mod+'"]').filter(function(a){return a.dataset.fill==='1';});}
+function ensureProgressRings(){if(!document.querySelector('.ring')){$$('.prog').forEach(function(p){var w=p.querySelector('.ring-wrap');if(w)return;var wrap=document.createElement('span');wrap.className='ring-wrap';var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','ring');svg.setAttribute('viewBox','0 0 40 40');svg.setAttribute('aria-hidden','true');var bg=document.createElementNS('http://www.w3.org/2000/svg','circle');bg.setAttribute('class','ring-bg');bg.setAttribute('cx','20');bg.setAttribute('cy','20');bg.setAttribute('r','16');var fg=document.createElementNS('http://www.w3.org/2000/svg','circle');fg.setAttribute('class','ring-fg');fg.setAttribute('cx','20');fg.setAttribute('cy','20');fg.setAttribute('r','16');fg.setAttribute('stroke-dasharray','100.5');fg.setAttribute('stroke-dashoffset','100.5');svg.appendChild(bg);svg.appendChild(fg);wrap.appendChild(svg);var pct=document.createElement('span');pct.className='ring-pct';pct.textContent='0%';wrap.appendChild(pct);var bar=p.querySelector('.bar');if(bar)bar.parentNode.insertBefore(wrap,bar);});}}
 function updateProgress(){
+ ensureProgressRings();
+ var allExercises=$('article.page[data-fill="1"]');var totalDone=allExercises.filter(isDone).length,totalEx=allExercises.length;
  DATA.modules.forEach(function(m){var ex=exercisesOf(m[0]);var d=ex.filter(isDone).length;
-  $$('.prog[data-mod="'+m[0]+'"]').forEach(function(p){p.querySelector('i').style.width=(ex.length?100*d/ex.length:0)+'%';var sc=sureCount(m[0]);p.querySelector('span').textContent=d+' von '+ex.length+' Aufgaben erledigt'+(sc[1]?' · '+sc[0]+' von '+sc[1]+' Prüfungsfragen sicher':'');});});
+  $$('.prog[data-mod="'+m[0]+'"]').forEach(function(p){var pct=ex.length?Math.round(100*d/ex.length):0;p.querySelector('i').style.width=pct+'%';var fg=p.querySelector('.ring-fg');if(fg)fg.setAttribute('stroke-dashoffset',String(100.5*(1-pct/100)));var rp=p.querySelector('.ring-pct');if(rp)rp.textContent=pct+'%';var sc=sureCount(m[0]);p.querySelector('.prog-count').textContent=d+' von '+ex.length+' Aufgaben erledigt'+(sc[1]?' · '+sc[0]+' von '+sc[1]+' Prüfungsfragen sicher':'');});});
  updateToc();
  var md=$('#markdone'),cur=list[idx];if(md&&cur){md.setAttribute('aria-pressed',S.done[cur.dataset.id]?'true':'false');}
- updateReadBar();}
+ updateReadBar();
+ // Overall ring
+ var op=document.getElementById('prog-overall-pct'),ot=document.getElementById('prog-overall-txt'),ofg=document.querySelector('#prog-overall .ring-fg');
+ var overallPct=totalEx?Math.round(100*totalDone/totalEx):0;
+ if(op)op.textContent=overallPct+' %';
+ if(ot)ot.textContent=totalDone+' von '+totalEx+' Aufgaben erledigt';
+ if(ofg)ofg.setAttribute('stroke-dashoffset',String(150.8*(1-overallPct/100)));}
 // ---------- Inhaltsverzeichnis (je LE: x von y ausgefüllt) ----------
 function updateToc(){var groups={};
  $$('#toc a.tocl').forEach(function(l){var a=document.getElementById('p-'+l.dataset.goto);if(!a)return;var g=l.closest('.tocle').dataset.g;groups[g]=groups[g]||[0,0];
@@ -1341,7 +1367,10 @@ function bgLoad(n){if(BG.frames[n])return BG.frames[n].p;var im=new Image();im.d
 function bgPreloadAll(){
  if(BG.preloadPromise)return BG.preloadPromise;
  var names=['r00'].concat(bgSeq('w'),bgSeq('z'));
- BG.preloadPromise=Promise.all(names.map(function(n){return bgLoad(n); })).then(function(results){BG.preloadPromise=null;return results.every(Boolean);},function(){BG.preloadPromise=null;return false;});
+ var prog=document.getElementById('bgprog'),bar=prog?prog.querySelector('div'):null,lbl=prog?prog.querySelector('.bgprog-label'):null;
+  if(prog){prog.hidden=false;requestAnimationFrame(function(){prog.classList.add('show');});}
+  var done=0;function tick(){done++;if(bar)bar.style.width=Math.round(done/names.length*100)+'%';if(lbl)lbl.textContent='Hintergrund wird geladen… '+done+'/'+names.length;}
+  BG.preloadPromise=Promise.all(names.map(function(n){return bgLoad(n).then(function(r){tick();return r;});})).then(function(results){BG.preloadPromise=null;if(prog){setTimeout(function(){prog.classList.remove('show');setTimeout(function(){prog.hidden=true;if(bar)bar.style.width='0%';},300);},400);}return results.every(Boolean);},function(){BG.preloadPromise=null;if(prog){prog.classList.remove('show');prog.hidden=true;}return false;});
  return BG.preloadPromise;
 }
 function bgSize(){var d=Math.min(window.devicePixelRatio||1,1.5);BG.cv.width=Math.max(1,Math.round(innerWidth*d));BG.cv.height=Math.max(1,Math.round(innerHeight*d));}
@@ -1404,17 +1433,17 @@ function normAns(s){return String(s||'').toLowerCase().replace(/ä/g,'ae').repla
 function gapAlts(g){try{return JSON.parse(g.dataset.alts);}catch(e){return [];}}
 function checkGap(g,val){var alts=gapAlts(g),v=normAns(val),fb=$('.gap-fb',g);g.classList.remove('ok','bad');
  if(!v){fb.textContent='○ leer';return false;}
- var ok=alts.some(function(a){return normAns(a)===v;});g.classList.add(ok?'ok':'bad');
+ var ok=alts.some(function(a){return normAns(a)===v;});g.classList.add(ok?'ok':'bad');haptic(ok?8:15);
  fb.textContent=ok?'✓ passt':'✗ vergleiche mit Lösung ('+(g.dataset.key.split('-').pop())+')';return ok;}
 function setGap(g,val){var i=$('.gap-in',g);i.value=val;i.classList.toggle('filled',!!val.trim());S.gaps[g.dataset.key]=val;if(!val)delete S.gaps[g.dataset.key];save('gaps');}
 // ---------- Ankreuzen (Checkpoint, Darf ich das?) ----------
-function answer(mod,qi,oi){var fs=$('fieldset[data-mod="'+mod+'"][data-q="'+qi+'"]');var r=$$('input[type=radio]',fs)[oi];r.checked=true;S.quiz[mod]=S.quiz[mod]||{};S.quiz[mod][qi]=oi;save('quiz');evalTaskIfOpen(fs);updateProgress();return oi===DATA.quiz[mod][qi][2];}
-function darfAnswer(i,v){var fs=$('fieldset.darf[data-i="'+i+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=r.value===v;});S.darf[i]=v;save('darf');evalTaskIfOpen(fs);updateProgress();return v===fs.dataset.a;}
+function answer(mod,qi,oi){var fs=$('fieldset[data-mod="'+mod+'"][data-q="'+qi+'"]');var r=$$('input[type=radio]',fs)[oi];r.checked=true;S.quiz[mod]=S.quiz[mod]||{};S.quiz[mod][qi]=oi;save('quiz');evalTaskIfOpen(fs);updateProgress();var _ok=oi===DATA.quiz[mod][qi][2];setMood(_ok);haptic(_ok?8:15);return _ok;}
+function darfAnswer(i,v){var fs=$('fieldset.darf[data-i="'+i+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=r.value===v;});S.darf[i]=v;save('darf');evalTaskIfOpen(fs);updateProgress();var _ok=v===fs.dataset.a;setMood(_ok);haptic(_ok?8:15);return _ok;}
 function showEt(fs){var v=S.endtest[fs.dataset.k],fb=$('.etfb',fs),right=+fs.dataset.right;$$('label.ropt',fs).forEach(function(l){l.classList.remove('ok','bad');});if(v===undefined){fb.textContent='';fb.className='etfb';return null;}
  var ok=+v===right,labs=$$('label.ropt',fs);labs[right].classList.add('ok');if(!ok&&labs[+v])labs[+v].classList.add('bad');
  fb.className='etfb '+(ok?'ok':'bad');fb.textContent=(ok?'✓ Richtig. ':'✗ Leider falsch. Richtig ist: „'+labs[right].textContent.trim()+'“. ')+fs.dataset.expl;return ok;}
 function etScore(){var a=$('#p-ende');if(!a)return;var fs=$$('fieldset.et',a),n=0,c=0;fs.forEach(function(f){var v=S.endtest[f.dataset.k];if(v!==undefined){n++;if(+v===+f.dataset.right)c++;}});$('.etscore',a).textContent=n?(c+' von '+fs.length+' richtig'+(n<fs.length?' ('+(fs.length-n)+' offen)':'')):'';}
-function endAnswer(k,v){var fs=$('fieldset.et[data-k="'+k+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=+r.value===+v;});S.endtest[k]=+v;save('endtest');var ok=showEt(fs);etScore();updateProgress();return ok;}
+function endAnswer(k,v){var fs=$('fieldset.et[data-k="'+k+'"]');$$('input[type=radio]',fs).forEach(function(r){r.checked=+r.value===+v;});S.endtest[k]=+v;save('endtest');var ok=showEt(fs);etScore();updateProgress();setMood(ok);haptic(ok?8:15);if(ok){var _fs=$$('fieldset.et',$('#p-ende'));var _n=0,_c=0;_fs.forEach(function(f){var v=S.endtest[f.dataset.k];if(v!==undefined){_n++;if(+v===+f.dataset.right)_c++;}});if(_n===_fs.length&&_c===_n&&_fs.length>0){confettiBurst();haptic([30,50,30]);}}return ok;}
 function markRadios(fs,right){$$('label.ropt',fs).forEach(function(l){var r=$('input',l);l.classList.remove('ok','bad');if(r.value===String(right))l.classList.add('ok');else if(r.checked)l.classList.add('bad');});}
 function evalTask(task){var c=0,n=0;
  $$('.gap',task).forEach(function(g){n++;if(checkGap(g,$('.gap-in',g).value))c++;});
@@ -1422,11 +1451,12 @@ function evalTask(task){var c=0,n=0;
  $$('fieldset.darf',task).forEach(function(fs){n++;markRadios(fs,fs.dataset.a);var ch=$('input:checked',fs);if(ch&&ch.value===fs.dataset.a)c++;});
  var sc=$('.quizscore',task);if(sc)sc.textContent=n?(c+' von '+n+' richtig'):'';return [c,n];}
 function clearEval(task){$$('.gap',task).forEach(function(g){g.classList.remove('ok','bad');$('.gap-fb',g).textContent='';});$$('label.ropt',task).forEach(function(l){l.classList.remove('ok','bad');});var sc=$('.quizscore',task);if(sc)sc.textContent='';}
-function evalTaskIfOpen(el){var t=el.closest('.task');if(!t)return;var d=$('details.loesung',t);if(d&&d.open)evalTask(t);}
+function updateGapMood(task,editedGap){var gaps=$('.gap',task),allFilled=gaps.length>0,hasWrong=false;gaps.forEach(function(g){var input=$('.gap-in',g),value=input?input.value:'';if(!normAns(value)){allFilled=false;return;}if(!gapAlts(g).some(function(a){return normAns(a)===normAns(value);}))hasWrong=true;});if(hasWrong){setMood(false);return;}if(allFilled){setMood(true);return;}if(editedGap)setMood(checkGap(editedGap,$('.gap-in',editedGap).value));}
+function evalTaskIfOpen(el){var t=el.closest('.task');if(!t)return;var d=$('details.loesung',t);if(d&&d.open){evalTask(t);if(el.classList.contains('gap-in'))updateGapMood(t,el.closest('.gap'));}}
 // v2.5 (Alex t46u): „Alle Lösungen dieser Seite zeigen“ (schnell zum Abschreiben); kein exklusives Akkordeon
 function syncAllSol(a){var b=$('#allsol');if(!b)return;a=a||$('article.page.current');var L=a?$$('details.loesung,details.schluessel',a):[];b.hidden=!L.length;var all=L.length&&L.every(function(d){return d.open;});b.setAttribute('aria-pressed',all?'true':'false');b.textContent=all?'Lösungen dieser Seite zuklappen':'Alle Lösungen dieser Seite zeigen';}
-function toggleAllSol(){var a=$('article.page.current');if(!a)return 0;var L=$$('details.loesung,details.schluessel',a);var open=!L.every(function(d){return d.open;});L.forEach(function(d){d.open=open;if(!d.classList.contains('loesung'))return;var t=d.closest('.task');if(open)evalTask(t);else clearEval(t);});syncAllSol(a);return L.length;}
-function openSolution(a,open){var d=$('details.loesung',a);if(!d)return null;d.open=open!==false;var t=d.closest('.task');if(d.open)return evalTask(t);clearEval(t);return null;}
+function toggleAllSol(){var a=$('article.page.current');if(!a)return 0;var L=$$('details.loesung,details.schluessel',a);var open=!L.every(function(d){return d.open;});L.forEach(function(d){d.open=open;if(!d.classList.contains('loesung'))return;var t=d.closest('.task');if(open){evalTask(t);updateGapMood(t,null);}else clearEval(t);});syncAllSol(a);return L.length;}
+function openSolution(a,open){var d=$('details.loesung',a);if(!d)return null;d.open=open!==false;var t=d.closest('.task');if(d.open){var result=evalTask(t);updateGapMood(t,null);return result;}clearEval(t);return null;}
 
 // ---------- Wiederherstellen / Löschen ----------
 function restoreAll(){
@@ -1437,8 +1467,8 @@ function restoreAll(){
  $$('fieldset.et').forEach(function(fs){var v=S.endtest[fs.dataset.k];$$('input[type=radio]',fs).forEach(function(r){r.checked=v!==undefined&&+r.value===+v;});showEt(fs);});etScore();
  $$('details.loesung').forEach(function(d){d.open=false;clearEval(d.closest('.task'));});
  syncPrintVals();updateProgress();}
-function clearAll(ask){if(ask!==false&&!window.confirm('Alle Eingaben und den Fortschritt auf diesem Gerät löschen? Das lässt sich nicht rückgängig machen.'))return false;
- ['gaps','done','cards','quiz','notes','darf','endtest'].forEach(function(k){S[k]={};save(k);});S.exam=null;save('exam');restoreAll();showCard();return true;}
+function doClearAll(){['gaps','done','cards','quiz','notes','darf','endtest'].forEach(function(k){S[k]={};save(k);});S.exam=null;save('exam');restoreAll();showCard();}
+function clearAll(ask){if(ask===false){doClearAll();return true;}if(window.confirm!==nativeConfirm){if(!window.confirm('Alle Eingaben und den Fortschritt auf diesem Gerät löschen? Das lässt sich nicht rückgängig machen.'))return false;doClearAll();return true;}uiConfirm('Alle Eingaben und den Fortschritt auf diesem Gerät löschen? Das lässt sich nicht rückgängig machen.',function(ok){if(!ok)return;doClearAll();updateProgress();});return false;}
 
 // ---------- Export / Import ----------
 function exportData(){return {app:'anfoevo_v2',version:VERSION,exported:new Date().toISOString(),data:{gaps:S.gaps,done:S.done,cards:S.cards,quiz:S.quiz,notes:S.notes,darf:S.darf,exam:S.exam,endtest:S.endtest,prefs:S.prefs}};}
@@ -1458,7 +1488,7 @@ function importData(obj){
  catch(e){present.forEach(function(k){S[k]=previous[k];save(k);});try{restoreAll();}catch(ignore){}throw e;}
  return true;
 }
-function download(){var blob=new Blob([JSON.stringify(exportData(),null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='anfoevo_v2_fortschritt.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);}
+function download(){uiConfirm('Sicherung jetzt speichern? Die Datei landet im Download-Ordner.',function(ok){if(!ok)return;var ts=new Date().toISOString().slice(0,10);var blob=new Blob([JSON.stringify(exportData(),null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='anfoevo_v2_fortschritt_'+ts+'.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);var f=$('#savedflash');if(f){f.textContent='Sicherungsdownload gestartet.';clearTimeout(flashT);flashT=setTimeout(function(){f.textContent='';},2500);}});}
 function upload(file){if(!file)return;if(file.size>5*1024*1024){alert('Import abgebrochen: Die Datei ist größer als 5 MB.');return;}var r=new FileReader();r.onerror=function(){alert('Import fehlgeschlagen: Datei konnte nicht gelesen werden.');};r.onload=function(){try{importData(JSON.parse(r.result));alert('Fortschritt importiert.');}catch(e){alert('Import fehlgeschlagen: '+e.message);}};r.readAsText(file);}
 
 // ---------- Druck ----------
@@ -1506,16 +1536,17 @@ function init(){
  $('#toc').addEventListener('click',function(e){var l=e.target.closest('a.tocl');if(!l)return;e.preventDefault();goToId(l.dataset.goto);try{window.scrollTo(0,0);}catch(x){}var h=$('#p-'+l.dataset.goto+' h3');if(h){h.setAttribute('tabindex','-1');try{h.focus({preventScroll:true});}catch(x){}}});
  $('#mehr').addEventListener('click',function(e){e.stopPropagation();toggleMenu();});
  $$('#mehrmenu .mi[data-go]').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.go);try{window.scrollTo(0,0);}catch(e){}});});
- $('#markdone').addEventListener('click',function(){var a=list[idx];if(!a)return;if(mode!=='blaettern')setMode('blaettern');var id=a.dataset.id;if(S.done[id])delete S.done[id];else S.done[id]=true;save('done');updateProgress();});
+ $('#markdone').addEventListener('click',function(){var a=list[idx];if(!a)return;if(mode!=='blaettern')setMode('blaettern');var id=a.dataset.id;var completed=!S.done[id];if(completed)S.done[id]=true;else delete S.done[id];save('done');updateProgress();if(completed){setMood(true);confettiBurst();haptic([20,40,20]);}});
  document.addEventListener('click',function(e){var mm=$('#mehrmenu');if(!mm.hidden&&!e.target.closest('#mehrmenu,#mehr'))closeMenu();});
  $('#pages').addEventListener('input',function(e){var t=e.target;
   if(t.classList.contains('gap-in')){setGap(t.closest('.gap'),t.value);evalTaskIfOpen(t);updateProgress();flashSaved();}
   else if(t.matches('textarea.notes')){S.notes[t.dataset.id]=t.value;if(!t.value)delete S.notes[t.dataset.id];save('notes');t.classList.toggle('filled',!!t.value.trim());syncPrintVals(t);updateProgress();flashSaved();}});
  $('#pages').addEventListener('change',function(e){var t=e.target;if(t.type!=='radio')return;var fs=t.closest('fieldset');
   if(fs.classList.contains('et'))endAnswer(fs.dataset.k,+t.value);else if(fs.classList.contains('darf'))darfAnswer(+fs.dataset.i,t.value);else if(fs.dataset.mod)answer(fs.dataset.mod,+fs.dataset.q,+t.value);flashSaved();});
- $$('details.loesung').forEach(function(d){d.addEventListener('toggle',function(){var t=d.closest('.task');if(d.open)evalTask(t);else clearEval(t);var a=d.closest('article.page');if(a&&a.classList.contains('current'))syncAllSol(a);});});
+ $('details.loesung').forEach(function(d){d.addEventListener('toggle',function(){var t=d.closest('.task');if(d.open){evalTask(t);updateGapMood(t,null);}else clearEval(t);var a=d.closest('article.page');if(a&&a.classList.contains('current'))syncAllSol(a);});});
  $('#allsol').addEventListener('click',toggleAllSol);
  document.addEventListener('keydown',function(e){
+  var confirmDialog=$('#confirmDlg');if(confirmDialog&&confirmDialog.open)return;
   if(e.key==='Enter'&&e.target.classList&&e.target.classList.contains('gap-in')){e.preventDefault();var all=$$('.gap-in').filter(function(x){return x.getClientRects().length;});var k=all.indexOf(e.target);if(all[k+1])all[k+1].focus();return;}
   if(e.key==='Escape'){if(!$('#mehrmenu').hidden){closeMenu();$('#mehr').focus();return;}if(e.target.id==='search'){e.target.value='';onSearchInput();return;}}
   if((e.ctrlKey||e.metaKey)&&!e.altKey&&(e.key==='k'||e.key==='K')){e.preventDefault();focusSearch();return;}
@@ -1528,7 +1559,7 @@ function init(){
  $('#reveal').addEventListener('click',flip);['known','unsure','unknown'].forEach(function(v){$('#r-'+v).addEventListener('click',function(){rate(v);});});
  $('#cardfilter').addEventListener('change',showCard);
  $('#examstart').addEventListener('click',function(){startExam(+$('#examn').value);});$('#exameval').addEventListener('click',evalExam);
- $('#cardsreset').addEventListener('click',function(){if(confirm('Kartenfortschritt zurücksetzen?')){S.cards={};save('cards');ci=0;showCard();}});
+ $('#cardsreset').addEventListener('click',function(){uiConfirm('Kartenfortschritt zurücksetzen?',function(ok){if(ok){S.cards={};save('cards');ci=0;showCard();}});});
  $('#clearall').addEventListener('click',function(e){e.preventDefault();clearAll();});
  $('#exportlink').addEventListener('click',function(e){e.preventDefault();download();});
  $$('.importfile').forEach(function(inp){inp.addEventListener('change',function(){if(inp.files[0])upload(inp.files[0]);inp.value='';});});
@@ -2109,5 +2140,43 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 };
 </script>
 
+<dialog id="confirmDlg" class="confirm-dlg" aria-labelledby="confirmDlgTitle" aria-describedby="confirmDlgMessage"><h2 id="confirmDlgTitle" class="vhid">Aktion bestätigen</h2><p id="confirmDlgMessage" class="dlg-msg"></p><div class="dlg-actions"><button type="button" class="dlg-cancel btn">Abbrechen</button><button type="button" class="dlg-ok btn primary">OK</button></div></dialog>
+<script>function setMood(ok){var rb=document.querySelector('.robot3d');if(!rb)return;rb.classList.remove('mood-ok','mood-bad');rb.classList.add(ok?'mood-ok':'mood-bad');clearTimeout(rb._m);rb._m=setTimeout(function(){rb.classList.remove('mood-ok','mood-bad');},1600);}function confettiBurst(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var c=document.createElement('canvas'),ctx=null;try{ctx=c.getContext('2d');}catch(e){return;}if(!ctx)return;c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999';document.body.appendChild(c);var W=c.width=window.innerWidth,H=c.height=window.innerHeight;var parts=[];for(var i=0;i<120;i++)parts.push({x:W/2,y:H/3,vx:(Math.random()-.5)*12,vy:Math.random()*-12-4,g:.35,r:Math.random()*4+2,a:1,col:'hsl('+(Math.random()*360|0)+',80%,60%)'});var t=0;(function loop(){t++;ctx.clearRect(0,0,W,H);var alive=false;parts.forEach(function(p){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.a-=.012;if(p.a>0&&p.y<H+20){alive=true;ctx.globalAlpha=Math.max(0,p.a);ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}});ctx.globalAlpha=1;if(alive&&t<120)requestAnimationFrame(loop);else c.remove();})();}var m=document.querySelector('meta[name="theme-color"]');if(m){var d=matchMedia('(prefers-color-scheme:dark)');function up(){m.setAttribute('content',d.matches?'#14181d':'#294b3d');}up();d.addEventListener?d.addEventListener('change',up):d.addListener(up);}window.confettiBurst=confettiBurst;window.setMood=setMood;var nativeConfirm=window.confirm;function uiConfirm(msg,done){if(window.confirm!==nativeConfirm){done(window.confirm(msg));return;}var dlg=document.getElementById('confirmDlg');if(!dlg||typeof dlg.showModal!=='function'){done(window.confirm(msg));return;}dlg.querySelector('.dlg-msg').textContent=msg;var ok=dlg.querySelector('.dlg-ok'),cancel=dlg.querySelector('.dlg-cancel');function cleanup(){ok.removeEventListener('click',onOk);cancel.removeEventListener('click',onCancel);dlg.removeEventListener('cancel',onCancelDlg);try{dlg.close();}catch(e){}}function onOk(){cleanup();done(true);}function onCancel(){cleanup();done(false);}function onCancelDlg(){cleanup();done(false);}ok.addEventListener('click',onOk);cancel.addEventListener('click',onCancel);dlg.addEventListener('cancel',onCancelDlg);dlg.showModal();}window.uiConfirm=uiConfirm;window.addEventListener('kompendium:pagechange',function(){setMood(true);});
+// ---------- Parallax-Stage (nur Desktop) ----------
+(function(){if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;var st=document.getElementById('object-stage');if(!st)return;var cx=innerWidth/2,cy=innerHeight/2;document.addEventListener('mousemove',function(e){var dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;st.style.transform='rotateY('+(dx*4)+'deg) rotateX('+(-dy*3)+'deg)';},{passive:true});})();
+// ---------- Haptic Feedback (Android) ----------
+function haptic(ms){if(navigator.vibrate)try{navigator.vibrate(ms||12);}catch(e){}}
+window.haptic=haptic;
+// ---------- Präsentationsmodus ----------
+function togglePraesentation(on){
+  var body=document.body, nav=document.getElementById('praesNav'), exit=document.getElementById('praesExit');
+  if(on){body.classList.add('praesentation');if(nav)nav.hidden=false;if(exit)exit.hidden=false;updatePraesInfo();}
+  else{body.classList.remove('praesentation');if(nav)nav.hidden=true;if(exit)exit.hidden=true;}
+}
+function updatePraesInfo(){var info=document.getElementById('praesInfo');if(!info)return;var cur=list&&list[idx];var t=cur?cur.dataset.title||'Seite '+(idx+1):'Seite '+(idx+1);info.textContent=t+' ('+(idx+1)+'/'+(list?list.length:0)+')';}
+var _praesKeyHandler=null;
+function startPraesentation(){togglePraesentation(true);if(typeof setMode==='function')setMode('blaettern');
+  var prevBtn=document.getElementById('praesPrev'),nextBtn=document.getElementById('praesNext'),exitBtn=document.getElementById('praesExit');
+  if(prevBtn)prevBtn.onclick=function(){if(idx>0){flipDir=-1;if(typeof bgTurn==='function')bgTurn(-1);goTo(idx-1);updatePraesInfo();}};
+  if(nextBtn)nextBtn.onclick=function(){if(idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}};
+  if(exitBtn)exitBtn.onclick=function(){stopPraesentation();};
+  // Auto-Play
+  var autoBtn=document.getElementById('praesAuto');var autoTimer=null;var autoOn=false;
+  function stopAuto(){autoOn=false;if(autoTimer){clearInterval(autoTimer);autoTimer=null;}if(autoBtn)autoBtn.textContent='▶ Auto';}
+  function startAuto(){autoOn=true;if(autoBtn)autoBtn.textContent='⏸ Stopp';autoTimer=setInterval(function(){if(idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}else{stopAuto();}},4000);}
+  if(autoBtn)autoBtn.onclick=function(){if(autoOn)stopAuto();else startAuto();};
+  // stop auto on manual nav
+  var _origNext=nextBtn.onclick;nextBtn.onclick=function(){stopAuto();if(_origNext)_origNext();};
+  var _origPrev=prevBtn.onclick;prevBtn.onclick=function(){stopAuto();if(_origPrev)_origPrev();};
+  _praesKeyHandler=function(e){if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();if(idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}}else if(e.key==='ArrowLeft'){e.preventDefault();if(idx>0){flipDir=-1;if(typeof bgTurn==='function')bgTurn(-1);goTo(idx-1);updatePraesInfo();}}else if(e.key==='Escape'){stopPraesentation();}};
+  document.addEventListener('keydown',_praesKeyHandler);
+  // swipe
+  var sx=0;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  document.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){if(dx<0&&idx<list.length-1){flipDir=1;if(typeof bgTurn==='function')bgTurn(1);goTo(idx+1);updatePraesInfo();}else if(dx>0&&idx>0){flipDir=-1;if(typeof bgTurn==='function')bgTurn(-1);goTo(idx-1);updatePraesInfo();}}}, {passive:true});
+}
+function stopPraesentation(){togglePraesentation(false);if(_praesKeyHandler){document.removeEventListener('keydown',_praesKeyHandler);_praesKeyHandler=null;}if(typeof stopAuto==='function')stopAuto();}
+var praesBtn=document.getElementById('praesBtn');if(praesBtn)praesBtn.addEventListener('click',function(){var mm=document.getElementById('mehrmenu');if(mm)mm.hidden=true;var mb=document.getElementById('mehr');if(mb)mb.setAttribute('aria-expanded','false');startPraesentation();});
+// hook pagechange to update info
+window.addEventListener('kompendium:pagechange',function(){if(document.body.classList.contains('praesentation'))updatePraesInfo();});
 </body>
 </html>
