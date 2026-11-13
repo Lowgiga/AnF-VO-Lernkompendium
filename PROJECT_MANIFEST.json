@@ -1,5 +1,5 @@
 {
-    "project":  "AnFÃ¶VO NRW Digital Learning Compendium",
+    "project":  "AnFöVO NRW Digital Learning Compendium",
     "version":  "2.9.2",
     "entry":  "index.html",
     "standalone":  true,
@@ -22,7 +22,7 @@
     "design_direction":  "hybrid",
     "robot_appearance":  "silver",
     "content_preservation":  "Preserve all 70 existing learning pages and all current learning functionality; no unreviewed content edits.",
-    "github_repository":  "https://github.com/Lowgiga/AnF-VO-Lernkompendium",
+    "github_repository":  "https://github.com/Lowgiga/AnFoVO-Lernkompendium",
     "github_visibility":  "public",
     "android":  {
                     "application_id":  "de.omega.lernkompendium",
