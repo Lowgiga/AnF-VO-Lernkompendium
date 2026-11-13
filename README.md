@@ -134,7 +134,8 @@ flowchart LR
 
 - Installierbar unter `/AnFoVO-Lernkompendium/` — **alle Pfade relativ**, Manifest + Service Worker + Icons
 - Service Worker registriert sich nur unter `http(s)`; `file://` und `android_asset` bleiben voll nutzbar
-- Lokale Web-Oberfläche erzeugbar mit `bash scripts/prepare-pages-surface.sh` → `dist/pages/` (schaltet GitHub Pages **nicht** ein)
+- Lokale Web-Oberfläche erzeugbar mit `bash scripts/prepare-pages-surface.sh` → `dist/pages/`
+- **GitHub Pages aktiv:** https://lowgiga.github.io/AnFoVO-Lernkompendium/ (PWA installierbar, Offline-fähig)
 - ⚠️ Vor öffentlicher Freigabe: Impressum-Platzhalter `[vor Veröffentlichung ergänzen: Name, Anschrift, Kontakt]` durch echte Angaben nach § 5 DDG ersetzen — Schritte in [docs/GITHUB_PAGES.md](docs/GITHUB_PAGES.md)
 
 </details>
