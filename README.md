@@ -23,7 +23,7 @@ Die Anwendung enthält folgende visuelle Verbesserungen:
 
 Ein digitales, offlinefähiges Lern-Kompendium zur Basisqualifizierung nach § 8 AnFöVO NRW. Das Projekt verbindet interaktive Lernseiten, Aufgaben und Lösungen mit lokal gespeicherter Lernaktivität, einer hybriden Buch-/Navigationsoberfläche und einer Android-WebView-App.
 
-> **Projektstand:** Version 2.9.1 · 70 Lernseiten · lokale Web-App und Android-Projekt
+> **Projektstand:** Version 2.9.2 · 70 Lernseiten · lokale Web-App und Android-Projekt
 
 ## Überblick
 
@@ -106,13 +106,11 @@ Nicht als abgeschlossen ausgewiesen sind ein visueller Pixelvergleich, die Insta
 This project is released under the **Apache License 2.0** (see [LICENSE](./LICENSE)). Public visibility alone does not imply reuse rights beyond the license terms.
 
 ## Android-App
-## Android-App
->>>>>>> origin/main
 
 | Merkmal | Wert |
 | --- | --- |
 | Application ID | `de.omega.lernkompendium` |
-| Version | `2.9.1` |
+| Version | `2.9.2` |
 | Version Code | `291` |
 | Minimum Android | API 29 |
 | Compile-/Target-SDK | 36 |
@@ -147,7 +145,7 @@ Dieses Repository enthält eine [Apache License 2.0](LICENSE). Die Lizenzbedingu
 ## Projektinformationen
 
 - Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium)
-- Aktueller Projektstand: `main` · v2.9.1
+- Aktueller Projektstand: `main` · v2.9.2
 - Änderungsübersicht: [CHANGELOG.md](CHANGELOG.md)
 - Produktspezifikation: [PRODUKT_SPEZIFIKATION.md](PRODUKT_SPEZIFIKATION.md)
 - Build-Nachweis: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md)

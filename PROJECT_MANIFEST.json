@@ -1,6 +1,6 @@
 {
     "project":  "AnFÃ¶VO NRW Digital Learning Compendium",
-    "version":  "2.9.1",
+    "version":  "2.9.2",
     "entry":  "index.html",
     "standalone":  true,
     "runtime_network_requests_added":  false,
@@ -26,8 +26,8 @@
     "github_visibility":  "public",
     "android":  {
                     "application_id":  "de.omega.lernkompendium",
-                    "version":  "2.9.1",
-                    "version_code":  291,
+                    "version":  "2.9.2",
+                    "version_code":  292,
                     "min_sdk":  29,
                     "compile_sdk":  36,
                     "target_sdk":  36,
