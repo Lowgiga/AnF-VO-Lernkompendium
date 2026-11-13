@@ -1,6 +1,9 @@
-﻿/* Service Worker: cache-first, versionierter Cache. VERSION/BUILD werden beim Release aktualisiert. */
+﻿/* Service Worker: cache-first, versioned cache.
+   Relative URLs stay valid under the GitHub Pages project subpath
+   /AnFoVO-Lernkompendium/ and under the Android asset-loader origin.
+   VERSION/BUILD change when the cached shell changes. */
 var VERSION = '2.9.1';
-var BUILD = 'robotnav-v2.8.0';
+var BUILD = 'web-pwa-2.9.1';
 var CACHE = 'anfoevo_v2_cache_' + VERSION + '-' + BUILD;
 /* Kern: muss vollständig sein (addAll) */
 var ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './icon-512-maskable.png'];
@@ -28,4 +31,3 @@ self.addEventListener('fetch', function (e) {
     }).catch(function () { return e.request.mode === 'navigate' ? caches.match('./index.html') : Response.error(); });
   }));
 });
-

@@ -24,6 +24,7 @@ Confirm current values in source files before relying on this baseline.
 - Do not downgrade Gradle, AGP, SDK or application version to hide a build failure.
 - Preserve the app ID, WebView security posture, offline behavior and local-first runtime.
 - Keep `android/app/src/main/assets/index.html` byte-identical to root `index.html`.
+- Keep `manifest.json`, `sw.js`, the PWA icons, and `bg/` byte-identical with the repository root.
 - Do not add cleartext traffic, broad permissions, remote navigation or JavaScript bridges without a documented threat analysis and explicit need.
 - Never touch release keystores, signing secrets or publishing credentials without explicit authorization.
 - Do not claim device validation from a successful CI build.

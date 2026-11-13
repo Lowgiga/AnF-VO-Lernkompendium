@@ -19,7 +19,8 @@ Working on `index.html`, HTML/CSS/JavaScript behavior, learning-page navigation,
 - Root `index.html` remains the authoritative, self-contained runtime.
 - Do not add mandatory CDN, remote font, network request, backend or external runtime dependency.
 - Preserve all learning text, page structure, exercises, answer keys, citations and legal references.
-- Keep the Android asset copy byte-identical.
+- Keep the Android asset copy byte-identical, including `manifest.json`, `sw.js`, icons, and `bg/` when those PWA files change.
+- Keep manifest and service-worker URLs relative so the app can be hosted under `/AnFoVO-Lernkompendium/`. Register the service worker only for `http:`/`https:` and skip `android_asset`.
 - Preserve search, navigation, local notes/progress, quiz and print behavior.
 - Use semantic elements and accessible labels/focus states.
 

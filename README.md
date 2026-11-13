@@ -33,7 +33,7 @@ Das Lern-Kompendium ist als **local-first Anwendung** aufgebaut. Die zentrale An
 - **Fortschritt:** Lernfortschritt wird lokal gespeichert und kann über die vorhandene Sicherungsfunktion exportiert werden.
 - **Navigation:** Eine hybride Oberfläche verbindet ein digitales 3D-Buch mit einer lesbaren, zugänglichen Lernansicht.
 - **RobotNav:** Ein deterministischer, browserseitiger Layout- und Navigationshelfer unterstützt die Oberfläche. Der Roboter ist eine dekorative Figur und kein KI-Agent.
-- **Offline und PWA:** Die Anwendung ist auf lokale Nutzung ausgelegt; Web-App- und Android-Assets werden im Projekt mitgeführt.
+- **Offline und PWA:** Die Root-Dateien bilden eine installierbare Offline-PWA mit relativen Pfaden für `/AnFoVO-Lernkompendium/`. Dieselben Web-Dateien liegen bytegleich im Android-Asset-Verzeichnis. GitHub Pages ist nicht eingeschaltet.
 - **Android:** Ein natives Android-Projekt kapselt dieselbe HTML-Anwendung in einer WebView.
 
 ## Schnellstart
@@ -44,7 +44,15 @@ Das Lern-Kompendium ist als **local-first Anwendung** aufgebaut. Die zentrale An
 2. `index.html` im aktuellen Browser öffnen.
 3. Das Kompendium über die Buch- und Seitennavigation verwenden.
 
-Für die Kernanwendung ist kein lokaler Entwicklungsserver erforderlich. Bei Nutzung als installierbare PWA müssen die dafür vorgesehenen Web-App-Dateien über einen geeigneten lokalen oder gehosteten HTTP(S)-Origin bereitgestellt werden; Browser beschränken Service Worker auf sichere Kontexte.
+Für die Kernanwendung ist kein lokaler Entwicklungsserver erforderlich. Ein Service Worker wird nur bei `http:` oder `https:` registriert. `file://` und Adressen mit `android_asset` bleiben ohne Worker nutzbar. Für die Installation als PWA muss die Seite über HTTP(S) ausgeliefert werden, unter dem Projektpfad `/AnFoVO-Lernkompendium/`.
+
+Eine lokale, nicht veröffentlichende Web-Oberfläche ohne `android/`, `tests/` und Gradle erzeugt:
+
+```bash
+bash scripts/prepare-pages-surface.sh
+```
+
+Das Ergebnis liegt in `dist/pages/`. Das Skript schaltet GitHub Pages nicht ein und ändert keine Repository-Einstellungen. Vor einer öffentlichen Freigabe muss der Impressum-Platzhalter `[vor Veröffentlichung ergänzen: Name, Anschrift, Kontakt]` durch die echten Angaben nach § 5 DDG ersetzt werden. Die Schritte stehen in [GitHub Pages](docs/GITHUB_PAGES.md).
 
 ### Android
 
@@ -62,7 +70,10 @@ Das Android-Projekt befindet sich in `android/`. Es verwendet die mitgelieferte 
 | Pfad | Zweck |
 | --- | --- |
 | `index.html` | Eigenständige Web-Anwendung und Einstiegspunkt |
+| `manifest.json`, `sw.js`, `icon-192.png`, `icon-512.png`, `icon-512-maskable.png` | Web-App-Manifest, Service Worker und Installationsicons |
 | `bg/` | Hintergrund- und Animationsbilder der Web-Anwendung |
+| `.nojekyll` | Hält Jekyll bei einer späteren GitHub-Pages-Veröffentlichung aus |
+| `scripts/prepare-pages-surface.sh` | Lokale Kopie der Web-Oberfläche nach `dist/pages/`, ohne Veröffentlichung |
 | `android/` | Android-WebView-Projekt inklusive Gradle Wrapper und App-Assets |
 | `algorithm/` | RobotNav-Quellmaterial und algorithmische Komponenten |
 | `tests/` | Statische Prüfungen, Browser-Smoke-Tests und RobotNav-Tests |
@@ -90,7 +101,7 @@ npx playwright install chromium
 npm run test:all
 ```
 
-Bei Verwendung eines bereits installierten Chrome-/Chromium-Browsers kann `CHROMIUM_PATH` auf dessen ausführbare Datei gesetzt werden. Die Browserprüfungen decken die Desktop- und Mobilansicht, Seitennavigation, Suche, Fortschrittsspeicherung, Backup-Export, Druckfunktion, Hintergrundressourcen und Browserfehler ab. Der RobotNav-Test prüft unter anderem verschachtelte Scrollbereiche, Cache-Bereinigung, Observer-Stabilität und Teardown.
+Bei Verwendung eines bereits installierten Chrome-/Chromium-Browsers kann `CHROMIUM_PATH` auf dessen ausführbare Datei gesetzt werden. Die Browserprüfungen decken die Desktop- und Mobilansicht, Seitennavigation, Suche, Fortschrittsspeicherung, Backup-Export, Druckfunktion, Hintergrundressourcen und Browserfehler ab. Der RobotNav-Test prüft unter anderem verschachtelte Scrollbereiche, Cache-Bereinigung, Observer-Stabilität und Teardown. `npm run test:all` prüft zusätzlich die Auslieferung unter `/AnFoVO-Lernkompendium/`: Manifest, Service-Worker-Registrierung, Cache der Hintergrundframes und einen Offline-Ladevorgang. Ein Aufruf über `file://` registriert dabei keinen Worker.
 
 ### Verifizierter Stand 2.9.1
 

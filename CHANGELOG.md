@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Prepared the repository root as an installable offline PWA for the GitHub Pages project subpath `/AnFoVO-Lernkompendium/`.
+- Mirrored `manifest.json`, `sw.js`, icons, and `bg/` between the root and the Android asset directory.
+- Bumped the service-worker cache name to `anfoevo_v2_cache_2.9.1-web-pwa-2.9.1`.
+- Updated the impressum version stamp to v2.9.1 and left the § 5 DDG placeholder in place.
+- Added `scripts/prepare-pages-surface.sh` to build a local web-only directory. GitHub Pages stays disabled.
+
 ## 2.9.1
 - Added a matching Android WebView wrapper and built a debug APK with Gradle 8.13 / AGP 8.13.2.
 - Fixed the Android round-icon resource reference so the APK resource-linking step succeeds.

@@ -6,7 +6,8 @@
     "scripts":  {
                     "test":  "node run-browser-tests.cjs",
                     "test:smoke":  "node smoke-app.cjs",
-                    "test:all":  "npm test \u0026\u0026 npm run test:smoke"
+                    "test:pwa":  "node pwa-subpath.cjs",
+                    "test:all":  "npm test \u0026\u0026 npm run test:smoke \u0026\u0026 npm run test:pwa"
                 },
     "devDependencies":  {
                             "playwright":  "^1.56.0"
