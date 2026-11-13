@@ -84,6 +84,7 @@ function startServer() {
     page.on('pageerror', (error) => errors.push(String(error)));
     if (FRAME_NAMES.length !== 58) throw new Error('Expected 58 background frames, found ' + FRAME_NAMES.length);
     await page.goto(base, { waitUntil: 'load' });
+    let installTimer;
     const installed = await Promise.race([
       page.evaluate(async ({ expectedCache, expectedPaths }) => {
         if (!window.__pwaRegisterAttempted) return { ok: false, reason: 'registration was not attempted' };
@@ -99,12 +100,16 @@ function startServer() {
           return { ok: false, reason: 'icon URL ' + iconUrl.pathname };
         }
         const manifest = await (await fetch(manifestUrl)).json();
-        const registration = await Promise.race([
-          navigator.serviceWorker.ready,
-          new Promise((_, reject) => {
-            setTimeout(() => reject(new Error('service worker did not become active within 15 seconds')), 15000);
-          })
-        ]);
+        const registration = await new Promise((resolve, reject) => {
+          const timer = setTimeout(() => reject(new Error('service worker did not become active within 15 seconds')), 15000);
+          navigator.serviceWorker.ready.then((value) => {
+            clearTimeout(timer);
+            resolve(value);
+          }, (error) => {
+            clearTimeout(timer);
+            reject(error);
+          });
+        });
         const names = await caches.keys();
         const cache = await caches.open(expectedCache);
         const keys = await cache.keys();
@@ -126,9 +131,9 @@ function startServer() {
         };
       }, { expectedCache: CACHE, expectedPaths: EXPECTED_CACHE }),
       new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('PWA install check timed out after 20 seconds')), 20000);
+        installTimer = setTimeout(() => reject(new Error('PWA install check timed out after 20 seconds')), 20000);
       })
-    ]);
+    ]).finally(() => clearTimeout(installTimer));
     if (!installed.ok) throw new Error(installed.reason || 'install check failed');
     if (!installed.scope.endsWith('/AnFoVO-Lernkompendium/')) throw new Error('Unexpected scope ' + installed.scope);
     if (!installed.script.endsWith('/AnFoVO-Lernkompendium/sw.js')) throw new Error('Unexpected worker ' + installed.script);

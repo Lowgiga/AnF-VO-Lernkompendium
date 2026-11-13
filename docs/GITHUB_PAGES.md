@@ -25,7 +25,7 @@ The Git branch also contains `android/`, `tests/`, and the Gradle wrapper. Those
 - `.nojekyll`
 - `LICENSE`
 
-It excludes `android/`, `tests/`, and Gradle. It does not enable GitHub Pages, push a branch, or change repository settings. `dist/pages/` is a local directory you can publish yourself later. A custom destination is accepted only under `dist/` or outside the repository. The script refuses to delete the repository itself.
+It excludes `android/`, `tests/`, and Gradle. It does not enable GitHub Pages, push a branch, or change repository settings. `dist/pages/` is a local directory you can publish yourself later. A custom destination is accepted only under `dist/` or outside the repository. The script refuses to delete the repository itself. An existing destination is replaced only when it already contains the `.pages-surface` marker written by this script.
 
 ## Before a public launch
 
