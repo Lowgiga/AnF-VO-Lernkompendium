@@ -1,71 +1,58 @@
-# AnFöVO Lernkompendium
+<div align="center">
 
-- Build-Nachweis: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:1e3a8a,100:38bdf8&height=150&section=header&text=AnF%C3%B6VO%20Lernkompendium&fontSize=34&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Offline%20Lern-App%20%C2%B7%2070%20Lernseiten%20%C2%B7%20PWA%20%2B%20Android&descAlignY=64&descSize=15&descColor=93c5fd" width="100%"/>
 
-## Visuelle Weiterentwicklung (v2.9.2)
+<a href="https://github.com/Lowgiga/AnFoVO-Lernkompendium">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=20&duration=2800&pause=900&color=38BDF8&center=true&vCenter=true&width=780&lines=70+interaktive+Lernseiten+mit+Aufgaben+und+L%C3%B6sungen;Offline-First+%E2%80%94+l%C3%A4uft+komplett+ohne+Cloud;Installierbare+PWA+%2B+Android-WebView-App;RobotNav+%E2%80%A2+deterministische+Buch-Navigation;Dark+Mode+%E2%80%A2+Haptik+%E2%80%A2+Konfetti+%E2%80%A2+3D-Parallax" alt="Typing SVG" />
+</a>
 
-Die Anwendung enthält folgende visuelle Verbesserungen:
+<br/>
 
-- **Silikon-Animationen:** Rubber-Bounce (cubic-bezier) für Buttons, Karten, Toasts und Ringe
-- **Dark-Mode-Transition:** Sanfter 0.4s-Farbübergang zwischen Hell/Dunkel
-- **Haptic Feedback:** Vibration bei Antworten, markdone und Konfetti (Android)
-- **Parallax-Stage:** Mausposition steuert subtile 3D-Rotation der Lernbegleiter-Stage
-- **Präsentationsmodus:** Fullscreen-Slides mit Tastatur/Swipe-Navigation und Auto-Play
-- **Lern-Dashboard:** SVG-Fortschrittsringe pro Modul + Gesamtfortschritt
-- **Progressive Loading:** BG-Preload-Fortschrittsleiste, Smooth-Transitions
-- **Loading-Skeletons:** Shimmer-Platzhalter für Ladezustände
-- **Dialog-System:** Gestyltes <dialog> statt nativem confirm()
-- **Mobile-Maskottchen:** Mini-Roboter auf Smartphones (≤760px) mit LED-Zuständen
+![CI](https://img.shields.io/github/actions/workflow/status/Lowgiga/AnFoVO-Lernkompendium/android-build.yml?style=for-the-badge&label=CI&logo=github&logoColor=white)
+![Version](https://img.shields.io/github/v/release/Lowgiga/AnFoVO-Lernkompendium?style=for-the-badge&label=Version&logo=github&logoColor=white)
+![Lizenz](https://img.shields.io/github/license/Lowgiga/AnFoVO-Lernkompendium?style=for-the-badge&label=Lizenz&logo=opensourceinitiative&logoColor=white)
+<br/>
+![Android](https://img.shields.io/badge/Android-WebView%20App-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-Offline%20f%C3%A4hig-F97316?style=for-the-badge&logoColor=white)
+![Lernseiten](https://img.shields.io/badge/Lernseiten-70-7B2FBE?style=for-the-badge&logo=bookstack&logoColor=white)
 
+</div>
 
+---
 
-# AnFöVO Lernkompendium
+## ⚡ Was ist das AnFöVO Lernkompendium?
 
-Ein digitales, offlinefähiges Lern-Kompendium zur Basisqualifizierung nach § 8 AnFöVO NRW. Das Projekt verbindet interaktive Lernseiten, Aufgaben und Lösungen mit lokal gespeicherter Lernaktivität, einer hybriden Buch-/Navigationsoberfläche und einer Android-WebView-App.
+> Ein digitales, **offlinefähiges Lern-Kompendium** zur Basisqualifizierung nach § 8 AnFöVO NRW. Interaktive Lernseiten, Aufgaben und Lösungen — mit lokal gespeichertem Fortschritt, einer hybriden Buch-/Lernoberfläche und einer Android-WebView-App. **Local-first:** Die Kernanwendung benötigt zur Laufzeit keine externen Dienste.
 
-> **Projektstand:** Version 2.9.2 · 70 Lernseiten · lokale Web-App und Android-Projekt
+**Drei Ebenen. Ein Kompendium. Keine Cloud-Pflicht.**
 
-## Überblick
+| Ebene | Funktion | Kern | Status |
+| --- | --- | --- | --- |
+| 🌐 **Web-App** | 70 Lernseiten · Fortschritt · Suche · Druck | `index.html` (eigenständig) | ✅ Verifiziert |
+| 🤖 **RobotNav** | Deterministische Buch- und Navigationsassistenz | browserseitig, dekorativ | ✅ Aktiv |
+| 📴 **PWA** | Installierbar unter `/AnFoVO-Lernkompendium/` | `manifest.json` + `sw.js` | ✅ Offline getestet |
+| 📱 **Android-App** | WebView-Kapsel derselben Web-Dateien | `de.omega.lernkompendium` | ✅ Release v2.9.2 |
 
-Das Lern-Kompendium ist als **local-first Anwendung** aufgebaut. Die zentrale Anwendung liegt in `index.html` und kann direkt im Browser geöffnet werden. Die Lerninhalte bleiben lokal verfügbar; der Kern der Anwendung benötigt zur Laufzeit keine externen Dienste.
+## 🧠 Architektur
 
-- **Lernen:** 70 strukturierte Lernseiten mit Aufgaben und Lösungen.
-- **Fortschritt:** Lernfortschritt wird lokal gespeichert und kann über die vorhandene Sicherungsfunktion exportiert werden.
-- **Navigation:** Eine hybride Oberfläche verbindet ein digitales 3D-Buch mit einer lesbaren, zugänglichen Lernansicht.
-- **RobotNav:** Ein deterministischer, browserseitiger Layout- und Navigationshelfer unterstützt die Oberfläche. Der Roboter ist eine dekorative Figur und kein KI-Agent.
-- **Offline und PWA:** Die Root-Dateien bilden eine installierbare Offline-PWA mit relativen Pfaden für `/AnFoVO-Lernkompendium/`. Dieselben Web-Dateien liegen bytegleich im Android-Asset-Verzeichnis. GitHub Pages ist nicht eingeschaltet.
-- **Android:** Ein natives Android-Projekt kapselt dieselbe HTML-Anwendung in einer WebView.
-
-## Schnellstart
-
-### Im Browser
-
-1. Repository herunterladen oder klonen.
-2. `index.html` im aktuellen Browser öffnen.
-3. Das Kompendium über die Buch- und Seitennavigation verwenden.
-
-Für die Kernanwendung ist kein lokaler Entwicklungsserver erforderlich. Ein Service Worker wird nur bei `http:` oder `https:` registriert. `file://` und Adressen mit `android_asset` bleiben ohne Worker nutzbar. Für die Installation als PWA muss die Seite über HTTP(S) ausgeliefert werden, unter dem Projektpfad `/AnFoVO-Lernkompendium/`.
-
-Eine lokale, nicht veröffentlichende Web-Oberfläche ohne `android/`, `tests/` und Gradle erzeugt:
-
-```bash
-bash scripts/prepare-pages-surface.sh
+```mermaid
+flowchart LR
+    subgraph WEB["🌐 Web-Oberfläche · Repository-Root"]
+        IDX["index.html<br/>70 Lernseiten · Aufgaben · Lösungen"]
+        PWA["manifest.json · sw.js<br/>Icons · bg/"]
+        IDX --- PWA
+    end
+    subgraph APP["📱 Android · de.omega.lernkompendium"]
+        WV["MainActivity<br/>WebView"]
+        AST["assets/<br/>bytegleiche Web-Dateien"]
+    end
+    QA["🧪 tests/<br/>verify-build.py · Playwright"]
+    IDX -- "installierbare PWA" --> WV
+    AST --> WV
+    QA --> IDX
 ```
 
-Das Ergebnis liegt in `dist/pages/`. Das Skript schaltet GitHub Pages nicht ein und ändert keine Repository-Einstellungen. Vor einer öffentlichen Freigabe muss der Impressum-Platzhalter `[vor Veröffentlichung ergänzen: Name, Anschrift, Kontakt]` durch die echten Angaben nach § 5 DDG ersetzt werden. Die Schritte stehen in [GitHub Pages](docs/GITHUB_PAGES.md).
-
-### Android
-
-Das Android-Projekt befindet sich in `android/`. Es verwendet die mitgelieferte HTML-Anwendung und deren Assets.
-
-## Produkt- und Gestaltungsprinzipien
-
-- **Inhalte bewahren:** Alle 70 bestehenden Lernseiten und ihre Lernfunktionalität bleiben erhalten. Inhaltliche Änderungen erfolgen nicht stillschweigend.
-- **Offline zuerst:** Keine zusätzlichen externen Laufzeitabhängigkeiten oder Netzwerkaufrufe für die Kernanwendung.
-- **Zugänglichkeit und Lesbarkeit:** Die Buchmetapher ergänzt die lesbare Lernoberfläche, statt sie zu ersetzen.
-- **Deterministische Navigation:** RobotNav arbeitet browserseitig und reproduzierbar. Der silberne Roboter ist rein dekorativ, stellt keine Netzwerkverbindungen her und führt keine autonomen Agentenaktionen aus.
-
-## Projektstruktur
+## 📁 Projektstruktur
 
 | Pfad | Zweck |
 | --- | --- |
@@ -80,11 +67,96 @@ Das Android-Projekt befindet sich in `android/`. Es verwendet die mitgelieferte 
 | `docs/` | Architektur-, Design- und Inhaltserhaltungsdokumentation |
 | `release/` | Erstellte Testartefakte und Android-Quellpakete |
 
-Weitere Informationen: [Architektur](docs/ARCHITECTURE.md), [Design System](docs/DESIGN_SYSTEM.md) und [Content Preservation](docs/CONTENT_PRESERVATION.md).
+## ✨ Funktionen im Detail
 
-## Qualitätssicherung
+<details open>
+<summary><b>🎓 Lernen & Fortschritt</b></summary>
+<br>
 
-Die automatisierten Prüfungen werden aus dem Repository ausgeführt.
+- **70 strukturierte Lernseiten** mit Aufgaben und Lösungen zur Basisqualifizierung nach § 8 AnFöVO NRW
+- Lernfortschritt wird **lokal gespeichert** und lässt sich über die Sicherungsfunktion exportieren
+- **Hybride Oberfläche:** digitales 3D-Buch + lesbare, zugängliche Lernansicht
+- Suche, Druckfunktion und Backup-Export sind direkt integriert
+
+</details>
+
+<details open>
+<summary><b>✨ Visuelle Weiterentwicklung (v2.9.2)</b></summary>
+<br>
+
+- **Silikon-Animationen:** Rubber-Bounce (cubic-bezier) für Buttons, Karten, Toasts und Ringe
+- **Dark-Mode-Transition:** sanfter 0,4 s-Farbübergang zwischen Hell/Dunkel
+- **Haptic Feedback:** Vibration bei Antworten, Abhaken und Konfetti (Android)
+- **Parallax-Stage:** Mausposition steuert subtile 3D-Rotation der Lernbegleiter-Stage
+- **Präsentationsmodus:** Fullscreen-Slides mit Tastatur-/Swipe-Navigation und Auto-Play
+- **Lern-Dashboard:** SVG-Fortschrittsringe pro Modul + Gesamtfortschritt
+- **Progressive Loading:** BG-Preload-Fortschrittsleiste mit Smooth-Transitions
+- **Loading-Skeletons:** Shimmer-Platzhalter für Ladezustände
+- **Dialog-System:** gestyltes `<dialog>` statt nativem `confirm()`
+- **Mobile-Maskottchen:** Mini-Roboter auf Smartphones (≤ 760 px) mit LED-Zuständen
+
+</details>
+
+<details>
+<summary><b>🤖 RobotNav — deterministische Navigation</b></summary>
+<br>
+
+- Browserseitiger, **reproduzierbarer** Layout- und Navigationshelfer
+- Der silberne Roboter ist **rein dekorativ** — keine KI, keine Netzwerkverbindungen, keine Agentenaktionen
+- Abgesichert durch einen eigenen **RobotNav-Test-Harness** (verschachtelte Scrollbereiche, Cache-Bereinigung, Observer-Stabilität, Teardown)
+
+</details>
+
+<details>
+<summary><b>📴 Offline & PWA</b></summary>
+<br>
+
+- Installierbar unter `/AnFoVO-Lernkompendium/` — **alle Pfade relativ**, Manifest + Service Worker + Icons
+- Service Worker registriert sich nur unter `http(s)`; `file://` und `android_asset` bleiben voll nutzbar
+- Lokale Web-Oberfläche erzeugbar mit `bash scripts/prepare-pages-surface.sh` → `dist/pages/` (schaltet GitHub Pages **nicht** ein)
+- ⚠️ Vor öffentlicher Freigabe: Impressum-Platzhalter `[vor Veröffentlichung ergänzen: Name, Anschrift, Kontakt]` durch echte Angaben nach § 5 DDG ersetzen — Schritte in [docs/GITHUB_PAGES.md](docs/GITHUB_PAGES.md)
+
+</details>
+
+## 🛠️ Tech-Stack
+
+<div align="center">
+<img src="https://skillicons.dev/icons?i=html,css,javascript,python,nodejs,git,github,androidstudio&theme=dark&perline=4"/>
+</div>
+
+| Ebene | Technologie |
+| --- | --- |
+| **Web** | HTML/CSS/JavaScript — eigenständige Single-File-App (`index.html`) |
+| **PWA** | `manifest.json` · `sw.js` · relative Pfade für `/AnFoVO-Lernkompendium/` |
+| **Android** | Java 17 · androidx.webkit 1.18.0 · Gradle 8.13 · AGP 8.13.2 |
+| **Tests** | Python (`tests/verify-build.py`) · Node.js + Playwright (Chromium) |
+| **CI** | GitHub Actions — Projektvalidierung + Android-Debug-Build |
+
+## 🚀 Schnellstart
+
+### Im Browser
+
+```bash
+git clone https://github.com/Lowgiga/AnFoVO-Lernkompendium.git
+cd AnFoVO-Lernkompendium
+# index.html direkt im Browser öffnen — kein Build, kein Server, keine Abhängigkeiten
+```
+
+Das Kompendium wird über die Buch- und Seitennavigation bedient. Für die Kernanwendung ist kein lokaler Entwicklungsserver erforderlich; ein Service Worker wird nur unter `http(s)` registriert.
+
+### Als PWA installieren (optional)
+
+Die Seite über HTTP(S) unter `/AnFoVO-Lernkompendium/` ausliefern und das Installationsangebot des Browsers nutzen.
+
+### Lokale Web-Surface (ohne Android-Teile)
+
+```bash
+bash scripts/prepare-pages-surface.sh   # → dist/pages/
+```
+
+Das Skript schaltet GitHub Pages nicht ein und ändert keine Repository-Einstellungen.
+
+## 🧪 Qualitätssicherung
 
 ### Statische Projektprüfung
 
@@ -101,33 +173,33 @@ npx playwright install chromium
 npm run test:all
 ```
 
-Bei Verwendung eines bereits installierten Chrome-/Chromium-Browsers kann `CHROMIUM_PATH` auf dessen ausführbare Datei gesetzt werden. Die Browserprüfungen decken die Desktop- und Mobilansicht, Seitennavigation, Suche, Fortschrittsspeicherung, Backup-Export, Druckfunktion, Hintergrundressourcen und Browserfehler ab. Der RobotNav-Test prüft unter anderem verschachtelte Scrollbereiche, Cache-Bereinigung, Observer-Stabilität und Teardown. `npm run test:all` prüft zusätzlich die Auslieferung unter `/AnFoVO-Lernkompendium/`: Manifest, Service-Worker-Registrierung, Cache der Hintergrundframes und einen Offline-Ladevorgang. Ein Aufruf über `file://` registriert dabei keinen Worker.
+Bei vorhandenem Chrome/Chromium genügt `CHROMIUM_PATH` statt der Playwright-Installation. Die Browserprüfungen decken Desktop- und Mobilansicht, Seitennavigation, Suche, Fortschrittsspeicherung, Backup-Export, Druckfunktion, Hintergrundressourcen und Browserfehler ab. `npm run test:all` prüft zusätzlich die Auslieferung unter `/AnFoVO-Lernkompendium/`: Manifest, Service-Worker-Registrierung, Cache der Hintergrundframes und einen **Offline-Ladevorgang** (über `file://` registriert sich dabei kein Worker).
 
-### Verifizierter Stand 2.9.1
+### Verifizierter Stand (v2.9.2)
 
-- 70 Lernseiten im Browser-Smoke-Test erkannt.
-- Desktop- und Mobil-Smoke-Test erfolgreich; keine Seitenfehler, Konsolenfehler oder fehlgeschlagenen Ressourcen in den geprüften Läufen.
-- RobotNav-Harness erfolgreich; drei verschachtelte Scrollbereiche und keine Observer-Selbstauslösungen.
-- Android-Debug-APK mit Gradle 8.13, Android Gradle Plugin 8.13.2 und JDK 21 erstellt.
-- APK-Signatur der ARM64-Debug-APK geprüft.
-- HTML-Datei im Android-Asset-Verzeichnis byte-identisch mit der Projektdatei.
+- ✅ Statische Projektprüfung: **32/32 Checks bestanden**
+- ✅ Browser- und RobotNav-Harness grün; 70 Lernseiten im Smoke-Test erkannt; keine Seiten- oder Konsolenfehler in den geprüften Läufen
+- ✅ CI „Project validation and Android debug build“ **grün auf `main`**
+- ✅ Release **v2.9.2** mit signierten APKs; Release-APK (Version Code 292) auf einem Galaxy S25 installiert, App-Start ohne Crash/ANR
+- ✅ HTML im Android-Asset-Verzeichnis **byteidentisch** mit der Projektdatei; APK-Signaturen per APK Signature Scheme v2 geprüft
+- ⏳ Offen: visueller Pixelvergleich; Play-Store-Veröffentlichung (Release-Signing: [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md))
 
-Nicht als abgeschlossen ausgewiesen sind ein visueller Pixelvergleich, die Installation und Laufzeitprüfung auf einem realen Galaxy-S25-Gerät sowie das Produktions-Release-Signing. Die erzeugte APK ist eine Debug-APK und keine Play-Store-fertige Veröffentlichung. Details stehen in [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
+Details zum Build-Weg: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
 
-This project is released under the **Apache License 2.0** (see [LICENSE](./LICENSE)). Public visibility alone does not imply reuse rights beyond the license terms.
-
-## Android-App
+## 📱 Android-App
 
 | Merkmal | Wert |
 | --- | --- |
 | Application ID | `de.omega.lernkompendium` |
 | Version | `2.9.2` |
-| Version Code | `291` |
+| Version Code | `292` |
 | Minimum Android | API 29 |
 | Compile-/Target-SDK | 36 |
 | Android Gradle Plugin | 8.13.2 |
 | Gradle Wrapper | 8.13 |
-| Unterstützte Gradle-JDK-Laufzeit | 17 oder 21 |
+| JDK-Laufzeit | 17 oder 21 |
+| WebView | androidx.webkit 1.18.0 |
+| ABIs | arm64-v8a · x86_64 · universal |
 
 ### Debug-APK erstellen
 
@@ -135,7 +207,7 @@ This project is released under the **Apache License 2.0** (see [LICENSE](./LICEN
 
 ```powershell
 cd android
-.\\gradlew.bat --no-daemon clean :app:assembleDebug
+.\gradlew.bat --no-daemon clean :app:assembleDebug
 ```
 
 **Linux/macOS:**
@@ -145,19 +217,62 @@ cd android
 ./gradlew --no-daemon clean :app:assembleDebug
 ```
 
-Der eingecheckte Gradle-Wrapper enthält Launcher-JAR, Windows- und POSIX-Startskripte sowie eine SHA-256-Prüfsumme für die Gradle-Distribution. CI validiert den Wrapper und baut mit JDK 17, Android SDK Platform 36 und Android Build Tools 36.0.0. Den Wrapper nicht durch eine ungeprüfte globale Gradle-Installation ersetzen.
+Der eingecheckte Gradle-Wrapper enthält Launcher-JAR, Windows- und POSIX-Startskripte sowie eine SHA-256-Prüfsumme; CI validiert den Wrapper und baut mit JDK 17, Android SDK Platform 36 und Build Tools 36.0.0. Den Wrapper nicht durch eine ungeprüfte globale Gradle-Installation ersetzen.
 
-Die Debug-APK wird mit dem standardmäßigen Android-Debug-Schlüssel signiert und ist ausschließlich für Tests vorgesehen. Für eine produktive Veröffentlichung ist ein eigener, sicher verwahrter Release-Keystore erforderlich.
+Die Debug-APK ist mit dem Standard-Debug-Schlüssel signiert und nur für Tests gedacht. Für eine produktive Veröffentlichung ist ein eigener, sicher verwahrter Release-Keystore erforderlich.
 
-## Lizenz
+## 📊 Statistiken & Aktivität
 
-Dieses Repository enthält eine [Apache License 2.0](LICENSE). Die Lizenzbedingungen und Hinweise in der Datei `LICENSE` sind maßgeblich.
+<div align="center">
 
-## Projektinformationen
+<img height="170em" src="https://github-readme-stats.vercel.app/api?username=Lowgiga&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=38BDF8&icon_color=7B2FBE&text_color=c9d1d9"/>
+<img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Lowgiga&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=38BDF8&text_color=c9d1d9"/>
 
-- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium)
-- Aktueller Projektstand: `main` · v2.9.2
+<br/>
+
+<img src="https://streak-stats.demolab.com?user=Lowgiga&theme=tokyonight-duo&hide_border=true&background=0D1117&fire=38BDF8&ring=7B2FBE&currStreakLabel=38BDF8"/>
+
+<br/>
+
+<img src="https://github-profile-trophy.vercel.app/?username=Lowgiga&theme=algolia&no-frame=true&no-bg=true&margin-w=4&row=1"/>
+
+</div>
+
+## 🐍 Contribution-Snake
+
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lowgiga/Lowgiga/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lowgiga/Lowgiga/output/github-snake.svg" />
+  <img alt="Contribution-Snake" src="https://raw.githubusercontent.com/Lowgiga/Lowgiga/output/github-snake.svg" />
+</picture>
+
+</div>
+
+*Wird per GitHub Action im Profil-Repository [`Lowgiga/Lowgiga`](https://github.com/Lowgiga/Lowgiga) generiert (täglich + manuell auslösbar).*
+
+## ⚖️ Lizenz & Grundsätze
+
+- **Apache License 2.0** — siehe [LICENSE](LICENSE). Öffentliche Sichtbarkeit allein begründet keine Weiternutzungsrechte über die Lizenz hinaus.
+- **Inhalte bewahren:** Alle 70 Lernseiten und ihre Funktionalität bleiben erhalten; inhaltliche Änderungen erfolgen nie stillschweigend.
+- **Offline zuerst:** keine externen Laufzeitabhängigkeiten oder Netzwerkaufrufe für die Kernanwendung.
+
+## 📮 Projektinformationen
+
+- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium) · Stand: `main` · **v2.9.2**
 - Änderungsübersicht: [CHANGELOG.md](CHANGELOG.md)
 - Produktspezifikation: [PRODUKT_SPEZIFIKATION.md](PRODUKT_SPEZIFIKATION.md)
 - Build-Nachweis: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md)
+- Architektur: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · Design: [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) · Inhaltserhaltung: [docs/CONTENT_PRESERVATION.md](docs/CONTENT_PRESERVATION.md)
+- Android-Doku: [android/README-ANDROID.md](android/README-ANDROID.md)
 
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:38bdf8,50:1e3a8a,100:0D1117&height=90&section=footer" width="100%"/>
+
+*Offline lernen, Fortschritt behalten — **AnFöVO Lernkompendium** · gebaut von **Lowgiga***
+
+</div>
