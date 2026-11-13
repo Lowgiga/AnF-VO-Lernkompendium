@@ -2,6 +2,7 @@ PASS Embedded RobotNav block matches standalone source — embedded=21879 chars;
 PASS Standalone JavaScript syntax
 PASS Embedded JavaScript syntax
 PASS HTML document has one html root
+PASS Android HTML asset matches index.html byte for byte
 PASS RobotNav v2.8.0 embedded
 PASS Standalone engine has no fetch/XHR/WebSocket
 PASS No polling interval used
@@ -18,5 +19,16 @@ PASS Engine feature: mutationObserver.disconnect()
 PASS Engine feature: resizeObserver.disconnect()
 PASS Engine feature: position === 'sticky'
 PASS Engine feature: RobotNav.destroy
+PASS Root and Android PWA assets match byte for byte — frames=29
+PASS Root PWA shell files and .nojekyll exist
+PASS PWA manifest uses relative scope and start_url
+PASS PWA manifest icons are relative and present
+PASS Service worker cache version is current
+PASS Service worker precaches relative core assets and both frame sets — frames=29
+PASS Service worker registration is limited to http(s) and skips android_asset
+PASS index.html links manifest and icons with relative URLs
+PASS Impressum shows v2.9.1 and keeps the required DDG placeholder
+PASS Pages prepare script copies a web-only surface and does not publish
+PASS Pages subpath serves manifest, worker, icon, and background frames — page=200/text/html manifest=200 worker=200 icon=200/image/png frame=200/image/webp mobile=200 nojekyll=200 outside=404
 
-Statische Prüfungen: 20 bestanden, 0 fehlgeschlagen.
+Statische Prüfungen: 32 bestanden, 0 fehlgeschlagen.

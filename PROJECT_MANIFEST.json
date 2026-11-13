@@ -39,8 +39,18 @@
                     "device_install_tested":  false,
                     "debug_apk_file":  "release/AnFoeVO_Lernkompendium_v2.9.1-debug-arm64.apk",
                     "debug_apk_sha256":  "C3CA44CAE253D15E73A2AB98F9D6DB645518B35740465F9B0587282147686B13",
-                    "html_sha256":  "E79D274C7BBCB4173C2F335EAF8413833A2724C49C20BC174639CC9D3F3AB1DF"
+                    "html_sha256":  "E79D274C7BBCB4173C2F335EAF8413833A2724C49C20BC174639CC9D3F3AB1DF",
+                    "debug_apk_matches_current_html":  false
                 },
+    "pwa_shell":  {
+                      "prepared":  true,
+                      "pages_enabled":  false,
+                      "project_subpath":  "/AnFoVO-Lernkompendium/",
+                      "service_worker_cache":  "anfoevo_v2_cache_2.9.1-web-pwa-2.9.1",
+                      "impressum_placeholder_required":  true,
+                      "current_index_sha256":  "8794456548C781B72FEAF56D789C3A2870CD441F10205EE27D5B87038F2B4341",
+                      "note":  "android.html_sha256 identifies the HTML packed into the v2.9.1 debug APK. The current source HTML changed for the PWA shell and that APK was not rebuilt."
+                  },
     "browser_validation":  {
                                "engine":  "Google Chrome",
                                "html_smoke_test":  "passed",

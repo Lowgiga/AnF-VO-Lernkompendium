@@ -9,6 +9,7 @@ algorithm/robot-navigation.js is the maintained source module for the determinis
 4. RobotNav layer: DOM inventory, obstacle cache, position planner, motion controller and event scheduler.
 5. Persistence layer: existing browser-local progress and note storage.
 6. Quality layer: static build verification and browser harness.
+7. PWA shell: root `manifest.json`, `sw.js`, icons, and `bg/` frames, mirrored byte-for-byte into the Android asset directory. Relative URLs target the GitHub Pages project subpath `/AnFoVO-Lernkompendium/`. The worker registers only for `http:` and `https:` and skips `android_asset`. GitHub Pages is not enabled by the repository.
 ## RobotNav contract
 - Deterministic browser-side behavior; no LLM, agent loop or external service.
 - Treat text, buttons, inputs, dialogs, media, links and logos as hard obstacles.

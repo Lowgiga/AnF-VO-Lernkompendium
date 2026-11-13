@@ -11,7 +11,7 @@ Reviewing a change, diagnosing CI, preparing a release, checking content preserv
 ## Quality gates
 1. Static contract: `python tests/verify-build.py`.
 2. Browser regression: from `tests/`, run `npm ci` if needed, then `npm run test:all`.
-3. Android asset parity: `cmp index.html android/app/src/main/assets/index.html`.
+3. Android asset parity: `cmp index.html android/app/src/main/assets/index.html`, and the same byte comparison for `manifest.json`, `sw.js`, the PWA icons, and `bg/`.
 4. Android build: from `android/`, run `./gradlew --no-daemon clean :app:assembleDebug`.
 5. Patch hygiene: `git diff --check`.
 6. Review changed learning text, page structure, links, exercises, answer keys and source references separately from visual/code changes.

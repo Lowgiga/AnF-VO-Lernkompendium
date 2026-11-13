@@ -12,6 +12,12 @@ on:
       - "docs/**"
       - "README.md"
       - "PROJECT_MANIFEST.json"
+      - "manifest.json"
+      - "sw.js"
+      - ".nojekyll"
+      - "icon-*.png"
+      - "bg/**"
+      - "scripts/**"
       - ".github/copilot-instructions.md"
       - ".github/skills/**"
       - ".github/workflows/**"
@@ -26,6 +32,12 @@ on:
       - "docs/**"
       - "README.md"
       - "PROJECT_MANIFEST.json"
+      - "manifest.json"
+      - "sw.js"
+      - ".nojekyll"
+      - "icon-*.png"
+      - "bg/**"
+      - "scripts/**"
       - ".github/copilot-instructions.md"
       - ".github/skills/**"
       - ".github/workflows/**"
@@ -73,6 +85,42 @@ jobs:
             exit 1
           fi
           echo "Root HTML and Android WebView asset are byte-identical."
+
+      - name: Verify root and Android PWA asset parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(manifest.json sw.js icon-192.png icon-512.png icon-512-maskable.png)
+          for file in "${files[@]}"; do
+            test -f "$file"
+            test -f "android/app/src/main/assets/$file"
+            if ! cmp -s "$file" "android/app/src/main/assets/$file"; then
+              echo "PWA asset differs: $file" >&2
+              exit 1
+            fi
+          done
+          while IFS= read -r -d '' frame; do
+            relative="${frame#android/app/src/main/assets/}"
+            test -f "$relative"
+            if ! cmp -s "$relative" "$frame"; then
+              echo "Background frame differs: $relative" >&2
+              exit 1
+            fi
+          done < <(find android/app/src/main/assets/bg -type f -name '*.webp' -print0)
+          test -f .nojekyll
+          test -f manifest.json
+          python - << 'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path("manifest.json").read_text(encoding="utf-8"))
+          html = Path("index.html").read_text(encoding="utf-8")
+          assert manifest["start_url"] == "./" and manifest["scope"] == "./"
+          assert '<link rel="manifest" href="./manifest.json">' in html
+          assert "register('./sw.js')" in html
+          assert "android_asset" in html
+          print("Root and Android PWA assets match.")
+          PY
+
       - name: Run static build verification
         run: python tests/verify-build.py
 
