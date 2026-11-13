@@ -32,7 +32,7 @@
 | 🌐 **Web-App** | 70 Lernseiten · Fortschritt · Suche · Druck | `index.html` (eigenständig) | ✅ Verifiziert |
 | 🤖 **RobotNav** | Deterministische Buch- und Navigationsassistenz | browserseitig, dekorativ | ✅ Aktiv |
 | 📴 **PWA** | Installierbar unter `/AnFoVO-Lernkompendium/` | `manifest.json` + `sw.js` | ✅ Offline getestet |
-| 📱 **Android-App** | WebView-Kapsel derselben Web-Dateien | `de.omega.lernkompendium` | ✅ Quellstand v2.9.2 (Release-Signing offen) |
+| 📱 **Android-App** | WebView-Kapsel derselben Web-Dateien | `de.omega.lernkompendium` | ✅ Quellstand v2.9.3 (Release-Signing offen) |
 
 ## ✅ Status & Verifikation
 
@@ -201,8 +201,9 @@ Bei vorhandenem Chrome/Chromium genügt `CHROMIUM_PATH` statt der Playwright-Ins
 - ✅ Statische Projektprüfung: **32/32 Checks bestanden**
 - ✅ Browser- und RobotNav-Harness grün; 70 Lernseiten im Smoke-Test erkannt; keine Seiten- oder Konsolenfehler in den geprüften Läufen
 - ✅ PWA-Subpath (Manifest, Worker, Icons, Hintergrundframes, Offline-Ladevorgang) lokal grün
-- ⚠️ CI „Project validation and Android debug build“: Workflow vorhanden; Ausführung abhängig von GitHub-Actions-Billing (siehe [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md))
-- ⏳ Release-Signing und Geräteinstallation (Galaxy S25) offen — siehe [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
+- ✅ GitHub-Actions-CI: Läufe grün auf `main` (Workflow `android-build.yml`; Quellstand v2.9.3)
+- ⏳ Release-Signing offen (Keystore) — siehe [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
+- ✅ Geräteinstallation (Galaxy S25) verifiziert: v2.9.3 installiert, App startet, Fortschritt bleibt erhalten
 - ⏳ Offen: visueller Pixelvergleich; Play-Store-Veröffentlichung
 
 Details zum Build-Weg: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
@@ -212,8 +213,8 @@ Details zum Build-Weg: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
 | Merkmal | Wert |
 | --- | --- |
 | Application ID | `de.omega.lernkompendium` |
-| Version | `2.9.2` |
-| Version Code | `292` |
+| Version | `2.9.3` |
+| Version Code | `293` |
 | Minimum Android | API 29 |
 | Compile-/Target-SDK | 36 |
 | Android Gradle Plugin | 8.13.2 |
@@ -311,7 +312,7 @@ Beiträge sind willkommen — bitte die folgenden Grundsätze beachten:
 
 ## 📮 Projektinformationen
 
-- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium) · Stand: `main` · Quellstand **v2.9.2**
+- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium) · Stand: `main` · Quellstand **v2.9.3**
 - Änderungsübersicht: [CHANGELOG.md](CHANGELOG.md)
 - Produktspezifikation: [PRODUKT_SPEZIFIKATION.md](PRODUKT_SPEZIFIKATION.md)
 - Build-Nachweis: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md)
