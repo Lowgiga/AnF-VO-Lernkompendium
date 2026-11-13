@@ -203,9 +203,10 @@ Bei vorhandenem Chrome/Chromium genügt `CHROMIUM_PATH` statt der Playwright-Ins
 - ✅ Browser- und RobotNav-Harness grün; 70 Lernseiten im Smoke-Test erkannt; keine Seiten- oder Konsolenfehler in den geprüften Läufen
 - ✅ PWA-Subpath (Manifest, Worker, Icons, Hintergrundframes, Offline-Ladevorgang) lokal grün
 - ✅ GitHub-Actions-CI: Läufe grün auf `main` (Workflow `android-build.yml`; Quellstand v2.9.3)
-- ⏳ Release-Signing offen (Keystore) — siehe [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
+- ✅ Release-Signing konfiguriert (Keystore in `AnFoeVO-Release-Keystore/`, nicht im Repo) — siehe [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
 - ✅ Geräteinstallation (Galaxy S25) verifiziert: v2.9.3 installiert, App startet, Fortschritt bleibt erhalten
-- ⏳ Offen: visueller Pixelvergleich; Play-Store-Veröffentlichung
+- ✅ Visueller Pixelvergleich: 0 Pixel Diff im App-Inhalt (v2.9.1 vs. v2.9.3)
+- ⏳ Play-Store-Veröffentlichung: Release-AAB + Store-Listing vorbereitet
 
 Details zum Build-Weg: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md).
 

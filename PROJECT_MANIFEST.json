@@ -35,7 +35,7 @@
         "android_gradle_plugin": "8.13.2",
         "debug_apk_built": true,
         "debug_apk_signature_verified": true,
-        "release_signing_configured": false,
+        "release_signing_configured": true,
         "device_install_tested": true,
         "debug_apk_file": "release/AnFoeVO_Lernkompendium_v2.9.3-debug-arm64.apk",
         "debug_apk_sha256": "8BF27325A1E9C3F913D5F529451E9D4ABBB650151E19219A4E5E53423B7FE78E",
