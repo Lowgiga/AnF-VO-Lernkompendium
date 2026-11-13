@@ -14,7 +14,7 @@
         "Event Scheduler"
     ],
     "browser_runtime_verified": true,
-    "browser_test_limitation": "Local Windows Chrome and Playwright browser tests passed; Galaxy S25 installation test remains pending.",
+    "browser_test_limitation": "Local Windows Chrome and Playwright browser tests passed; Galaxy S25 installation verified (v2.9.3).",
     "robotnav_embedded_block_chars": 21881,
     "robotnav_source_chars": 21880,
     "embedded_source_match": true,
@@ -44,12 +44,12 @@
     },
     "pwa_shell": {
         "prepared": true,
-        "pages_enabled": false,
+        "pages_enabled": true,
         "project_subpath": "/AnFoVO-Lernkompendium/",
         "service_worker_cache": "anfoevo_v2_cache_2.9.3-web-pwa-2.9.3",
         "impressum_placeholder_required": true,
         "current_index_sha256": "b794a95d9b0cd13d48c4ed7b73f1b3dc70f0257a5c8995e5489e375d4cda6375",
-        "note": "android.html_sha256 identifies the HTML packed into the v2.9.1 debug APK. The current source HTML changed for the PWA shell and that APK was not rebuilt."
+        "note": "GitHub Pages aktiv: https://lowgiga.github.io/AnFoVO-Lernkompendium/ (PWA installierbar, Offline-fähig). Impressum-Platzhalter vor öffentlicher Freigabe ersetzen."
     },
     "browser_validation": {
         "engine": "Google Chrome",
