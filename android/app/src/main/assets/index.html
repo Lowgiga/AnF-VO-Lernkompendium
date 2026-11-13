@@ -1302,7 +1302,7 @@ function exercisesOf(mod){return $$('article.page[data-mod="'+mod+'"]').filter(f
 function ensureProgressRings(){if(!document.querySelector('.ring')){$$('.prog').forEach(function(p){var w=p.querySelector('.ring-wrap');if(w)return;var wrap=document.createElement('span');wrap.className='ring-wrap';var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','ring');svg.setAttribute('viewBox','0 0 40 40');svg.setAttribute('aria-hidden','true');var bg=document.createElementNS('http://www.w3.org/2000/svg','circle');bg.setAttribute('class','ring-bg');bg.setAttribute('cx','20');bg.setAttribute('cy','20');bg.setAttribute('r','16');var fg=document.createElementNS('http://www.w3.org/2000/svg','circle');fg.setAttribute('class','ring-fg');fg.setAttribute('cx','20');fg.setAttribute('cy','20');fg.setAttribute('r','16');fg.setAttribute('stroke-dasharray','100.5');fg.setAttribute('stroke-dashoffset','100.5');svg.appendChild(bg);svg.appendChild(fg);wrap.appendChild(svg);var pct=document.createElement('span');pct.className='ring-pct';pct.textContent='0%';wrap.appendChild(pct);var bar=p.querySelector('.bar');if(bar)bar.parentNode.insertBefore(wrap,bar);});}}
 function updateProgress(){
  ensureProgressRings();
- var allExercises=$('article.page[data-fill="1"]');var totalDone=allExercises.filter(isDone).length,totalEx=allExercises.length;
+ var allExercises=$$('article.page[data-fill="1"]');var totalDone=allExercises.filter(isDone).length,totalEx=allExercises.length;
  DATA.modules.forEach(function(m){var ex=exercisesOf(m[0]);var d=ex.filter(isDone).length;
   $$('.prog[data-mod="'+m[0]+'"]').forEach(function(p){var pct=ex.length?Math.round(100*d/ex.length):0;p.querySelector('i').style.width=pct+'%';var fg=p.querySelector('.ring-fg');if(fg)fg.setAttribute('stroke-dashoffset',String(100.5*(1-pct/100)));var rp=p.querySelector('.ring-pct');if(rp)rp.textContent=pct+'%';var sc=sureCount(m[0]);p.querySelector('.prog-count').textContent=d+' von '+ex.length+' Aufgaben erledigt'+(sc[1]?' · '+sc[0]+' von '+sc[1]+' Prüfungsfragen sicher':'');});});
  updateToc();
@@ -1451,7 +1451,7 @@ function evalTask(task){var c=0,n=0;
  $$('fieldset.darf',task).forEach(function(fs){n++;markRadios(fs,fs.dataset.a);var ch=$('input:checked',fs);if(ch&&ch.value===fs.dataset.a)c++;});
  var sc=$('.quizscore',task);if(sc)sc.textContent=n?(c+' von '+n+' richtig'):'';return [c,n];}
 function clearEval(task){$$('.gap',task).forEach(function(g){g.classList.remove('ok','bad');$('.gap-fb',g).textContent='';});$$('label.ropt',task).forEach(function(l){l.classList.remove('ok','bad');});var sc=$('.quizscore',task);if(sc)sc.textContent='';}
-function updateGapMood(task,editedGap){var gaps=$('.gap',task),allFilled=gaps.length>0,hasWrong=false;gaps.forEach(function(g){var input=$('.gap-in',g),value=input?input.value:'';if(!normAns(value)){allFilled=false;return;}if(!gapAlts(g).some(function(a){return normAns(a)===normAns(value);}))hasWrong=true;});if(hasWrong){setMood(false);return;}if(allFilled){setMood(true);return;}if(editedGap)setMood(checkGap(editedGap,$('.gap-in',editedGap).value));}
+function updateGapMood(task,editedGap){var gaps=$$('.gap',task),allFilled=gaps.length>0,hasWrong=false;gaps.forEach(function(g){var input=$('.gap-in',g),value=input?input.value:'';if(!normAns(value)){allFilled=false;return;}if(!gapAlts(g).some(function(a){return normAns(a)===normAns(value);}))hasWrong=true;});if(hasWrong){setMood(false);return;}if(allFilled){setMood(true);return;}if(editedGap)setMood(checkGap(editedGap,$('.gap-in',editedGap).value));}
 function evalTaskIfOpen(el){var t=el.closest('.task');if(!t)return;var d=$('details.loesung',t);if(d&&d.open){evalTask(t);if(el.classList.contains('gap-in'))updateGapMood(t,el.closest('.gap'));}}
 // v2.5 (Alex t46u): „Alle Lösungen dieser Seite zeigen“ (schnell zum Abschreiben); kein exklusives Akkordeon
 function syncAllSol(a){var b=$('#allsol');if(!b)return;a=a||$('article.page.current');var L=a?$$('details.loesung,details.schluessel',a):[];b.hidden=!L.length;var all=L.length&&L.every(function(d){return d.open;});b.setAttribute('aria-pressed',all?'true':'false');b.textContent=all?'Lösungen dieser Seite zuklappen':'Alle Lösungen dieser Seite zeigen';}
@@ -1543,7 +1543,7 @@ function init(){
   else if(t.matches('textarea.notes')){S.notes[t.dataset.id]=t.value;if(!t.value)delete S.notes[t.dataset.id];save('notes');t.classList.toggle('filled',!!t.value.trim());syncPrintVals(t);updateProgress();flashSaved();}});
  $('#pages').addEventListener('change',function(e){var t=e.target;if(t.type!=='radio')return;var fs=t.closest('fieldset');
   if(fs.classList.contains('et'))endAnswer(fs.dataset.k,+t.value);else if(fs.classList.contains('darf'))darfAnswer(+fs.dataset.i,t.value);else if(fs.dataset.mod)answer(fs.dataset.mod,+fs.dataset.q,+t.value);flashSaved();});
- $('details.loesung').forEach(function(d){d.addEventListener('toggle',function(){var t=d.closest('.task');if(d.open){evalTask(t);updateGapMood(t,null);}else clearEval(t);var a=d.closest('article.page');if(a&&a.classList.contains('current'))syncAllSol(a);});});
+ $$('details.loesung').forEach(function(d){d.addEventListener('toggle',function(){var t=d.closest('.task');if(d.open){evalTask(t);updateGapMood(t,null);}else clearEval(t);var a=d.closest('article.page');if(a&&a.classList.contains('current'))syncAllSol(a);});});
  $('#allsol').addEventListener('click',toggleAllSol);
  document.addEventListener('keydown',function(e){
   var confirmDialog=$('#confirmDlg');if(confirmDialog&&confirmDialog.open)return;
@@ -2178,5 +2178,6 @@ function stopPraesentation(){togglePraesentation(false);if(_praesKeyHandler){doc
 var praesBtn=document.getElementById('praesBtn');if(praesBtn)praesBtn.addEventListener('click',function(){var mm=document.getElementById('mehrmenu');if(mm)mm.hidden=true;var mb=document.getElementById('mehr');if(mb)mb.setAttribute('aria-expanded','false');startPraesentation();});
 // hook pagechange to update info
 window.addEventListener('kompendium:pagechange',function(){if(document.body.classList.contains('praesentation'))updatePraesInfo();});
+</script>
 </body>
 </html>
