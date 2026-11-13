@@ -8,8 +8,8 @@ android {
         applicationId 'de.omega.lernkompendium'
         minSdk 29
         targetSdk 36
-        versionCode 292
-        versionName '2.9.2'
+        versionCode 293
+        versionName '2.9.3'
     }
 
     signingConfigs {
