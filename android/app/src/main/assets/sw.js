@@ -2,8 +2,8 @@
    Relative URLs stay valid under the GitHub Pages project subpath
    /AnFoVO-Lernkompendium/ and under the Android asset-loader origin.
    VERSION/BUILD change when the cached shell changes. */
-var VERSION = '2.9.1';
-var BUILD = 'web-pwa-2.9.1';
+var VERSION = '2.9.3';
+var BUILD = 'web-pwa-2.9.3';
 var CACHE = 'anfoevo_v2_cache_' + VERSION + '-' + BUILD;
 /* Kern: muss vollständig sein (addAll) */
 var ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './icon-512-maskable.png'];
