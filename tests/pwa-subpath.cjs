@@ -5,7 +5,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const PREFIX = '/AnFoVO-Lernkompendium';
-const CACHE = 'anfoevo_v2_cache_2.9.1-web-pwa-2.9.1';
+const CACHE = 'anfoevo_v2_cache_2.9.3-web-pwa-2.9.3';
 const FRAME_NAMES = ['d', 'm'].flatMap((size) =>
   fs.readdirSync(path.join(ROOT, 'bg', size))
     .filter((name) => name.endsWith('.webp'))
@@ -161,7 +161,7 @@ function startServer() {
       pages: document.querySelectorAll('#pages article.page').length,
       manifest: !!document.querySelector('link[rel="manifest"]')
     }));
-    if (!offlineResponse || !offlineResponse.ok() || !offline.title.includes('v2.9.1') || offline.pages < 70 || !offline.manifest) {
+    if (!offlineResponse || !offlineResponse.ok() || !offline.title.includes('v2.9.3') || offline.pages < 70 || !offline.manifest) {
       throw new Error('Offline navigation failed: ' + JSON.stringify({ status: offlineResponse && offlineResponse.status(), offline }));
     }
     await context.setOffline(false);
