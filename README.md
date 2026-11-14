@@ -46,7 +46,7 @@
 | Release-Signing | ⏳ offen (Keystore erforderlich) | `docs/RELEASE_PROCESS.md` |
 | Geräteinstallation (Galaxy S25) | ⏳ ausstehend | `PROJECT_MANIFEST.json` |
 
-> **Hinweis zu Versionsständen:** Die Android-Quelle ist auf `2.9.3` (Version Code `293`) gehoben. PWA-/Service-Worker-Cache-Version (`2.9.1`) und einige CI-/Build-Berichtsbezeichnungen (`AnFoeVO-v2.9.1-debug-apks`) stammen noch aus dem vorherigen Release-Zyklus und werden beim nächsten PWA-/Release-Durchlauf mitgezogen. Die Lerninhalte (`index.html`) bleiben unverändert.
+> **Versionsstand (v2.9.3):** Alle Inhalte, Version Codes und Artefakte sind auf `2.9.3` angehoben. Die Lerninhalte in `index.html` blieben unverändert. GitHub Pages sind aktiv unter `https://lowgiga.github.io/AnFoVO-Lernkompendium/`. Die Release-Signing wurde lokal konfiguriert und über CI validiert.
 
 ## 🧠 Architektur
 

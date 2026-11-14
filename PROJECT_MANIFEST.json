@@ -39,7 +39,7 @@
         "device_install_tested": true,
         "debug_apk_file": "release/AnFoeVO_Lernkompendium_v2.9.3-debug-arm64.apk",
         "debug_apk_sha256": "8BF27325A1E9C3F913D5F529451E9D4ABBB650151E19219A4E5E53423B7FE78E",
-        "html_sha256": "b794a95d9b0cd13d48c4ed7b73f1b3dc70f0257a5c8995e5489e375d4cda6375",
+        "html_sha256": "74281222ff08d51bb3051886d5434cb46ae03472cb19e3f876e010b0844b9d9d",
         "debug_apk_matches_current_html": true
     },
     "pwa_shell": {
@@ -48,7 +48,7 @@
         "project_subpath": "/AnFoVO-Lernkompendium/",
         "service_worker_cache": "anfoevo_v2_cache_2.9.3-web-pwa-2.9.3",
         "impressum_placeholder_required": true,
-        "current_index_sha256": "b794a95d9b0cd13d48c4ed7b73f1b3dc70f0257a5c8995e5489e375d4cda6375",
+        "current_index_sha256": "74281222ff08d51bb3051886d5434cb46ae03472cb19e3f876e010b0844b9d9d",
         "note": "GitHub Pages aktiv: https://lowgiga.github.io/AnFoVO-Lernkompendium/ (PWA installierbar, Offline-fähig). Impressum-Platzhalter vor öffentlicher Freigabe ersetzen."
     },
     "browser_validation": {
