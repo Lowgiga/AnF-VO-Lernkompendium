@@ -30,12 +30,13 @@ class VerifyBuildTests(unittest.TestCase):
             Path("tests/verify-build.py"),
             Path("index.html"),
             ENGINE,
+            Path("robot-navigation.js"),
             Path("docs/ARCHITECTURE.md"),
             Path(".nojekyll"),
             Path("scripts/prepare-pages-surface.sh"),
         ]
         relatives.extend(Path(name) for name in PWA_NAMES)
-        relatives.extend(ASSET / name for name in ("index.html", *PWA_NAMES))
+        relatives.extend(ASSET / name for name in ("index.html", "robot-navigation.js", *PWA_NAMES))
         for relative in relatives:
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
