@@ -247,14 +247,15 @@ Der eingecheckte Gradle-Wrapper enthält Launcher-JAR, Windows- und POSIX-Starts
 
 Die Debug-APK ist mit dem Standard-Debug-Schlüssel signiert und nur für Tests gedacht. Für eine produktive Veröffentlichung ist ein eigener, sicher verwahrter Release-Keystore erforderlich.
 
-## 📸 Screenshots (geplant)
+## 📸 Screenshots
 
-Aktuell liegen keine Screenshots im Repository. Für die GitHub-Showcase-Ansicht können folgende Aufnahmen ergänzt werden (Pfade als Vorschlag):
+Aufnahmen der aktuellen Version (v2.9.3, Web-PWA; die Android-App zeigt identisches UI im WebView):
 
-- `docs/screenshots/book-view.png` — 3D-Buchansicht mit Lernbegleiter
-- `docs/screenshots/reading-view.png` — lesbare Lernansicht
-- `docs/screenshots/dashboard.png` — Fortschritts-Dashboard mit SVG-Ringen
-- `docs/screenshots/android.png` — Android-App (WebView)
+| Übersicht | Lernseite | Fortschritt | Mobilansicht |
+| --- | --- | --- | --- |
+| ![Übersicht](docs/screenshots/01-home.png) | ![Lernseite](docs/screenshots/02-reading.png) | ![Fortschritt](docs/screenshots/03-dashboard.png) | ![Mobilansicht](docs/screenshots/04-android.png) |
+
+Dateien: `docs/screenshots/01-home.png`, `docs/screenshots/02-reading.png`, `docs/screenshots/03-dashboard.png`, `docs/screenshots/04-android.png`.
 
 Hinweis: Screenshots dürfen keine personenbezogenen Lernfortschritte, Workbook-Fotos oder verbatim Workbook-Text enthalten (siehe [docs/CONTENT_PRESERVATION.md](docs/CONTENT_PRESERVATION.md)).
 
