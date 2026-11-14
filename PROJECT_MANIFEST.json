@@ -38,9 +38,10 @@
         "release_signing_configured": true,
         "device_install_tested": true,
         "debug_apk_file": "release/AnFoeVO_Lernkompendium_v2.9.3-debug-arm64.apk",
-        "debug_apk_sha256": "8BF27325A1E9C3F913D5F529451E9D4ABBB650151E19219A4E5E53423B7FE78E",
+        "debug_apk_sha256": "992202F8BB802A3EA7CB41E365D4441AD1B19A93D5C9FF41550618DFCE630EC6",
         "html_sha256": "74281222ff08d51bb3051886d5434cb46ae03472cb19e3f876e010b0844b9d9d",
-        "debug_apk_matches_current_html": true
+        "debug_apk_matches_current_html": true,
+        "release_aab_sha256": "F1ED435B2FF4FDA742CF35E0205008F9EB626CCC325121593886B5ACFE75B21C"
     },
     "pwa_shell": {
         "prepared": true,
