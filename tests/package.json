@@ -1,8 +1,8 @@
 {
     "name":  "robotnav-v2-9-browser-tests",
     "private":  true,
-    "version":  "2.9.3",
-    "description":  "Optional browser tests for standalone RobotNav visual release v2.9.3",
+    "version":  "2.9.4",
+    "description":  "Optional browser tests for standalone RobotNav visual release v2.9.4",
     "scripts":  {
                     "test":  "node run-browser-tests.cjs",
                     "test:smoke":  "node smoke-app.cjs",

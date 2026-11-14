@@ -1,4 +1,4 @@
-# Android build guide — AnF-VO-Lernkompendium 2.9.3
+# Android build guide — AnF-VO-Lernkompendium 2.9.4
 
 ## Architecture
 

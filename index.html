@@ -7,7 +7,7 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Inoffizielle Lernhilfe zur Basisqualifizierung nach § 8 AnFöVO NRW, geprüft gegen Primärquellen.">
-<title>Lern-Kompendium § 8 AnFöVO NRW – v2.9.3</title>
+<title>Lern-Kompendium § 8 AnFöVO NRW – v2.9.4</title>
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="./icon-192.png">
@@ -149,8 +149,8 @@ select{min-height:var(--tap);min-width:var(--tap)}
 body.mode-blaettern article.page:not(.current),body.mode-blaettern .unit{display:none}
 body.mode-blaettern article.page.current{min-height:55vh}
 @keyframes flipin{
- from{opacity:.94;transform:perspective(1100px) translateX(var(--dir,18px)) rotateY(var(--turn,1.2deg));filter:brightness(.985)}
- to{opacity:1;transform:perspective(1100px) translateX(0) rotateY(0);filter:brightness(1)}
+ from{opacity:.92;transform:perspective(1100px) translateX(var(--dir,18px)) rotateY(var(--turn,1.2deg))}
+ to{opacity:1;transform:perspective(1100px) translateX(0) rotateY(0)}
 }
 article.page.flip{transform-origin:center center;backface-visibility:hidden;animation:flipin 220ms cubic-bezier(.22,.72,.22,1) both}
 @media (max-width:700px){article.page.flip{animation-duration:190ms}}
@@ -401,24 +401,24 @@ header h1{text-shadow:0 2px 12px rgba(0,0,0,.25);letter-spacing:.012em}
 .startbox h2{max-width:18ch}
 main{position:relative;z-index:1}
 /* Side-stage is decorative; the content column remains unobstructed. */
-#object-stage{position:fixed;z-index:0;right:max(18px,calc((100vw - 1240px)/2));bottom:5vh;width:clamp(190px,20vw,310px);height:clamp(230px,34vh,360px);pointer-events:none;perspective:1100px;opacity:.92;filter:drop-shadow(0 24px 28px rgba(0,0,0,.18));transition:opacity .3s ease,transform .35s ease}
-#object-stage:before{content:"";position:absolute;inset:22% 4% 3%;background:radial-gradient(ellipse,rgba(35,64,49,.2),transparent 68%);filter:blur(18px)}
+#object-stage{position:fixed;z-index:0;right:max(18px,calc((100vw - 1240px)/2));bottom:5vh;width:clamp(190px,20vw,310px);height:clamp(230px,34vh,360px);pointer-events:none;perspective:1100px;opacity:.92;transition:opacity .3s ease,transform .35s ease}
+#object-stage:before{content:"";position:absolute;inset:20% 2% 0%;background:radial-gradient(ellipse,rgba(20,35,26,.34),transparent 70%);filter:blur(22px)}
 .book3d{position:absolute;right:2%;bottom:6%;width:76%;height:66%;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-19deg) rotateY(-18deg);transform-origin:center center}
 .book-shadow{position:absolute;inset:12% -4% -5% 7%;border-radius:8px;background:rgba(20,31,24,.3);filter:blur(9px);transform:translateZ(-22px)}
 .book-pages{position:absolute;inset:5% 3% 3% 7%;border-radius:5px 9px 9px 5px;background:repeating-linear-gradient(0deg,#f4efe3 0 2px,#d9d2c4 2px 3px);border:1px solid #c7bead;transform:translateZ(5px);overflow:hidden}
-.book-pages:after{content:"";position:absolute;left:0;right:0;top:0;height:var(--book-fill,100%);background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(229,222,208,.86));border-bottom:1px solid rgba(120,105,82,.3);transform-origin:top;transition:height .55s cubic-bezier(.2,.7,.2,1)}
+.book-pages:after{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(229,222,208,.86));border-bottom:1px solid rgba(120,105,82,.3);transform-origin:top;transform:scaleY(var(--book-fill,1));transition:transform .55s cubic-bezier(.2,.7,.2,1)}
 .book-pages:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 4px,rgba(83,72,54,.12) 4px 5px);opacity:.6}
 .book-cover{position:absolute;inset:0;border-radius:5px 10px 10px 5px;background:linear-gradient(135deg,#355b49,#203d32 68%,#172c23);border:1px solid #172d24;transform:translateZ(12px);box-shadow:inset 4px 0 0 rgba(255,255,255,.12),inset -2px 0 0 rgba(0,0,0,.18)}
 .book-cover:before{content:"";position:absolute;inset:12% 9%;border:1px solid rgba(238,232,216,.4);border-left:3px solid #a94738;border-radius:2px;transform:translateZ(1px)}
 .book-cover:after{content:"§ 8\A ANFÖVO NRW";white-space:pre;position:absolute;left:19%;top:27%;color:#f1eadc;font:600 clamp(7px,.7vw,11px)/1.55 Georgia,serif;letter-spacing:.1em;text-shadow:0 1px 3px #15251d}
 .book-spine{position:absolute;left:-7%;top:0;width:8%;height:100%;background:linear-gradient(90deg,#172d24,#52735e,#203d32);transform:rotateY(-90deg);transform-origin:right center;border-radius:4px 0 0 4px}
 .book-leaf{position:absolute;inset:3% 2% 3% 6%;border-radius:4px 8px 8px 4px;background:#e8e1d3;transform:translateZ(8px);transform-origin:left center;opacity:0}
-body.page-turning .book-leaf{opacity:1;animation:bookLeaf .72s cubic-bezier(.2,.7,.2,1) both}
-body.page-turning .book3d{animation:bookNudge .72s cubic-bezier(.2,.7,.2,1) both}
-@keyframes bookNudge{0%,100%{transform:rotateX(58deg) rotateZ(-19deg) rotateY(-18deg)}42%{transform:rotateX(53deg) rotateZ(-15deg) rotateY(-10deg) translateY(-4px)}72%{transform:rotateX(61deg) rotateZ(-21deg) rotateY(-23deg)}}
-@keyframes bookLeaf{0%{transform:translateZ(8px) rotateY(0)}48%{transform:translateZ(22px) rotateY(-92deg)}100%{transform:translateZ(8px) rotateY(-178deg)}}
+body.page-turning .book-leaf{opacity:1;animation:bookLeaf .6s cubic-bezier(.33,.7,.25,1) both}
+body.page-turning .book3d{animation:bookNudge .6s cubic-bezier(.33,.7,.25,1) both}
+@keyframes bookNudge{0%,100%{transform:rotateX(57deg) rotateZ(-13deg) rotateY(-13deg)}50%{transform:rotateX(57deg) rotateZ(-18deg) rotateY(-16deg)}}
+@keyframes bookLeaf{0%{transform:translateZ(8px) rotateY(0) scaleX(1)}55%{transform:translateZ(14px) rotateY(-84deg) scaleX(.96)}100%{transform:translateZ(8px) rotateY(-162deg) scaleX(.9);opacity:0}}
 /* Compact, non-cartoon robot placeholder. Replaceable by the user's own robot asset later. */
-.robot3d{position:absolute;left:0;bottom:0;width:31%;height:53%;transform-style:preserve-3d;transform:rotateY(-16deg) rotateZ(-3deg);filter:drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.robot3d{position:absolute;left:0;bottom:0;width:31%;height:53%;transform-style:preserve-3d;transform:rotateY(-16deg) rotateZ(-3deg)}
 .robot-head{position:absolute;left:18%;top:2%;width:66%;height:35%;border-radius:34% 34% 28% 28%;background:linear-gradient(145deg,#8eaa8e,#52785f 58%,#294b3d);border:1px solid rgba(20,44,29,.7);box-shadow:inset 3px 3px 6px rgba(255,255,255,.35),inset -4px -5px 8px rgba(0,0,0,.2);transform:translateZ(12px)}
 .robot-head:before{content:"";position:absolute;left:12%;right:12%;top:35%;height:35%;border-radius:7px;background:linear-gradient(180deg,#14231d,#243d31);box-shadow:inset 0 0 9px rgba(133,212,165,.35)}
 .robot-head:after{content:"";position:absolute;left:27%;top:46%;width:9%;height:9%;border-radius:50%;background:#c7f3d3;box-shadow:0 0 8px #b7efc8,25px 0 0 #c7f3d3,25px 0 8px #b7efc8}
@@ -430,9 +430,9 @@ body.page-turning .book3d{animation:bookNudge .72s cubic-bezier(.2,.7,.2,1) both
 .robot-leg{position:absolute;top:77%;width:18%;height:19%;border-radius:8px;background:linear-gradient(90deg,#aeb9c0,#ffffff,#d1d8dc);transform:translateZ(2px)}.robot-leg.l{left:34%}.robot-leg.r{left:59%}
 .robot-status{position:absolute;left:43%;top:10%;width:5px;height:5px;border-radius:50%;background:#e47b69;box-shadow:0 0 8px #e47b69;transition:background .3s,box-shadow .3s}.robot3d.mood-ok .robot-status{background:#2ecc71;box-shadow:0 0 10px #2ecc71}.robot3d.mood-bad .robot-status{background:#e74c3c;box-shadow:0 0 10px #e74c3c}
 body.page-turning .robot-arm.right{animation:robotGesture .72s ease-in-out both}
-body.page-turning .robot3d{animation:robotNod .72s ease-in-out both}
-@keyframes robotGesture{0%,100%{transform:rotate(-19deg)}45%{transform:rotate(-72deg)}70%{transform:rotate(-52deg)}}
-@keyframes robotNod{0%,100%{transform:rotateY(-16deg) rotateZ(-3deg)}45%{transform:rotateY(8deg) rotateZ(2deg) translateY(-5px)}}
+body.page-turning .robot-head{animation:robotNod .6s cubic-bezier(.33,.7,.25,1) both}
+@keyframes robotGesture{0%,100%{transform:rotate(-19deg)}45%{transform:rotate(-38deg)}70%{transform:rotate(-28deg)}}
+@keyframes robotNod{0%,100%{transform:translateZ(12px)}45%{transform:translateZ(12px) rotateY(4deg) rotateZ(1deg) translateY(-2px)}}
 #object-stage .stage-label{position:absolute;right:0;bottom:0;color:var(--mut);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
 /* A little more spatial depth on the title panel, but never on text fields. */
 .startbox{transform-style:preserve-3d}
@@ -442,7 +442,7 @@ body.page-turning .robot3d{animation:robotNod .72s ease-in-out both}
 @media(max-width:1100px){#object-stage{right:4px;opacity:.38;transform:scale(.78);transform-origin:right bottom}}
 @media(max-width:760px){#object-stage{right:-34px;bottom:8px;width:150px;height:190px;opacity:.14;transform:scale(.8)}.robot3d{display:none}.book3d{right:0}.book-cover:after{font-size:7px}header .hrow:before{width:80%}}
 @media(max-width:600px){#object-stage{opacity:.08;right:-42px;bottom:0}header{background:linear-gradient(110deg,#263f35,#315846)}header .hrow:before{width:75%}}
-@media(prefers-reduced-motion:reduce){#object-stage,.book-pages:after,.hbtn,.startbox .btn.big{transition:none!important}body.page-turning .book-leaf,body.page-turning .book3d,body.page-turning .robot-arm.right,body.page-turning .robot3d{animation:none!important}}
+@media(prefers-reduced-motion:reduce){#object-stage{--par-x:0deg;--par-y:0deg}#object-stage,.book-pages:after,.hbtn,.startbox .btn.big{transition:none!important}body.page-turning .book-leaf,body.page-turning .book3d,body.page-turning .robot-arm.right,body.page-turning .robot3d{animation:none!important}}
 @media print{#object-stage{display:none!important}}
 
 
@@ -468,9 +468,8 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
 #object-stage{
   right:auto;bottom:auto;left:var(--robot-nav-left,calc(100vw - 320px));top:var(--robot-nav-top,52vh);
   width:var(--robot-nav-width,clamp(190px,20vw,310px));height:var(--robot-nav-height,clamp(230px,34vh,360px));
-  transform:translate3d(0,0,0);transform-origin:center center;
-  transition:left .48s cubic-bezier(.22,.72,.22,1),top .48s cubic-bezier(.22,.72,.22,1),width .32s ease,height .32s ease,opacity .28s ease;
-  will-change:left,top;
+  transform:translate3d(0,0,0) rotateY(var(--par-x,0deg)) rotateX(var(--par-y,0deg));transform-origin:center center;
+  transition:left .48s cubic-bezier(.22,.72,.22,1),top .48s cubic-bezier(.22,.72,.22,1),width .32s ease,height .32s ease,opacity .28s ease,transform .15s ease-out;
 }
 #object-stage .robot3d{
   left:var(--robot-nav-x,0%);bottom:var(--robot-nav-y,4%);
@@ -480,7 +479,7 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
 #object-stage[data-robot-state="climb"] .robot-arm.right{animation:robotNavClimb .42s ease-in-out both}
 #object-stage[data-robot-state="turn"] .robot-arm.right{animation:robotGesture .72s ease-in-out both}
 #object-stage[data-robot-state="rest"] .robot-arm.right{animation:none}
-@keyframes robotNavClimb{0%,100%{transform:rotate(-19deg)}38%{transform:rotate(-58deg)}68%{transform:rotate(-34deg)}}
+@keyframes robotNavClimb{0%,100%{transform:rotate(-19deg)}38%{transform:rotate(-36deg)}68%{transform:rotate(-24deg)}}
 #object-stage.robot-nav-hidden{opacity:0!important;visibility:hidden}
 #robot-nav-debug{position:fixed;inset:0;width:100%;height:100%;z-index:90;pointer-events:none}
 @media(max-width:760px){#object-stage{left:auto!important;right:-34px!important;top:auto!important;bottom:8px!important;width:150px!important;height:190px!important;opacity:.08!important}.robot3d{display:none!important}}
@@ -488,17 +487,17 @@ article.page{transition:box-shadow .22s ease,border-color .22s ease,transform .2
 @media print{#object-stage,#robot-nav-debug{display:none!important}}
 
 /* v2.9.1 — refined open-book presentation */
-:root{--book-fill:100%;--book-edge:#d7cfbd;--book-paper:#fbf7ec;--book-green:#244536;--book-red:#a94738}
-#object-stage{width:clamp(250px,27vw,390px);height:clamp(280px,39vh,430px);opacity:.96;filter:drop-shadow(0 28px 34px rgba(12,27,20,.24));transform-style:preserve-3d}
-.book3d{right:0;bottom:7%;width:88%;height:67%;transform:rotateX(57deg) rotateZ(-13deg) rotateY(-13deg);transform-style:preserve-3d;filter:drop-shadow(0 14px 14px rgba(12,27,20,.18))}
+:root{--book-fill:1;--book-edge:#d7cfbd;--book-paper:#fbf7ec;--book-green:#244536;--book-red:#a94738}
+#object-stage{width:clamp(250px,27vw,390px);height:clamp(280px,39vh,430px);opacity:.96;transform-style:preserve-3d}
+.book3d{right:0;bottom:7%;width:88%;height:67%;transform:rotateX(57deg) rotateZ(-13deg) rotateY(-13deg);transform-style:preserve-3d}
 .book-pages{inset:8% 2% 4% 5%;border-radius:3px 7px 8px 3px;background:repeating-linear-gradient(0deg,#fffdf6 0 2px,#ded7c8 2px 3px);box-shadow:inset 0 0 14px rgba(69,55,34,.14),0 5px 0 #c9c0ae,0 9px 0 #b9b09f;transform:translateZ(7px)}
-.book-pages:after{height:var(--book-fill,100%);background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(239,233,220,.88));transition:height .7s cubic-bezier(.2,.7,.2,1)}
+.book-pages:after{height:100%;transform:scaleY(var(--book-fill,1));background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(239,233,220,.88));transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .book-cover{inset:1% 0 0 2%;border-radius:4px 10px 10px 4px;background:linear-gradient(135deg,#47745d 0%,#294b3d 46%,#172c23 100%);box-shadow:inset 4px 0 0 rgba(255,255,255,.17),inset -3px 0 0 rgba(0,0,0,.24),0 2px 0 #14271f,0 5px 0 #101f19;transform:translateZ(15px)}
 .book-cover:before{inset:10% 8%;border:1px solid rgba(244,237,219,.5);border-left:4px solid var(--book-red);border-radius:2px;transform:translateZ(2px) skewY(-4deg);box-shadow:inset 0 0 18px rgba(255,255,255,.05)}
 .book-cover:after{content:"§ 8  ·  ANFÖVO NRW\\A LERNKOMPENDIUM";left:17%;top:28%;width:70%;padding:8% 5%;background:linear-gradient(110deg,#b95140,#87372f);color:#fff8ec;font:700 clamp(7px,.72vw,11px)/1.7 Georgia,serif;letter-spacing:.13em;text-align:center;transform:translateZ(4px) rotate(-5deg);box-shadow:0 5px 12px rgba(0,0,0,.2);text-shadow:0 1px 2px rgba(0,0,0,.25)}
 .book-spine{left:-6%;width:9%;background:linear-gradient(90deg,#14271f,#52735e 48%,#203d32);box-shadow:inset 2px 0 5px rgba(255,255,255,.18),inset -3px 0 6px rgba(0,0,0,.28)}
 .book-leaf{background:linear-gradient(90deg,#fffdf6,#e9e1d1);box-shadow:0 2px 5px rgba(40,32,20,.16);transform-origin:left center}
-.robot3d{width:35%;height:61%;left:-3%;bottom:0;filter:drop-shadow(0 12px 12px rgba(0,0,0,.24));transform:rotateY(-12deg) rotateZ(-2deg)}
+.robot3d{width:35%;height:61%;left:-3%;bottom:0;transform:rotateY(-12deg) rotateZ(-2deg)}
 .robot-head{left:15%;width:70%;height:34%;border-radius:30% 30% 24% 24%;background:linear-gradient(145deg,#ffffff 0%,#e9edf0 34%,#cbd3d8 78%,#8d9aa2);border:1px solid #89969e;box-shadow:inset 4px 4px 8px rgba(255,255,255,.95),inset -5px -6px 10px rgba(41,54,64,.22),0 3px 0 rgba(70,82,90,.55)}
 .robot-head:before{left:10%;right:10%;top:31%;height:42%;border-radius:10px;background:linear-gradient(180deg,#10231a,#203c2d);box-shadow:inset 0 0 12px rgba(150,235,174,.4),0 0 0 1px rgba(219,238,214,.25)}
 .robot-head:after{left:29%;top:45%;width:8%;height:12%;background:#d8f3ff;box-shadow:0 0 10px #b8e8ff,27px 0 0 #d8f3ff,27px 0 10px #b8e8ff}
@@ -810,7 +809,7 @@ Hör nach ANNAHMEN UND UNSICHERHEITEN auf. Wenn kein Bild angehängt ist oder du
  <p class="savehint"><span id="savestate">💾 Gespeichert auf diesem Gerät</span></p>
  <section class="fsec" aria-labelledby="imp-h">
   <h2 id="imp-h">Impressum und Hinweis</h2>
-  <p><b>Inoffizielle Lernhilfe, kein Ersatz für die Kursunterlagen.</b> Lern-Kompendium § 8 AnFöVO NRW · v2.9.3 · Stand: November 2026.</p>
+  <p><b>Inoffizielle Lernhilfe, kein Ersatz für die Kursunterlagen.</b> Lern-Kompendium § 8 AnFöVO NRW · v2.9.4 · Stand: November 2026.</p>
   <p>Privates Lernprojekt ohne Verbindung zum Gemeindenahen Verbund ATEMPAUSE, zu den Regionalbüros Alter, Pflege und Demenz NRW oder zum MAGS NRW. Es enthält keine Fotos und keinen Wortlaut aus dem Kursheft; übernommen wurden nur Struktur, Symbolsystem und kurze eigene Zusammenfassungen (mit „Kursheft“ gekennzeichnet), sonst eigene Formulierungen auf Grundlage amtlicher Quellen. Keine Rechtsberatung; Rechtsstand November 2026. Anbieterangaben nach § 5 DDG: <i>[vor Veröffentlichung ergänzen: Name, Anschrift, Kontakt]</i>.</p>
  </section>
  <section class="fsec" aria-labelledby="src-h">
@@ -1393,7 +1392,7 @@ function render(){
  pages.forEach(function(a){a.classList.remove('current','flip');});
  if(!list.length){$('#pagerinfo').textContent='–';return;}
  idx=Math.max(0,Math.min(idx,list.length-1));
- var a=list[idx];a.classList.add('current');var turning=!!(flipDir&&a!==old);if(turning){document.body.classList.add('page-turning');window.clearTimeout(window.__bookTurnTimer);window.__bookTurnTimer=window.setTimeout(function(){document.body.classList.remove('page-turning');},820);a.style.setProperty('--dir',flipDir>0?'18px':'-18px');a.style.setProperty('--turn',flipDir>0?'1.2deg':'-1.2deg');void a.offsetWidth;a.classList.add('flip');}var stage=document.getElementById('object-stage');if(stage){var progress=list.length?(idx/(list.length-1||1)):0;stage.style.setProperty('--book-fill',(Math.max(.035,1-progress)*100)+'%');stage.setAttribute('aria-hidden','true');}flipDir=0;
+ var a=list[idx];a.classList.add('current');var turning=!!(flipDir&&a!==old);if(turning){document.body.classList.add('page-turning');window.clearTimeout(window.__bookTurnTimer);window.__bookTurnTimer=window.setTimeout(function(){document.body.classList.remove('page-turning');},820);a.style.setProperty('--dir',flipDir>0?'18px':'-18px');a.style.setProperty('--turn',flipDir>0?'1.2deg':'-1.2deg');void a.offsetWidth;a.classList.add('flip');}var stage=document.getElementById('object-stage');if(stage){var progress=list.length?(idx/(list.length-1||1)):0;stage.style.setProperty('--book-fill',String(Math.max(.035,1-progress)));stage.setAttribute('aria-hidden','true');}flipDir=0;
  var mod=DATA.modules.filter(function(m){return m[0]===a.dataset.mod;})[0];
  $('#curmod').textContent=leInfo(a,mod);var si=stepInfo(a);$('#curstep').textContent=si;
  syncAllSol(a);$('#weiter2').disabled=idx===list.length-1;$('#zurueck2').disabled=idx===0;
@@ -2159,7 +2158,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <dialog id="confirmDlg" class="confirm-dlg" aria-labelledby="confirmDlgTitle" aria-describedby="confirmDlgMessage"><h2 id="confirmDlgTitle" class="vhid">Aktion bestätigen</h2><p id="confirmDlgMessage" class="dlg-msg"></p><div class="dlg-actions"><button type="button" class="dlg-cancel btn">Abbrechen</button><button type="button" class="dlg-ok btn primary">OK</button></div></dialog>
 <script>function setMood(ok){var rb=document.querySelector('.robot3d');if(!rb)return;rb.classList.remove('mood-ok','mood-bad');rb.classList.add(ok?'mood-ok':'mood-bad');clearTimeout(rb._m);rb._m=setTimeout(function(){rb.classList.remove('mood-ok','mood-bad');},1600);}function confettiBurst(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;var c=document.createElement('canvas'),ctx=null;try{ctx=c.getContext('2d');}catch(e){return;}if(!ctx)return;c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999';document.body.appendChild(c);var W=c.width=window.innerWidth,H=c.height=window.innerHeight;var parts=[];for(var i=0;i<120;i++)parts.push({x:W/2,y:H/3,vx:(Math.random()-.5)*12,vy:Math.random()*-12-4,g:.35,r:Math.random()*4+2,a:1,col:'hsl('+(Math.random()*360|0)+',80%,60%)'});var t=0;(function loop(){t++;ctx.clearRect(0,0,W,H);var alive=false;parts.forEach(function(p){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.a-=.012;if(p.a>0&&p.y<H+20){alive=true;ctx.globalAlpha=Math.max(0,p.a);ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}});ctx.globalAlpha=1;if(alive&&t<120)requestAnimationFrame(loop);else c.remove();})();}var m=document.querySelector('meta[name="theme-color"]');if(m){var d=matchMedia('(prefers-color-scheme:dark)');function up(){m.setAttribute('content',d.matches?'#14181d':'#294b3d');}up();d.addEventListener?d.addEventListener('change',up):d.addListener(up);}window.confettiBurst=confettiBurst;window.setMood=setMood;var nativeConfirm=window.confirm;function uiConfirm(msg,done){if(window.confirm!==nativeConfirm){done(window.confirm(msg));return;}var dlg=document.getElementById('confirmDlg');if(!dlg||typeof dlg.showModal!=='function'){done(window.confirm(msg));return;}dlg.querySelector('.dlg-msg').textContent=msg;var ok=dlg.querySelector('.dlg-ok'),cancel=dlg.querySelector('.dlg-cancel');function cleanup(){ok.removeEventListener('click',onOk);cancel.removeEventListener('click',onCancel);dlg.removeEventListener('cancel',onCancelDlg);try{dlg.close();}catch(e){}}function onOk(){cleanup();done(true);}function onCancel(){cleanup();done(false);}function onCancelDlg(){cleanup();done(false);}ok.addEventListener('click',onOk);cancel.addEventListener('click',onCancel);dlg.addEventListener('cancel',onCancelDlg);dlg.showModal();}window.uiConfirm=uiConfirm;window.addEventListener('kompendium:pagechange',function(){setMood(true);});
 // ---------- Parallax-Stage (nur Desktop) ----------
-(function(){if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;var st=document.getElementById('object-stage');if(!st)return;var cx=innerWidth/2,cy=innerHeight/2;document.addEventListener('mousemove',function(e){var dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;st.style.transform='rotateY('+(dx*4)+'deg) rotateX('+(-dy*3)+'deg)';},{passive:true});})();
+(function(){if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;var st=document.getElementById('object-stage');if(!st)return;var tx=0,ty=0,raf=0;function flush(){raf=0;st.style.setProperty('--par-x',(tx*3).toFixed(3)+'deg');st.style.setProperty('--par-y',(-ty*2).toFixed(3)+'deg');}document.addEventListener('mousemove',function(e){var dx=(e.clientX/(innerWidth||1))-.5,dy=(e.clientY/(innerHeight||1))-.5;tx=dx;ty=dy;if(!raf)raf=requestAnimationFrame(flush);},{passive:true});})();
 // ---------- Haptic Feedback (Android) ----------
 function haptic(ms){if(navigator.vibrate)try{navigator.vibrate(ms||12);}catch(e){}}
 window.haptic=haptic;

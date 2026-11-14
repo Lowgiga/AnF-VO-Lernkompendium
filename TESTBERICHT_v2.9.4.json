@@ -1,5 +1,5 @@
 {
-  "version": "2.9.3",
+  "version": "2.9.4",
   "static_checks": 32,
   "passed": 32,
   "failed": 0,
@@ -150,7 +150,7 @@
       "detail": ""
     },
     {
-      "name": "Impressum shows v2.9.3 and keeps the required DDG placeholder",
+      "name": "Impressum shows v2.9.4 and keeps the required DDG placeholder",
       "ok": true,
       "detail": ""
     },

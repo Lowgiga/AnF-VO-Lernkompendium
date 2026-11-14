@@ -1,6 +1,6 @@
 {
     "project": "AnFöVO NRW Digital Learning Compendium",
-    "version": "2.9.3",
+    "version": "2.9.4",
     "entry": "index.html",
     "standalone": true,
     "runtime_network_requests_added": false,
@@ -14,11 +14,11 @@
         "Event Scheduler"
     ],
     "browser_runtime_verified": true,
-    "browser_test_limitation": "Local Windows Chrome and Playwright browser tests passed; Galaxy S25 installation verified (v2.9.3).",
+    "browser_test_limitation": "Local Windows Chrome and Playwright browser tests passed; Galaxy S25 installation verified (v2.9.3); v2.9.4 device reinstall pending (device offline).",
     "robotnav_embedded_block_chars": 21881,
     "robotnav_source_chars": 21880,
     "embedded_source_match": true,
-    "visual_upgrade": "Refined 3D book cover, page block, and green robot CSS",
+    "visual_upgrade": "Compositor-only book/robot page-turn animation (transform/opacity only, rAF-throttled parallax, reduced-motion aware); refined 3D book cover, page block, and green robot CSS",
     "design_direction": "hybrid",
     "robot_appearance": "silver",
     "content_preservation": "Preserve all 70 existing learning pages and all current learning functionality; no unreviewed content edits.",
@@ -26,8 +26,8 @@
     "github_visibility": "public",
     "android": {
         "application_id": "de.omega.lernkompendium",
-        "version": "2.9.3",
-        "version_code": 293,
+        "version": "2.9.4",
+        "version_code": 294,
         "min_sdk": 29,
         "compile_sdk": 36,
         "target_sdk": 36,
@@ -37,19 +37,20 @@
         "debug_apk_signature_verified": true,
         "release_signing_configured": true,
         "device_install_tested": true,
-        "debug_apk_file": "release/AnFoeVO_Lernkompendium_v2.9.3-debug-arm64.apk",
-        "debug_apk_sha256": "992202F8BB802A3EA7CB41E365D4441AD1B19A93D5C9FF41550618DFCE630EC6",
-        "html_sha256": "74281222ff08d51bb3051886d5434cb46ae03472cb19e3f876e010b0844b9d9d",
+        "debug_apk_file": "release/AnFoeVO_Lernkompendium_v2.9.4-debug-arm64.apk",
+        "debug_apk_sha256": "D94D13F8E3E105102872E23BC7CF07A7F088E0FEE65EB59C047FA83EEE84C68A",
+        "release_apk_sha256": "E63DCC4BB4CD794122660B562B5648ECB59B9693C4BA44BA55C0BF40882A0FB6",
+        "html_sha256": "0200bd363b5cd22a7a9084938c847fef83326221c2747440a12dc93cb1ea1e9f",
         "debug_apk_matches_current_html": true,
-        "release_aab_sha256": "F1ED435B2FF4FDA742CF35E0205008F9EB626CCC325121593886B5ACFE75B21C"
+        "release_aab_sha256": "365449F593A7A146FA8B7D35E92E7BB1691ECAFF64ADAA3BAA6E850CAFD50055"
     },
     "pwa_shell": {
         "prepared": true,
         "pages_enabled": true,
         "project_subpath": "/AnFoVO-Lernkompendium/",
-        "service_worker_cache": "anfoevo_v2_cache_2.9.3-web-pwa-2.9.3",
+        "service_worker_cache": "anfoevo_v2_cache_2.9.4-web-pwa-2.9.4",
         "impressum_placeholder_required": true,
-        "current_index_sha256": "74281222ff08d51bb3051886d5434cb46ae03472cb19e3f876e010b0844b9d9d",
+        "current_index_sha256": "0200bd363b5cd22a7a9084938c847fef83326221c2747440a12dc93cb1ea1e9f",
         "note": "GitHub Pages aktiv: https://lowgiga.github.io/AnFoVO-Lernkompendium/ (PWA installierbar, Offline-fähig). Impressum-Platzhalter vor öffentlicher Freigabe ersetzen."
     },
     "browser_validation": {
@@ -65,6 +66,6 @@
         "max_flush_ms": 5.5,
         "test_command": "npm run test:all",
         "visual_regression": "run (pixel diff: 0 differing pixels in app content, 978 in status bar)",
-        "browser_test_limitation": "Local Windows Chrome and Playwright browser tests passed; Galaxy S25 installation verified (v2.9.3)."
+        "browser_test_limitation": "Local Windows Chrome and Playwright browser tests passed; Galaxy S25 installation verified (v2.9.3); v2.9.4 device reinstall pending (device offline)."
     }
 }

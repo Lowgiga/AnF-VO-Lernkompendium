@@ -8,6 +8,12 @@
 - Updated the impressum version stamp to v2.9.1 and left the § 5 DDG placeholder in place.
 - Added `scripts/prepare-pages-surface.sh` to build a local web-only directory. GitHub Pages stays disabled.
 
+## 2.9.4
+- Redesigned the book/robot page-turn animation to compositor-only `transform`/`opacity`: removed `filter` animation from `flipin`, removed `drop-shadow` from animated layers, stopped `left/top` layout animation, and replaced the height-based book fill with `scaleY`.
+- Throttled the stage parallax with `requestAnimationFrame` via `--par-x`/`--par-y` custom properties; it no longer clobbers RobotNav state and respects `prefers-reduced-motion`.
+- Softened the page-turn gestures (book nudge, leaf turn, robot gesture/nod/climb) to a restrained, technical look.
+- Bumped to v2.9.4 / versionCode 294.
+
 ## 2.9.1
 - Added a matching Android WebView wrapper and built a debug APK with Gradle 8.13 / AGP 8.13.2.
 - Fixed the Android round-icon resource reference so the APK resource-linking step succeeds.

@@ -10,7 +10,7 @@ Changing files under `android/`, WebView behavior, Android packaging, Gradle, SD
 
 ## Baseline
 - Application ID: `de.omega.lernkompendium`
-- Version baseline: 2.9.3 / versionCode 293
+- Version baseline: 2.9.4 / versionCode 294
 - Minimum SDK: 29
 - Compile/target SDK: 36
 - Android Gradle Plugin: 8.13.2

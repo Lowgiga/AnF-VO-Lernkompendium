@@ -6,7 +6,7 @@ The repository root can be served later as an installable offline PWA at the pro
 
 - `index.html` links `./manifest.json`, `./icon-192.png`, and an apple-touch icon.
 - `manifest.json` uses relative `start_url` and `scope` (`./`), so installation stays inside the project subpath.
-- `sw.js` precaches the shell, icons, and both `bg/d` and `bg/m` frame sets. Its cache name is `anfoevo_v2_cache_2.9.3-web-pwa-2.9.3`.
+- `sw.js` precaches the shell, icons, and both `bg/d` and `bg/m` frame sets. Its cache name is `anfoevo_v2_cache_2.9.4-web-pwa-2.9.4`.
 - `.nojekyll` is present so a later Pages publish does not run Jekyll.
 - The service worker is registered only when `location.protocol` is `http:` or `https:`, and the registration returns before calling `register` when the URL contains `android_asset`. Opening `index.html` with `file://` does not register a worker.
 - The same `index.html`, `manifest.json`, `sw.js`, icons, and `bg/` frames are byte-identical under `android/app/src/main/assets/`.
