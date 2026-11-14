@@ -154,7 +154,7 @@ const { pathToFileURL } = require('url');
   };
   console.log(JSON.stringify(report, null, 2));
   if (
-    !result.title.includes('v2.9.4') ||
+    !result.title.includes('v2.9.5') ||
     result.pageCount < 1 ||
     !result.robotNavAvailable ||
     !result.bookPresent ||

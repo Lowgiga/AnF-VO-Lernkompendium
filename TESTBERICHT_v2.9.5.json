@@ -1,13 +1,13 @@
 {
-  "version": "2.9.4",
+  "version": "2.9.5",
   "static_checks": 32,
   "passed": 32,
   "failed": 0,
   "checks": [
     {
-      "name": "Embedded RobotNav block matches standalone source",
+      "name": "Root RobotNav copy matches algorithm source",
       "ok": true,
-      "detail": "embedded=21879 chars; source=21879 chars"
+      "detail": "root=21879 chars; algorithm=21879 chars"
     },
     {
       "name": "Standalone JavaScript syntax",
@@ -15,9 +15,9 @@
       "detail": ""
     },
     {
-      "name": "Embedded JavaScript syntax",
+      "name": "Android RobotNav asset matches algorithm source",
       "ok": true,
-      "detail": ""
+      "detail": "asset exists=True"
     },
     {
       "name": "HTML document has one html root",
@@ -30,7 +30,7 @@
       "detail": ""
     },
     {
-      "name": "RobotNav v2.8.0 embedded",
+      "name": "RobotNav loads via standalone script tag",
       "ok": true,
       "detail": ""
     },
@@ -150,7 +150,7 @@
       "detail": ""
     },
     {
-      "name": "Impressum shows v2.9.4 and keeps the required DDG placeholder",
+      "name": "Impressum shows v2.9.5 and keeps the required DDG placeholder",
       "ok": true,
       "detail": ""
     },

@@ -1,9 +1,9 @@
-PASS Embedded RobotNav block matches standalone source — embedded=21879 chars; source=21879 chars
+PASS Root RobotNav copy matches algorithm source — root=21879 chars; algorithm=21879 chars
 PASS Standalone JavaScript syntax
-PASS Embedded JavaScript syntax
+PASS Android RobotNav asset matches algorithm source — asset exists=True
 PASS HTML document has one html root
 PASS Android HTML asset matches index.html byte for byte
-PASS RobotNav v2.8.0 embedded
+PASS RobotNav loads via standalone script tag
 PASS Standalone engine has no fetch/XHR/WebSocket
 PASS No polling interval used
 PASS No self-scheduling animation loop used
@@ -27,7 +27,7 @@ PASS Service worker cache version is current
 PASS Service worker precaches relative core assets and both frame sets — frames=29
 PASS Service worker registration is limited to http(s) and skips android_asset
 PASS index.html links manifest and icons with relative URLs
-PASS Impressum shows v2.9.4 and keeps the required DDG placeholder
+PASS Impressum shows v2.9.5 and keeps the required DDG placeholder
 PASS Pages prepare script copies a web-only surface and does not publish
 PASS Pages subpath serves manifest, worker, icon, and background frames — page=200/text/html manifest=200 worker=200 icon=200/image/png frame=200/image/webp mobile=200 nojekyll=200 outside=404
 

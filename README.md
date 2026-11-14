@@ -32,7 +32,7 @@
 | 🌐 **Web-App** | 70 Lernseiten · Fortschritt · Suche · Druck | `index.html` (eigenständig) | ✅ Verifiziert |
 | 🤖 **RobotNav** | Deterministische Buch- und Navigationsassistenz | browserseitig, dekorativ | ✅ Aktiv |
 | 📴 **PWA** | Installierbar unter `/AnFoVO-Lernkompendium/` | `manifest.json` + `sw.js` | ✅ Offline getestet |
-| 📱 **Android-App** | WebView-Kapsel derselben Web-Dateien | `de.omega.lernkompendium` | ✅ Quellstand v2.9.4 (Release-Signing konfiguriert) |
+| 📱 **Android-App** | WebView-Kapsel derselben Web-Dateien | `de.omega.lernkompendium` | ✅ Quellstand v2.9.5 (Release-Signing konfiguriert) |
 
 ## ✅ Status & Verifikation
 
@@ -41,12 +41,12 @@
 | Statische Projektprüfung | ✅ 32/32 Checks grün | `python tests/verify-build.py` |
 | Browser- & RobotNav-Harness | ✅ grün (lokal, Chromium/Playwright) | `npm run test:all` |
 | PWA/Offline (Subpath) | ✅ lokal getestet (Manifest, Worker, Cache, Offline-Ladevorgang) | `tests/verify-build.py` |
-| Android-Build (Quellstand) | ✅ Version `2.9.4`, Version Code `294` | `android/app/build.gradle` |
+| Android-Build (Quellstand) | ✅ Version `2.9.5`, Version Code `295` | `android/app/build.gradle` |
 | GitHub-Actions-CI | ⚠️ Workflow definiert; Läufe hängen von Kontobilling ab | `.github/workflows/android-build.yml`, `BUILD-REPORT-v2.9.1.md` |
 | Release-Signing | ✅ konfiguriert (Keystore lokal, nicht im Repo) | `docs/RELEASE_PROCESS.md` |
-| Geräteinstallation (Galaxy S25) | ✅ v2.9.3 verifiziert; v2.9.4-Reinstall nach Build | `PROJECT_MANIFEST.json` |
+| Geräteinstallation (Galaxy S25) | ✅ v2.9.3 verifiziert; v2.9.5-Reinstall nach Build | `PROJECT_MANIFEST.json` |
 
-> **Versionsstand (v2.9.4):** Alle Inhalte, Version Codes und Artefakte sind auf `2.9.4` angehoben. Die Buch-/Navigationsanimation wurde compositor-only überarbeitet (nur `transform`/`opacity`, rAF-gedrosselter Parallax, `prefers-reduced-motion` respektiert). Die Lerninhalte in `index.html` blieben unverändert. GitHub Pages sind aktiv unter `https://lowgiga.github.io/AnFoVO-Lernkompendium/`. Die Release-Signing wurde lokal konfiguriert und über CI validiert.
+> **Versionsstand (v2.9.5):** Alle Inhalte, Version Codes und Artefakte sind auf `2.9.5` angehoben. Die Buch-/Navigationsanimation wurde compositor-only überarbeitet (nur `transform`/`opacity`, rAF-gedrosselter Parallax, `prefers-reduced-motion` respektiert). RobotNav wird als eigenständige Datei (`robot-navigation.js`) geladen und vom Service-Worker vorgeladen (skip-waiting). Die Lerninhalte in `index.html` blieben unverändert. GitHub Pages sind aktiv unter `https://lowgiga.github.io/AnFoVO-Lernkompendium/`. Die Release-Signing wurde lokal konfiguriert und über CI validiert.
 
 ## 🧠 Architektur
 
@@ -197,26 +197,26 @@ npm run test:all
 
 Bei vorhandenem Chrome/Chromium genügt `CHROMIUM_PATH` statt der Playwright-Installation. Die Browserprüfungen decken Desktop- und Mobilansicht, Seitennavigation, Suche, Fortschrittsspeicherung, Backup-Export, Druckfunktion, Hintergrundressourcen und Browserfehler ab. `npm run test:all` prüft zusätzlich die Auslieferung unter `/AnFoVO-Lernkompendium/`: Manifest, Service-Worker-Registrierung, Cache der Hintergrundframes und einen **Offline-Ladevorgang** (über `file://` registriert sich dabei kein Worker).
 
-### Verifizierter Stand (v2.9.4)
+### Verifizierter Stand (v2.9.5)
 
 - ✅ Statische Projektprüfung: **32/32 Checks bestanden**
 - ✅ Browser- und RobotNav-Harness grün; 70 Lernseiten im Smoke-Test erkannt; keine Seiten- oder Konsolenfehler in den geprüften Läufen
 - ✅ PWA-Subpath (Manifest, Worker, Icons, Hintergrundframes, Offline-Ladevorgang) lokal grün
-- ✅ GitHub-Actions-CI: Läufe grün auf `main` (Workflow `android-build.yml`; Quellstand v2.9.4)
+- ✅ GitHub-Actions-CI: Läufe grün auf `main` (Workflow `android-build.yml`; Quellstand v2.9.5)
 - ✅ Release-Signing konfiguriert (Keystore in `AnFoeVO-Release-Keystore/`, nicht im Repo) — siehe [docs/RELEASE_PROCESS.md](docs/RELEASE_PROCESS.md)
-- ✅ Geräteinstallation (Galaxy S25) verifiziert: v2.9.3 installiert, App startet, Fortschritt bleibt erhalten (v2.9.4-Reinstall nach Build)
+- ✅ Geräteinstallation (Galaxy S25) verifiziert: v2.9.3 installiert, App startet, Fortschritt bleibt erhalten (v2.9.5-Reinstall nach Build)
 - ✅ Visueller Pixelvergleich: 0 Pixel Diff im App-Inhalt (v2.9.2 vs. v2.9.3)
 - ⏳ Play-Store-Veröffentlichung: Release-AAB + Store-Listing vorbereitet
 
-Details zum Build-Weg: [BUILD-REPORT-v2.9.4.md](BUILD-REPORT-v2.9.4.md).
+Details zum Build-Weg: [BUILD-REPORT-v2.9.5.md](BUILD-REPORT-v2.9.5.md).
 
 ## 📱 Android-App
 
 | Merkmal | Wert |
 | --- | --- |
 | Application ID | `de.omega.lernkompendium` |
-| Version | `2.9.4` |
-| Version Code | `294` |
+| Version | `2.9.5` |
+| Version Code | `295` |
 | Minimum Android | API 29 |
 | Compile-/Target-SDK | 36 |
 | Android Gradle Plugin | 8.13.2 |
@@ -249,7 +249,7 @@ Die Debug-APK ist mit dem Standard-Debug-Schlüssel signiert und nur für Tests 
 
 ## 📸 Screenshots
 
-Aufnahmen der aktuellen Version (v2.9.4, Web-PWA; die Android-App zeigt identisches UI im WebView):
+Aufnahmen der aktuellen Version (v2.9.5, Web-PWA; die Android-App zeigt identisches UI im WebView):
 
 | Übersicht | Lernseite | Fortschritt | Mobilansicht |
 | --- | --- | --- | --- |
@@ -315,7 +315,7 @@ Beiträge sind willkommen — bitte die folgenden Grundsätze beachten:
 
 ## 📮 Projektinformationen
 
-- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium) · Stand: `main` · Quellstand **v2.9.4**
+- Repository: [Lowgiga/AnFoVO-Lernkompendium](https://github.com/Lowgiga/AnFoVO-Lernkompendium) · Stand: `main` · Quellstand **v2.9.5**
 - Änderungsübersicht: [CHANGELOG.md](CHANGELOG.md)
 - Produktspezifikation: [PRODUKT_SPEZIFIKATION.md](PRODUKT_SPEZIFIKATION.md)
 - Build-Nachweis: [BUILD-REPORT-v2.9.1.md](BUILD-REPORT-v2.9.1.md)

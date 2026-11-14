@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.9.5
+- Adopted the standalone RobotNav architecture from the wrapper workstream: `index.html` now loads `robot-navigation.js` via `<script src>` instead of an inline embedded block; the service worker precaches the engine file and supports `skip-waiting`.
+- Added byte-parity checks for the engine copies (root ↔ `algorithm/` ↔ Android assets) and extended the PWA precache expectation.
+- Learning content unchanged (embedded DATA blob byte-identical); animation overhaul from v2.9.4 carried over.
+- Bumped to v2.9.5 / versionCode 295.
+
 ## Unreleased
 
 - Prepared the repository root as an installable offline PWA for the GitHub Pages project subpath `/AnFoVO-Lernkompendium/`.

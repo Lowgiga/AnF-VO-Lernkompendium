@@ -1,4 +1,4 @@
-# Technischer Audit-Bericht: AnFöVO Lernkompendium v2.9.4
+# Technischer Audit-Bericht: AnFöVO Lernkompendium v2.9.5
 
 Stand: 12. November 2026 | Prüfer: OpenCode Agent (Deep-Code-Audit)
 

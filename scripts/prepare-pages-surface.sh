@@ -47,6 +47,7 @@ mkdir -p "$dest/bg"
 cp "$root/index.html" \
   "$root/manifest.json" \
   "$root/sw.js" \
+  "$root/robot-navigation.js" \
   "$root/icon-192.png" \
   "$root/icon-512.png" \
   "$root/icon-512-maskable.png" \
